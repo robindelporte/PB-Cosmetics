@@ -1,0 +1,31 @@
+<div class="padding-global">
+            <div class="padding-section-custom">
+              <div class="container-large">
+                <div class="hero-product_avantage-wrapper">
+                  <div class="heading-style-h3 display-inline">Ce produit est</div>
+                  {% for argument in product.metafields.custom.arguments.value %}    <div li-for="argument in product.metafields.custom.arguments.value" class="hero-product_avantage">
+                                    
+                    
+                            <div li-object="argument" li-if="forloop.index == 1" class="heading-style-h3 text-color-black display-inline">{{ argument }}</div>
+                            
+                    
+                            <div li-object="argument" li-if="forloop.index > 1" class="heading-style-h3 display-inline">{{ argument }}</div>
+                            
+                  
+                        </div>
+{% endfor %}
+                </div>
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "Avantage LP",
+    "class": "section_avantage",
+    "presets": [
+        {
+            "name": "Avantage LP",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

@@ -1,0 +1,40 @@
+<div class="padding-section-medium">
+            <div class="container-1710">
+              <div class="recharge_component-wrapper">
+                <div class="recharge_content-wrapper">
+                  <div class="recharge_content">
+                    <div class="recharge_content-content">
+                      <h2>Où recharger mon parfum ?</h2>
+                      <p class="text-color-grey-bordure">Nos parfums sont entièrement rechargeables directement en boutique. Il vous suffit de rapporter votre flacon, et nous le remplissons soigneusement sur place, comme au bon vieux temps des maîtres parfumeurs.<br><br>Un geste simple, économique… et bon pour la planète. Passez nous voir en boutique pour redonner vie à votre parfum préféré.</p>
+                    </div>
+                    <a href="{{ section.settings.url_lien }}" class="button is-alternate w-inline-block"> <div class="button_text is-alternate">{{ section.settings.text_texte }}</div> <div class="button_overlay is-alternate"></div> </a>
+                  </div>
+                </div>
+                <div id="w-node-_03079260-041f-0140-e5ad-bdf1c891ad00-8d4185a4" class="recharge_image-wrapper"><img src="{{ 'prafums-recharge.avif' | asset_url }}" loading="lazy" alt="" class="recharge_image"></div>
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "Recharge",
+    "class": "section_recharge",
+    "settings": [
+        {
+            "id": "url_lien",
+            "type": "url",
+            "label": "Lien"
+        },
+        {
+            "id": "text_texte",
+            "type": "text",
+            "label": "Texte",
+            "default": "D\u00c9COUVRIR NOS PARFUMS"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Recharge",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

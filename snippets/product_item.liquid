@@ -1,0 +1,81 @@
+{% assign has_color_variants = false %}
+                      {% for option in product.options_with_values %}{% if option.name == 'Couleur' and option.values.size > 1 %}{% assign has_color_variants = true %}{% endif %}{% endfor %}{% assign first_variant = product.selected_or_first_available_variant %}<div x-data="{quickbuy: false, ...handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ first_variant | json | escape }})}" x-init="$nextTick(() => { activateVariants() })" class="product-item_component"><div class="product-item_image-link"><a li-object:href="product.url" href="{{ product.url }}" class="product-item_image-wrapper w-inline-block"><img width="191.5" height="800" alt="{{ product.featured_image.alt | default: product.title }}" src="{{ product.featured_image | image_url: width: 800, height: 800 }}" loading="lazy" li-object:alt="product.featured_image.alt | default: product.title" li-object:src="product.featured_image | image_url: width: 800, height: 800" class="product-item_image"></a></div><div class="product-item_content-wrapper"><div class="product-item_heading"><a li-object:href="product.url" href="{{ product.url }}" class="product-item_text-link w-inline-block"><div class="product-item_left"><div li-object="product.title" class="product_item-name">{{ product.title }}</div></div><div class="product-item_price"><div li-object="product.price | money">{{ product.price | money }}</div>{% if product.compare_at_price_max > product.price %}    <div li-if="product.compare_at_price_max > product.price">
+    <div li-object="product.compare_at_price | money" class="text-style-strikethrough text-style-muted">{{ product.compare_at_price | money }}</div>    </div>
+{% endif %}</div></a></div><div class="product-item_variant-wrapper"><div li-object="product.metafields.custom.texte_sous_titre" class="product_item-tagline">{{ product.metafields.custom.texte_sous_titre }}</div>{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true">
+    {% form 'product', product %}
+{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-item_option-list">
+    <template x-for="(option, optionKey) in product.options" :key="optionKey">
+    <div li-element="product-options-loop" class="product-item_option" data-ProductVariantsLoop="true"><div class="product-item_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
+    <label li-element="product-option-loop" class="product-item_radio w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom product-item_radio-button w-radio-input"></div><input type="radio" li-element="product-option-input" style="opacity:0;position:absolute;z-index:-1" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'"><span li-element="product-option-name" class="hide w-form-label" for="radio-2" x-text="variantName" :for="variantName">XS</span></label></template></div></div></template>{% if product.options_with_values[0].values.size > 4 %}    <div li-if="product.options_with_values[0].values.size > 4">
+    <button x-on:click="quickbuy = true" type="button" class="product-item_radio is-plus"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 25 25" fill="none" class="product-item_radio-plus"><rect x="0.67094" y="0.67094" width="23.6581" height="23.6581" rx="11.8291" stroke="currentColor" stroke-width="1.34188"></rect><path d="M16.6527 13.0933H13.0934V16.6525H11.9069V13.0933H8.34766V11.9068H11.9069V8.34753H13.0934V11.9068H16.6527V13.0933Z" fill="currentColor"></path></svg></button>    </div>
+{% endif %}    </div>
+{% endif %}{% endform %}    </div>
+{% endif %}{% if product.metafields.custom.parfum_tags %}    <div li-if="product.metafields.custom.parfum_tags">
+    {% assign parfum_tags = product.metafields.custom.parfum_tags.value %}<div li-for:inside="tag in parfum_tags" class="product-item_tags">
+        {% for tag in parfum_tags %}                            <div li-object="tag.senteur" class="product-snippet_tag">{{ tag.senteur }}</div>
+                    {% endfor %}    </div>    </div>
+{% endif %}</div></div><div class="product-item_buttons">{% if product.available == true and has_color_variants == false %}    <div li-if="product.available == true and has_color_variants == false" class="product-item_button">
+    <button type="button" li-element="add-to-cart" class="button is-product-card" @click="addToCart($event, true)" :disabled="!addToCartButton"><div class="button_text is-product-card">AJOUTER AU PANIER</div><div class="button_overlay"></div></button>    </div>
+{% endif %}{% if product.available == true and has_color_variants %}    <div li-if="product.available == true and has_color_variants" class="product-item_button">
+    <button type="button" x-on:click="quickbuy = true" class="button is-product-card"><div class="button_text is-product-card">Choisir ma couleur</div><div class="button_overlay"></div></button>    </div>
+{% endif %}{% if product.available != true %}    <div li-if="product.available != true" class="product-item_button">
+    <a href="#" class="button is-secondary pointer-events-off max-width-full is-out-of-stock w-button">Rupture de stock</a>    </div>
+{% endif %}</div>{% if has_color_variants %}    <div li-if="has_color_variants" class="quick-buy_wrap">
+    <template x-teleport="body" x-cloak=""><dialog x-show="quickbuy" x-trap.noscroll="quickbuy" aria-modal="true" x-on:keydown.escape.window="quickbuy = false" x-on:toggleminicart.window="quickbuy =  false" class="quick-buy_modal"><div x-on:click="quickbuy = false" class="modal_bg-close"></div><div x-bind:class="{'is-active' : quickbuy}" class="quick-buy_content"><script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
+<div li-element="product-variant-container" class="quick-buy_wrap" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">{% form 'product', product, class: 'quick-buy_form' %}
+<div class="quick-buy_product"><img x-bind:alt="selected_or_first_available_variant.featured_media.alt || product.title" class="quick-buy_product-image" src="{{ product.featured_image | image_url: width: 250 }}" alt="{{ product.featured_image.alt | default: product.title }}" li-object:src="product.featured_image | image_url: width: 250" loading="lazy" x-bind:src="selected_or_first_available_variant.featured_image" li-object:alt="product.featured_image.alt | default: product.title"><div class="quick-buy_product-infos"><div class="hide w-embed"><style>
+{% for variant in product.variants %} 
+  {% for option in variant.options %}
+    #{{ option | handleize }} { 
+      background-color: {{ variant.metafields.custom.couleur_code }}; 
+    }
+  {% endfor %}
+{% endfor %}
+</style></div><div class=" quick-buy_product-heading">
+                        <div li-object="product.title | escape" class="quick-buy_product-title">{{ product.title | escape }}</div>
+                        <div class="quick-buy_product-details">
+                          <div x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price)" li-object="first_variant.price | money" class="quick-buy_product-price">{{ first_variant.price | money }}</div>
+                          <div class="quick-buy_product-size">7ml</div>
+                        </div>
+                      </div>
+                      {% unless product.has_only_default_variant %}    <div li-unless="product.has_only_default_variant">
+    <template x-for="(option, optionKey) in product.options" x-bind:key="optionKey" class="template">
+                          <div class="product_option-loop">
+                            <template x-if="option === 'Couleur'">
+            <fieldset li-js-if="option === 'Couleur'">
+        
+                              <div class="product-hero_radio-list is-quickbuy">{% for value in option.values %}    <label li-for="value in option.values" class="product-hero_radio">
+                                    
+                                  
+                            <div type="radio" li-render-custom-trigger="input" li-render-custom-value="{{ product.url }}?section_id={{ section.id }}&variant={{ value.variant.id }}" class="hide" {% if value.selected %}checked{% endif %} name="{{ option.name }}"></div>
+                            
+                                  
+                            <div class="product_variant-inner-circle" id="{{ value | handleize }}"></div>
+                            
+                                  
+                            <div class="{% if value.selected %}is-active{% endif %}"></div>
+                            
+                                
+                        </label>
+{% endfor %}</div>
+                                    </fieldset>
+    </template>
+                          </div>
+                        </template>    </div>
+{% endunless %}
+                    </div>
+                  </div><button x-on:click="addToCart($event, true)" x-bind:disabled="!addToCartButton" type="button" class="quick-buy_add-to-cart">
+                    <div class="button_text">AJOUTER AU PANIER</div>
+                    <div class="button_overlay"></div>
+                  </button>{% endform %}<button aria-label="Fermer la sélection" x-on:click="quickbuy = false" aria-controls="quickby-modal-{{product.handle}}-{{section.index}}" x-bind:aria-expanded="quickbuy" type="button" aria-haspopup="dialog" class="quick-buy_close">
+                    <div class="icon-1x1-20 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
+                        <rect y="18.4615" width="26.1085" height="2.17571" transform="rotate(-45 0 18.4615)" fill="#3E3E3E"></rect>
+                        <rect x="1.53857" y="2.67029e-05" width="26.1085" height="2.17571" transform="rotate(45 1.53857 2.67029e-05)" fill="#3E3E3E"></rect>
+                      </svg></div>
+                  </button>
+                </div>
+              </div>
+              </dialog></template>
+                </div>
+{% endif %}
+          </div>

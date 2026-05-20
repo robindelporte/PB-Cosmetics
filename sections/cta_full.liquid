@@ -1,0 +1,46 @@
+<div class="cta-fulll_image-wrapper">{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: class: 'cta-full_image', sizes: '100vw', loading: 'lazy' }}
+{% else %}
+<img class="cta-full_image" src="{{ 'hero-background_1.avif' | asset_url }}" alt="" sizes="100vw" loading="lazy" srcset="{{ 'hero-background_1-p-500.avif' | asset_url }} 500w, {{ 'hero-background_1-p-800.avif' | asset_url }} 800w, {{ 'hero-background_1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-background_1.avif' | asset_url }} 2612w">
+{% endif %}</div>
+        <div class="cta_full-component">
+          <h2 class="text-color-white">
+{{ section.settings.text_titre }}
+</h2>
+          <a href="{{ section.settings.url_lien }}" class="button is-alternate w-inline-block"> <div class="button_text is-alternate">{{ section.settings.text_texte }}</div> <div class="button_overlay is-alternate"></div> </a>
+        </div> {% schema %} {
+    "tag": "div",
+    "name": "CTA Full",
+    "class": "section_cta-full",
+    "settings": [
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        },
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "D\u00e9vouvrez nos gammes"
+        },
+        {
+            "id": "url_lien",
+            "type": "url",
+            "label": "Lien"
+        },
+        {
+            "id": "text_texte",
+            "type": "text",
+            "label": "Texte",
+            "default": "D\u00c9COUVRIR NOS PARFUMS"
+        }
+    ],
+    "presets": [
+        {
+            "name": "CTA Full",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

@@ -1,0 +1,38 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "hero_plein": {
+            "type": "hero_plein"
+        },
+        "faq_pros": {
+            "type": "faq_pros",
+            "blocks": {
+                "faq-item-pro": {
+                    "type": "faq-item-pro",
+                    "name": "FAQ Item Pro"
+                }
+            },
+            "block_order": [
+                "faq-item-pro"
+            ]
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "navbar",
+        "hero_plein",
+        "faq_pros"
+    ]
+}

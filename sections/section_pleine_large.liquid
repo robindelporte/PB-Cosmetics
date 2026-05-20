@@ -1,0 +1,73 @@
+<div class="padding-section-medium">
+      <div class="container-1710">
+        <div class="full_component-wrapper">{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: class: 'full_component-image', width: '864', sizes: '(max-width: 991px) 100vw, 864px', loading: 'lazy' }}
+{% else %}
+<img class="full_component-image" src="{{ 'bundle-image.avif' | asset_url }}" width="864" alt="" sizes="(max-width: 991px) 100vw, 864px" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
+{% endif %}
+          <div id="w-node-_8bad777a-ae69-4484-89ec-710ca99cd475-a99cd470" class="full_component-content-wrapper">
+            <div class="full_component-content">
+              <div class="full_component-heading">
+                <div class="text-style-tagline">
+{{ section.settings.text_tagline }}
+</div>
+                <h2 class="heading-style-h1">
+{{ section.settings.text_titre }}
+</h2>
+              </div>
+              <p class="text-color-grey">
+{{ section.settings.text_paragraphe }}
+</p>
+            </div>
+            <a href="{{ section.settings.url_lien }}" class="button w-inline-block"> <div class="button_text">{{ section.settings.text_texte }}</div> <div class="button_overlay"></div> </a>
+          </div>
+        </div>
+      </div>
+    </div> {% schema %} {
+    "tag": "div",
+    "name": "Section - Pleine lar",
+    "class": "section_full",
+    "settings": [
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        },
+        {
+            "id": "text_tagline",
+            "type": "text",
+            "label": "Tagline",
+            "default": "-15% sur tes produits"
+        },
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "BUNDLE"
+        },
+        {
+            "id": "text_paragraphe",
+            "type": "text",
+            "label": "Paragraphe",
+            "default": "D\u00e9couvrez notre nouveau bundle beaut\u00e9 : un duo pens\u00e9 pour illuminer votre routine. Un m\u00e9lange malin entre \u00e9clat, fra\u00eecheur et plaisir d\u2019utilisation \u00a0le tout r\u00e9uni dans une s\u00e9lection simple, efficace, et pr\u00eate \u00e0 sublimer vos journ\u00e9es. Parce qu\u2019un bon rituel, \u00e7a ne s\u2019improvise pas\u2026 mais \u00e7a se partage avec style"
+        },
+        {
+            "id": "url_lien",
+            "type": "url",
+            "label": "Lien"
+        },
+        {
+            "id": "text_texte",
+            "type": "text",
+            "label": "Texte",
+            "default": "AJOUTER AU PANIER"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Section - Pleine lar",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

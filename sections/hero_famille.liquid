@@ -1,0 +1,29 @@
+<div class="hero-categories_component-wrapper">
+          <div class="hero_slide-content z-index-1">
+            <div class="padding-global">
+              <div class="container-large">
+                <div class="hero_content">
+                  <div class="hero-categories_breadcrubms-wrapper">
+                    <a li-object:href="routes.root_url" href="{{ routes.root_url }}" class="hero_breadcrumbs-link">Accueil</a>
+                    <div class="text-weight-medium text-style-allcaps">-</div>
+                    <div li-object="collection.title" class="hero_breadcrumbs-link">{{ collection.title }}</div>
+                  </div>
+                  <div>
+                    <h1 li-object="collection.title">{{ collection.title }}</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><img class="hero_bg-img" src="{{ collection.image | image_url: width: 2880 }}" width="1440" alt="collection.title" sizes="(max-width: 1439px) 100vw, 1440px" li-object:src="collection.image | image_url: width: 2880" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Hero Famille",
+    "class": "section_hero-categories",
+    "presets": [
+        {
+            "name": "Hero Famille",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

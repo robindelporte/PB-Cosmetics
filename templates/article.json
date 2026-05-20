@@ -1,0 +1,37 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "article_hero": {
+            "type": "article_hero"
+        },
+        "article_content": {
+            "type": "article_content"
+        },
+        "cta_full": {
+            "type": "cta_full"
+        },
+        "articles_lies": {
+            "type": "articles_lies"
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "navbar",
+        "article_hero",
+        "article_content",
+        "cta_full",
+        "articles_lies"
+    ]
+}

@@ -1,0 +1,39 @@
+<div class="container-1710">
+            <div class="description_component">
+              <div class="description_image-wrapper">{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'description_image' }}
+{% else %}
+<img src="{{ 'prafums-recharge.avif' | asset_url }}" loading="lazy" alt="" class="description_image">
+{% endif %}</div>
+              <div class="description_content-wrapper">
+                <h2>
+{{ section.settings.text_description_titre }}
+</h2>
+                <div li-object="product.metafields.custom.description_texte" class="text-rich-text w-richtext">{{ product.metafields.custom.description_texte }}</div>
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "Description LP",
+    "class": "section_description",
+    "settings": [
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        },
+        {
+            "id": "text_description_titre",
+            "type": "text",
+            "label": "Description - Titre",
+            "default": "Description"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Description LP",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

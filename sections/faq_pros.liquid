@@ -1,0 +1,57 @@
+<div class="padding-global">
+          <div class="container-large">
+            <div class="faq-pro_wrapper">
+              <div li-content-for-blocks="" class="faq-pro_anchors-wrapper">
+{% for block in section.blocks %}
+{% case block.type %}
+{% when '@app' %}
+{% render block %}
+
+                <a li-object:href="'#' | append: block.settings.titre_categorie | handleize" li-if="block.type == 'categorie'" href="{{ '#' | append: block.settings.titre_categorie | handleize }}" class="faq-pro_anchor w-inline-block">
+                  <div li-object="block.settings.titre_categorie">{{ block.settings.titre_categorie }}</div>
+                </a>
+              {% endcase %}
+{% endfor %}
+
+    </div>
+              <div class="container-faq">
+                <div class="faq-pro_component">
+                  <div li-cf-theme-blocks="" class="faq_list">
+{% content_for 'blocks' %}
+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "FAQ Pros",
+    "class": "section_faq",
+    "blocks": [
+        {
+            "type": "faq-item-pro"
+        },
+        {
+            "type": "@app"
+        }
+    ],
+    "settings": [
+        {
+            "id": "text_titre_categorie",
+            "type": "text",
+            "label": "Titre categorie",
+            "default": "Livraison"
+        }
+    ],
+    "presets": [
+        {
+            "name": "FAQ Pros",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "faq-item-pro"
+                }
+            ]
+        }
+    ]
+} {% endschema %}

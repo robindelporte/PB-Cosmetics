@@ -1,0 +1,54 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "contact": {
+            "type": "contact",
+            "blocks": {
+                "champ-texte": {
+                    "type": "champ-texte",
+                    "name": "Champ texte"
+                },
+                "champ-email": {
+                    "type": "champ-email",
+                    "name": "Champ email"
+                },
+                "select-4-options": {
+                    "type": "select-4-options",
+                    "name": "Select 4 options"
+                },
+                "champ-message": {
+                    "type": "champ-message",
+                    "name": "Champ message"
+                },
+                "consentement": {
+                    "type": "consentement",
+                    "name": "Consentement"
+                }
+            },
+            "block_order": [
+                "champ-texte",
+                "champ-email",
+                "select-4-options",
+                "champ-message",
+                "consentement"
+            ]
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "navbar",
+        "contact"
+    ]
+}

@@ -1,0 +1,119 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "hero_lp": {
+            "type": "hero_lp"
+        },
+        "reassurance_lp": {
+            "type": "reassurance_lp"
+        },
+        "avantage_lp": {
+            "type": "avantage_lp"
+        },
+        "description_lp": {
+            "type": "description_lp"
+        },
+        "slider_pleine_page": {
+            "type": "slider_pleine_page",
+            "blocks": {
+                "slide": {
+                    "type": "slide",
+                    "name": "Slide"
+                }
+            },
+            "block_order": [
+                "slide"
+            ]
+        },
+        "conseils_lp": {
+            "type": "conseils_lp",
+            "blocks": {
+                "conseil-utilisation": {
+                    "type": "conseil-utilisation",
+                    "name": "Conseil utilisation"
+                }
+            },
+            "block_order": [
+                "conseil-utilisation"
+            ]
+        },
+        "lp_produit_bottom": {
+            "type": "lp_produit_bottom"
+        },
+        "hero_produit_b2b": {
+            "type": "hero_produit_b2b"
+        },
+        "tabs_b2b": {
+            "type": "tabs_b2b",
+            "blocks": {
+                "tab-composition": {
+                    "type": "tab-composition",
+                    "name": "Tab - Composition"
+                },
+                "tab-conseils": {
+                    "type": "tab-conseils",
+                    "name": "Tab - Conseils"
+                },
+                "tab-description": {
+                    "type": "tab-description",
+                    "name": "Tab - Description"
+                },
+                "tab-pyramide": {
+                    "type": "tab-pyramide",
+                    "name": "Tab - Pyramide"
+                },
+                "faq-description": {
+                    "type": "faq-description",
+                    "name": "FAQ - Description"
+                },
+                "faq-composition": {
+                    "type": "faq-composition",
+                    "name": "FAQ - Composition"
+                },
+                "faq-conseils": {
+                    "type": "faq-conseils",
+                    "name": "FAQ - Conseils"
+                },
+                "faq-pyramide": {
+                    "type": "faq-pyramide",
+                    "name": "FAQ - Pyramide"
+                }
+            },
+            "block_order": [
+                "tab-composition",
+                "tab-conseils",
+                "tab-description",
+                "tab-pyramide",
+                "faq-description",
+                "faq-composition",
+                "faq-conseils",
+                "faq-pyramide"
+            ]
+        }
+    },
+    "layout": "theme",
+    "wrapper": "div.main-wrapper",
+    "order": [
+        "navbar",
+        "hero_lp",
+        "reassurance_lp",
+        "avantage_lp",
+        "description_lp",
+        "slider_pleine_page",
+        "conseils_lp",
+        "lp_produit_bottom",
+        "hero_produit_b2b",
+        "tabs_b2b"
+    ]
+}

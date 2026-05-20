@@ -1,0 +1,51 @@
+<div class="padding-global"><div class="padding-section-small"><div class="container-large"><div class="showcased_component">{% if section.settings.image_image_ordinateur %}
+{{ section.settings.image_image_ordinateur | image_url: width: 1000 | image_tag: class: 'showcased_image', width: '1287', sizes: '(max-width: 1439px) 100vw, 1287px', loading: 'lazy' }}
+{% else %}
+<img class="showcased_image" src="{{ 'showcased_image.avif' | asset_url }}" width="1287" alt="" sizes="(max-width: 1439px) 100vw, 1287px" loading="lazy" srcset="{{ 'showcased_image-p-500.avif' | asset_url }} 500w, {{ 'showcased_image-p-800.avif' | asset_url }} 800w, {{ 'showcased_image-p-1080.avif' | asset_url }} 1080w, {{ 'showcased_image.avif' | asset_url }} 2574w">
+{% endif %}{% if section.settings.image_image_mobile %}
+{{ section.settings.image_image_mobile | image_url: width: 1000 | image_tag: width: '1287', loading: 'lazy', class: 'showcased_image is-mobile' }}
+{% else %}
+<img width="1287" alt="" src="{{ 'showcased_image-mobile.avif' | asset_url }}" loading="lazy" class="showcased_image is-mobile">
+{% endif %}<div class="showcased_content-wrapper"><div class="showcased_content"><h2 class="heading-style-h1 text-color-white">
+{{ section.settings.text_titre }}
+</h2><a href="{{ section.settings.url_lien }}" class="button is-alternate w-inline-block"> <div class="button_text is-alternate">{{ section.settings.text_texte }}</div><div class="button_overlay is-alternate"></div> </a></div></div></div></div></div></div> {% schema %} {
+    "tag": "div",
+    "name": "Showcased",
+    "class": "section_showcased",
+    "settings": [
+        {
+            "id": "image_image_ordinateur",
+            "type": "image_picker",
+            "label": "Image - Ordinateur"
+        },
+        {
+            "id": "image_image_mobile",
+            "type": "image_picker",
+            "label": "Image - Mobile"
+        },
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "GAMME PARFUM\u00c9"
+        },
+        {
+            "id": "url_lien",
+            "type": "url",
+            "label": "Lien"
+        },
+        {
+            "id": "text_texte",
+            "type": "text",
+            "label": "Texte",
+            "default": "D\u00c9COUVRIR NOS PARFUMS"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Showcased",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

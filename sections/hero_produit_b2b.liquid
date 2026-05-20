@@ -1,0 +1,403 @@
+<div class="container-1710">
+          <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
+<div li-render-custom-reinit="true" li-element="product-variant-container" li-render-custom="wrapper" class="hero-product_component" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
+            <div li-render-custom="target" class="hero-product_image-wrapper">
+              <div class="swiper is-product-gallery">
+                <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
+        {% for media in product.media %}                            
+                  
+                            {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
+    
+                    <div class="product-header_gallery-lightbox"><img li-object:src="media | image_url: width: 1000" li-object:alt="media.alt" alt="{{ media.alt }}" src="{{ media | image_url: width: 1000 }}" loading="lazy" class="product-header_gallery-image"></div>
+                      </div>
+{% endif %}
+                            
+                
+                    {% endfor %}    </div>
+                <div class="swiper_pagination is-product-gallery">
+                  <div class="swiper_bullet is-product-gallery is-active">01</div>
+                  <div class="swiper_bullet is-product-gallery">01</div>
+                </div>
+                <div class="swiper_controls is-product-gallery"><button id="" class="swiper-button-prev is-product-gallery"><img loading="lazy" src="{{ 'swiper-arrow.svg' | asset_url }}" alt="" class="swiper-button-icon"></button><button id="" class="swiper-button-next is-product-gallery"><img loading="lazy" src="{{ 'swiper-arrow-2.svg' | asset_url }}" alt="" class="swiper-button-icon"></button></div>
+              </div>
+              <div class="hide w-embed w-script">
+                <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const swiperEl = document.querySelector('.swiper.is-product-gallery');
+  const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length;
+  const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery');
+  if (slidesCount > 4) {
+    paginationEl.style.gridColumnGap = '0.5rem';
+  }
+  const productGallerySwiper = new Swiper('.swiper.is-product-gallery', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next.is-product-gallery',
+      prevEl: '.swiper-button-prev.is-product-gallery',
+      disabledClass: 'is-disabled',
+    },
+    pagination: {
+      el: '.swiper_pagination.is-product-gallery',
+      clickable: true,
+      bulletClass: 'swiper_bullet is-product-gallery',
+      bulletActiveClass: 'is-active',
+      type: slidesCount > 4 ? 'fraction' : 'bullets',
+      renderBullet: function (index, className) {
+        return '<div class="' + className + '">' + String(index + 1).padStart(2, '0') + '</script></div>';
+      },
+      renderFraction: function (currentClass, totalClass) {
+        return '<span class="' + currentClass + '"></span> / <span class="' + totalClass + '"></span>';
+      },
+    },
+  });
+});
+
+              </div>
+            </div>
+            <div class="hero-product_details">
+              {% assign first_variant = product.selected_or_first_available_variant %}
+              {% assign mv = product.metafields.custom.multiple_de_vente | default: 1 %}
+              <div class="product-hero_tag-wrapper hide-desktop">
+                <div class="product-hero_tag">Plus de 100 commandes ce mois-ci</div>
+                {% if product.selected_or_first_available_variant.inventory_quantity <= 10 and product.selected_or_first_available_variant.inventory_quantity > 0 %}    <div li-if="product.selected_or_first_available_variant.inventory_quantity <= 10 and product.selected_or_first_available_variant.inventory_quantity > 0">
+    
+                  <div class="product-hero_tag">
+                    <div>Plus que</div>
+                    <div li-object="product.selected_or_first_available_variant.inventory_quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</div>
+                    <div>exemplaires en stock</div>
+                  </div>
+                    </div>
+{% endif %}
+                {% if product.selected_or_first_available_variant.inventory_quantity == 1 %}    <div li-if="product.selected_or_first_available_variant.inventory_quantity == 1">
+    
+                  <div class="product-hero_tag">Plus que 1 exemplaire en stock</div>
+                    </div>
+{% endif %}
+                <div class="product-hero_tag">Victime de son succès</div>
+              </div>
+              <div class="hero-product_heading">
+                <div class="mobile_variant-wrapper">
+                  <div li-object="product.selected_or_first_available_variant.title">{{ product.selected_or_first_available_variant.title }}</div>
+                  <div class="hero-product_capacity">
+                    <div li-object="product.selected_or_first_available_variant.unit_price_measurement.quantity_value">{{ product.selected_or_first_available_variant.unit_price_measurement.quantity_value }}</div>
+                    <div li-object="product.selected_or_first_available_variant.unit_price_measurement.quantity_unit">{{ product.selected_or_first_available_variant.unit_price_measurement.quantity_unit }}</div>
+                  </div>
+                </div>
+                <div class="hero-product_breadcrumbs">
+                  <a li-object:href="routes.root_url" href="{{ routes.root_url }}" class="hero-product_breadcrumbs-links">Accueil</a>
+                  <div class="hero-product_breadcrumbs-separator w-embed"><svg width="5" height="2" viewbox="0 0 5 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 1.40625V0H4.42969V1.40625H0Z" fill="currentColor"></path>
+                    </svg></div>
+                  <a href="product.collections.first.metafields.custom.collection_parent.value.url" class="hero-product_breadcrumbs-links w-inline-block">
+                    <div li-object="product.collections.first.metafields.custom.collection_parent.value.title">{{ product.collections.first.metafields.custom.collection_parent.value.title }}</div>
+                  </a>
+                  <div class="hero-product_breadcrumbs-separator w-embed"><svg width="5" height="2" viewbox="0 0 5 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 1.40625V0H4.42969V1.40625H0Z" fill="currentColor"></path>
+                    </svg></div>
+                  <a href="product.collections.first.url" class="hero-product_breadcrumbs-links w-inline-block">
+                    <div li-object="product.collections.first.title">{{ product.collections.first.title }}</div>
+                  </a>
+                </div>
+                <div class="hero-product_heading-wrap">
+                  <h1 li-object="product.title" class="hero-product_h1">{{ product.title }}</h1>
+                  <div x-text="selected_or_first_available_variant.sku" li-object="product.selected_or_first_available_variant.sku" class="hero-product_sku">{{ product.selected_or_first_available_variant.sku }}</div>
+                </div>
+                <div class="hero-product_stars-wrapper">
+                  <div class="icon-1x1-20 w-embed"><svg width="19" height="18" viewbox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.26504 0L11.4522 6.73128L18.5299 6.73128L12.8039 10.8914L14.991 17.6227L9.26504 13.4626L3.53907 17.6227L5.72619 10.8914L0.000225067 6.73128L7.07791 6.73128L9.26504 0Z" fill="#EEA5EA"></path>
+                    </svg></div>
+                </div>
+              </div>
+              <div class="hero-product_price-component">
+                <div class="hero-product_price-wrapper">
+                  <p x-text="(() => { const price = product.compare_at_price * 100; const rate = 0.20; const centsHT = Math.round(price / (1 + rate)); return LiquifyHelper.moneyFormat(centsHT, true, '{{ shop.money_format }}') + ' HT';})()" li-object="product.compare_at_price | money" class="hero-product_price is-compare">{{ product.compare_at_price | money }}</p>
+                  <p x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')" li-js-price="product.selected_or_first_available_variant.price" class="hero-product_price">10.90 €</p>
+                  <div class="hero-product_capacity hide-tablet">
+                    <p li-object="product.selected_or_first_available_variant.unit_price_measurement.quantity_value">{{ product.selected_or_first_available_variant.unit_price_measurement.quantity_value }}</p>
+                    <p li-object="product.selected_or_first_available_variant.unit_price_measurement.quantity_unit">{{ product.selected_or_first_available_variant.unit_price_measurement.quantity_unit }}</p>
+                  </div>
+                  {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}    <div li-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price" class="hero-product_price-economy-wrapper">
+    
+                    <div class="hero-product_price-economy">
+                      <div x-text="(() => {  const compare = product.selected_or_first_available_variant.compare_at_price;  const price = product.selected_or_first_available_variant.price;  const rate = 0.20;  const diffHT = Math.round((compare - price) / (1 + rate));  return 'Vous économisez ' + LiquifyHelper.moneyFormat(diffHT, true, '{{ shop.money_format }}') + ' HT';})()">Vous économisez 7€</div>
+                      <div class="hero-product_price-economy-triangle-wrapper">
+                        <div class="hero-product_price-economy-triangle w-embed"><svg width="10" height="18" viewbox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.66016L9.75 17.3204V-9.82285e-05L0 8.66016Z" fill="#EFAEFF"></path>
+                          </svg></div>
+                      </div>
+                    </div>
+                      </div>
+{% endif %}
+                </div>
+                <div class="hero-product_pvc">
+                  <div>Prix de vente conseillé</div>
+                  <div li-object="product.metafields.custom.pvc | money">{{ product.metafields.custom.pvc | money }}</div>
+                  <div>TTC</div>
+                </div>
+              </div>
+              <div class="hero-product_description-wrapper">
+                <div li-object="product.description" class="hero-product_description w-richtext">{{ product.description }}</div>
+              </div>
+              <div x-data="{ min: {{ product.selected_or_first_available_variant.quantity_rule.min | default: 1 }}, max: {{ product.selected_or_first_available_variant.quantity_rule.max | default: 9999 }}, step: {{ product.selected_or_first_available_variant.quantity_rule.increment | default: 1 }}, quantity: {{ product.selected_or_first_available_variant.quantity_rule.min | default: 1 }} }" class="hero-product_buy-component">
+                <div class="hide w-embed">
+                  <style>
+{% for variant in product.variants %} 
+  {% for option in variant.options %}
+    #{{ option | handleize }} { 
+      background-color: {{ variant.metafields.custom.couleur_code }}; 
+    }
+  {% endfor %}
+{% endfor %}
+</style>
+                </div>
+                <div class="product-hero_form-block w-form">
+                  {% form 'product', product, class: 'product-hero_form' %}
+<div class="product-hero_option-list">
+                      <div li-for:inside="option in product.options_with_values" class="product-hero_option">
+        {% for option in product.options_with_values %}                            
+                        
+                            <div class="product-hero_radio-list">{% for value in option.values %}    <label li-for="value in option.values" class="product-hero_radio">
+                                    
+                            
+                            <div type="radio" li-render-custom-trigger="input" li-render-custom-value="{{ product.url }}?section_id={{ section.id }}&variant={{ value.variant.id }}" class="hide" {% if value.selected %}checked{% endif %} name="{{ option.name }}"></div>
+                            
+                            
+                            <div class="product_variant-inner-circle" id="{{ value | handleize }}"></div>
+                            
+                            
+                            <div class="{% if value.selected %}is-active{% endif %}"></div>
+                            
+                          
+                        </label>
+{% endfor %}</div>
+                            
+                        
+                            <div x-data="{ colorGuideOpen: false }" class="product-hero_color-guide">
+                          <div x-on:click="colorGuideOpen = true" class="product-hero_color-guide-button">
+                            <div>Guide couleurs</div>
+                            <div class="icon-1x1-14 w-embed"><svg width="6" height="6" viewbox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.12891 0H3.69141V2.12891H5.83008V3.69141H3.69141V5.82031H2.12891V3.69141H0V2.12891H2.12891V0Z" fill="#1C1C1C"></path>
+                              </svg></div>
+                          </div>
+                          <div x-cloak="" class="color-guide_wrapper">
+                            <div x-transition:leave-end="opacity-0" x-show="colorGuideOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" class="color-guide_overlay"></div>
+                            <div x-transition:leave-end="opacity-90" x-show="colorGuideOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-90" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" class="color-guide_popup">
+                              <div class="color-guide_heading">
+                                <div>Guide des couleurs</div><button x-on:click="colorGuideOpen = false" class="color-guide_closer">
+                                  <div class="icon-1x1-34 w-embed"><svg width="34" height="34" viewbox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <rect y="15.5469" width="33.9203" height="2.82669" fill="#3E3E3E"></rect>
+                                      <rect x="18.374" width="33.9203" height="2.82669" transform="rotate(90 18.374 0)" fill="#3E3E3E"></rect>
+                                    </svg></div>
+                                </button>
+                              </div>
+                              <div class="color-guide_scroll-wrapper">
+                                <div class="color-guide_content">
+                                  <ul role="list" class="color-guide_list w-list-unstyled">
+                                    {% for variant in product.variants %}    <li li-for="variant in product.variants" class="color-guide_list-item">
+                                    
+                                      
+                            <div class="color-guide_item-name">
+                                        <div class="color-guide_item-swatch" style="'background-color:' | append: variant.metafields.custom.couleur_code"></div>
+                                        <div li-object="variant.metafields.custom.couleur_nom" class="color-guide_item-heading">{{ variant.metafields.custom.couleur_nom }}</div>
+                                      </div>
+                            
+                                      
+                            <div class="color-guide_item-desc-wrapper">
+                                        <p li-object="variant.metafields.custom.couleur_texte" class="text-size-small text-color-grey">{{ variant.metafields.custom.couleur_texte }}</p>
+                                      </div>
+                            
+                                    
+                        </li>
+{% endfor %}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hide w-embed">
+                            <style>
+.color-guide_content::-webkit-scrollbar {
+  width: 3px;
+  background: transparent;
+}
+.color-guide_content::-webkit-scrollbar-track {
+  background: #B1B1B1;
+  margin-bottom: 32px;
+}
+.color-guide_content::-webkit-scrollbar-thumb {
+  background: #1C1C1C;
+  border-radius: 0;
+}
+</style> width: 3px;
+                          </div>
+                        </div>
+                            
+                      
+                    {% endfor %}    </div>
+                    </div>
+                    <div class="product-hero_atc-wrapper">
+                      <div class="product-pro_quantity-holder">
+                        <div class="mini-cart_item-quantity"><button type="button" x-on:click="quantity = quantity > min ? quantity - step : min" aria-label="Diminuer la quantité" class="mini-cart_item-quantity-adjust">
+                            <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg width="10" height="11" viewbox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.0654297 5.49414H9.5752" stroke="#1C1F31" stroke-width="0.780288"></path>
+                              </svg></div>
+                          </button><input li-element="add-to-cart-quantity" type="text" x-model="quantity" class="mini-cart_item-quantity-adjust is-input" value="1"><button type="button" aria-label="Augmenter la quantité" x-on:click="quantity = quantity + step" class="mini-cart_item-quantity-adjust">
+                            <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg width="11" height="11" viewbox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.555664 5.49414H10.0654" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                <path d="M5.31055 10.249L5.31055 0.739258" stroke="#1C1F31" stroke-width="0.780288"></path>
+                              </svg></div>
+                          </button></div>
+                        <div x-text="'produit vendu par ' + step" class="product-pro_quantity-info">produit vendu par 6</div>
+                      </div>
+                      <div class="product-hero_atc">
+                        <div class="button-group is-full-width"><button li-element="add-to-cart" class="button is-add-to-cart" @click="addToCart($event, true)" :disabled="!addToCartButton">
+                            <div class="add-to-cart-text">Ajouter au panier</div>
+                            <div class="add-to-cart-text is-mobile">- </div>
+                            <div x-text="(() => { const price = selected_or_first_available_variant.price; const rate = 0.20; const centsHT = Math.round(price / (1 + rate)); return LiquifyHelper.moneyFormat(centsHT, true, '{{ shop.money_format }}') + ' HT';})()" class="add-to-cart-text is-mobile">10,90€</div>
+                            <div class="button_overlay"></div>
+                          </button>
+                          <template x-if="!selected_or_first_available_variant.available">
+            <div li-js-if="!selected_or_first_available_variant.available">
+        <input type="submit" data-wait="Please wait..." class="button is-out-of-stock w-button" value="Produit indisponible">        </div>
+    </template>
+                        </div>
+                        <div class="product_hero-hidden-inputs"><input type="hidden" name="properties[_sous_titre]" value="product.metafields.custom.texte_sous_titre"><input type="hidden" name="properties[_couleur_code]" value="product.selected_or_first_available_variant.metafields.custom.couleur_code"><input type="hidden" name="properties[_multiple]" value="product.selected_or_first_available_variant.quantity_rule.increment | default: 1"></div>
+                      </div>
+                      <div class="product-hero_reassurance-wrapper">
+                        <div class="swiper is-reassurance">
+                          <div class="swiper-wrapper is-reassurance">
+                            <div class="swiper-slide is-reassurance">
+                              <div class="product-hero_reassurance">
+                                <div class="text-size-tiny text-weight-bold text-style-allcaps">
+{{ section.settings.text_reassurance_1_titre }}
+</div>
+                                <div class="text-size-tiny">
+{{ section.settings.text_reassurance_1_sous_titre }}
+</div>
+                              </div>
+                            </div>
+                            <div class="swiper-slide is-reassurance">
+                              <div class="product-hero_reassurance">
+                                <div class="text-size-tiny text-weight-bold text-style-allcaps">
+{{ section.settings.text_reassurance_2_titre }}
+</div>
+                                <div class="text-size-tiny">
+{{ section.settings.text_reassurance_2_sous_titre }}
+</div>
+                              </div>
+                            </div>
+                            <div class="swiper-slide is-reassurance">
+                              <div class="product-hero_reassurance">
+                                <div class="text-size-tiny text-weight-bold text-style-allcaps">
+{{ section.settings.text_reassurance_3_titre }}
+</div>
+                                <div class="text-size-tiny">
+{{ section.settings.text_reassurance_3_sous_titre }}
+</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="swiper-pagination">
+                          <div class="swiper-dots is-active"></div>
+                          <div class="swiper-dots"></div>
+                        </div>
+                        <div class="hide w-embed w-script">
+                          <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const reassuranceEl = document.querySelector('.swiper.is-reassurance');
+  if (reassuranceEl && window.innerWidth <= 767) {
+    new Swiper(reassuranceEl, {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      initialSlide: 0,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.product-hero_reassurance-wrapper .swiper-pagination',
+        clickable: true,
+        bulletClass: 'swiper-dots',
+        bulletActiveClass: 'is-active',
+      },
+    });
+  }
+});
+</script>
+                        </div>
+                      </div>
+                    </div>
+                  {% endform %}
+                  <div class="hide w-form-done"></div>
+                  <div class="hide w-form-fail"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-product_avantage-wrapper is-pro">
+            <div class="heading-style-h3 display-inline">Ce produit est</div>
+            {% for argument in product.metafields.custom.arguments.value %}    <div li-for="argument in product.metafields.custom.arguments.value" class="hero-product_avantage">
+                                    
+              
+                            <div li-object="argument" li-if="forloop.index == 1" class="heading-style-h3 text-color-black display-inline">{{ argument }}</div>
+                            
+              
+                            <div li-object="argument" li-if="forloop.index > 1" class="heading-style-h3 display-inline">{{ argument }}</div>
+                            
+            
+                        </div>
+{% endfor %}
+          </div> {% schema %} {
+    "tag": "div",
+    "name": "Hero Produit B2B",
+    "class": "section_hero-product",
+    "settings": [
+        {
+            "id": "text_reassurance_1_titre",
+            "type": "text",
+            "label": "Reassurance 1 - Titre",
+            "default": "LIVRAISON OFFERTE"
+        },
+        {
+            "id": "text_reassurance_1_sous_titre",
+            "type": "text",
+            "label": "Reassurance 1 - Sous-titre",
+            "default": "d\u00e8s 25\u20ac (En relay)"
+        },
+        {
+            "id": "text_reassurance_2_titre",
+            "type": "text",
+            "label": "Reassurance 2 - Titre",
+            "default": "PAIEMENT S\u00c9CURIS\u00c9"
+        },
+        {
+            "id": "text_reassurance_2_sous_titre",
+            "type": "text",
+            "label": "Reassurance 2 - Sous-titre",
+            "default": "paiement v\u00e9rifi\u00e9"
+        },
+        {
+            "id": "text_reassurance_3_titre",
+            "type": "text",
+            "label": "Reassurance 3 - Titre",
+            "default": "EXP\u00c9DITION RAPIDE"
+        },
+        {
+            "id": "text_reassurance_3_sous_titre",
+            "type": "text",
+            "label": "Reassurance 3 - Sous-titre",
+            "default": "sous 1 \u00e0 3 jours ouvr\u00e9"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Hero Produit B2B",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

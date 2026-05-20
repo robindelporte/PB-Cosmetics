@@ -1,0 +1,322 @@
+<div class="footer-spacer hide-tablet"></div>
+        <div class="padding-global">
+          <div class="container-medium">
+            <div class="footer_usp">
+              <div class="swiper is-footer">
+                <div class="swiper-wrapper is-footer">
+                  <div class="swiper-slide is-footer">
+                    <div class="footer_usp-slide-wrapper">
+                      <div class="footer_usp-icon-wrapper">{% if section.settings.image_reassurance_1_image %}
+{{ section.settings.image_reassurance_1_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'footer_usp-icon' }}
+{% else %}
+<img loading="lazy" alt="" src="{{ 'usp-01.avif' | asset_url }}" class="footer_usp-icon">
+{% endif %}</div>
+                      <div class="footer_usp-slide-content">
+                        <div class="text-size-medium text-weight-semibold trim-text">
+{{ section.settings.text_reassurance_1_titre }}
+</div>
+                        <div class="trim-text">
+{{ section.settings.text_reassurance_1_sous_titre }}
+</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide is-footer">
+                    <div class="footer_usp-slide-wrapper">
+                      <div class="footer_usp-icon-wrapper">{% if section.settings.image_reassurance_2_image %}
+{{ section.settings.image_reassurance_2_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'footer_usp-icon' }}
+{% else %}
+<img loading="lazy" alt="" src="{{ 'usp-02.avif' | asset_url }}" class="footer_usp-icon">
+{% endif %}</div>
+                      <div class="footer_usp-slide-content">
+                        <div class="text-size-medium text-weight-semibold trim-text">
+{{ section.settings.text_reassurance_1_titre }}
+</div>
+                        <div class="trim-text">
+{{ section.settings.text_reassurance_1_sous_titre }}
+</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide is-footer">
+                    <div class="footer_usp-slide-wrapper">
+                      <div class="footer_usp-icon-wrapper">{% if section.settings.image_reassurance_3_image %}
+{{ section.settings.image_reassurance_3_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'footer_usp-icon' }}
+{% else %}
+<img loading="lazy" alt="" src="{{ 'usp-03.avif' | asset_url }}" class="footer_usp-icon">
+{% endif %}</div>
+                      <div class="footer_usp-slide-content">
+                        <div class="text-size-medium text-weight-semibold trim-text">
+{{ section.settings.text_reassurance_1_titre }}
+</div>
+                        <div class="trim-text">
+{{ section.settings.text_reassurance_1_sous_titre }}
+</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-pagination is-footer">
+                <div class="swiper-dots is-active"></div>
+                <div class="swiper-dots"></div>
+              </div>
+              <div class="hide w-embed w-script">
+                <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const reassuranceEl = document.querySelector('.swiper.is-footer');
+  if (reassuranceEl && window.innerWidth <= 767) {
+    new Swiper(reassuranceEl, {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      initialSlide: 0,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.footer_usp .swiper-pagination',
+        clickable: true,
+        bulletClass: 'swiper-dots',
+        bulletActiveClass: 'is-active',
+      },
+    });
+  }
+});
+</script>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-spacer is-xl"></div>
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="footer_component">
+              <div class="footer_left-column">
+                <div class="footer_newsletter-wrapper">
+                  <h2>NEWSLETTER</h2>
+                  <p>-15% sur votre prochaine commande & des promotions toutes l’année</p>
+                  <div class="newsletter_form-block w-form">
+                    {% form 'customer', return_to: '/', class: 'newsletter_form' %}
+<div class="newsletter_form-field-wrapper"><label for="email-2" class="form_hidden-label">Votre adresse email</label><input class="form_input w-input" maxlength="256" name="contact[email]" data-name="Email" placeholder="{{ section.settings.placeholder_text }}" type="email" id="Email" required=""><input type="submit" data-wait="Inscription..." class="newsletter_submit w-button" value="S’INCRIRE"></div>
+                      <div li-object="form.errors | default_errors" class="text-size-tiny text-color-red">{{ form.errors | default_errors }}</div>
+                      <div class="hide w-embed"><input type="hidden" name="contact[accepts_marketing]" value="false"></div>
+                      <div class="max-width-xxsmall"><label class="w-checkbox form_checkbox is-nl" name="contact[accepts_marketing]">
+                          <div class="w-checkbox-input w-checkbox-input--inputType-custom form_checkbox-icon"></div><input type="checkbox" name="Accepts-Marketing" id="Accepts-Marketing" data-name="Accepts Marketing" style="opacity:0;position:absolute;z-index:-1"><span class="form_checkbox-label text-size-tiny w-form-label" for="Accepts-Marketing">
+{{ section.settings.text_checkbox }}
+</span>
+                        </label></div>
+                    {% endform %}
+                    <div class="hide w-form-done">
+                      <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="hide w-form-fail">
+                      <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer_social-wrapper hide-tablet">
+                  <div class="text-size-medium text-weight-bold">NOS RÉSEAUX</div>
+                  <div class="footer_socials-links">
+                    <a aria-label="LinkedIn" href="{{ section.settings.url_linkedin }}" target="_blank" class="footer_social-link w-inline-block"> <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 19 19" fill="none"> <g clip-path="url(#clip0_144_2612)"> <path d="M16.9426 0H1.35083C0.603944 0 0 0.58965 0 1.31867V16.9748C0 17.7038 0.603944 18.297 1.35083 18.297H16.9426C17.6895 18.297 18.297 17.7038 18.297 16.9783V1.31867C18.297 0.58965 17.6895 0 16.9426 0ZM5.42835 15.5918H2.71239V6.8578H5.42835V15.5918ZM4.07037 5.66778C3.1984 5.66778 2.4944 4.96378 2.4944 4.09538C2.4944 3.22699 3.1984 2.52298 4.07037 2.52298C4.93876 2.52298 5.64277 3.22699 5.64277 4.09538C5.64277 4.9602 4.93876 5.66778 4.07037 5.66778ZM15.5918 15.5918H12.8794V11.3463C12.8794 10.3349 12.8615 9.03057 11.4678 9.03057C10.0562 9.03057 9.84179 10.1348 9.84179 11.2748V15.5918H7.13297V6.8578H9.73458V8.0514H9.77031C10.1313 7.36526 11.0175 6.63981 12.3362 6.63981C15.0843 6.63981 15.5918 8.44807 15.5918 10.7995V15.5918Z" fill="currentColor"></path> </g> <defs> <clippath id="clip0_144_2612"> <rect width="18.297" height="18.297" fill="currentColor"></rect> </clippath> </defs> </svg> </a>
+                    <a aria-label="Instagram" href="{{ section.settings.url_instagram }}" target="_blank" class="footer_social-link w-inline-block"> <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 19 19" fill="none"> <g clip-path="url(#clip0_144_2613)"> <path d="M9.1485 1.64744C11.5929 1.64744 11.8823 1.65817 12.8436 1.70105C13.737 1.74036 14.2195 1.89045 14.5411 2.01553C14.9664 2.17992 15.2737 2.38004 15.5918 2.69809C15.9134 3.01972 16.1099 3.32348 16.2743 3.74874C16.3994 4.07037 16.5495 4.55638 16.5888 5.44622C16.6317 6.4111 16.6424 6.70056 16.6424 9.14135C16.6424 11.5857 16.6317 11.8752 16.5888 12.8365C16.5495 13.7299 16.3994 14.2123 16.2743 14.534C16.1099 14.9592 15.9098 15.2666 15.5918 15.5846C15.2701 15.9062 14.9664 16.1028 14.5411 16.2672C14.2195 16.3923 13.7335 16.5423 12.8436 16.5817C11.8788 16.6245 11.5893 16.6353 9.1485 16.6353C6.70414 16.6353 6.41467 16.6245 5.45336 16.5817C4.55996 16.5423 4.07752 16.3923 3.75589 16.2672C3.33063 16.1028 3.02329 15.9027 2.70524 15.5846C2.38361 15.263 2.18706 14.9592 2.02268 14.534C1.8976 14.2123 1.74751 13.7263 1.7082 12.8365C1.66531 11.8716 1.65459 11.5821 1.65459 9.14135C1.65459 6.69699 1.66531 6.40752 1.7082 5.44622C1.74751 4.55281 1.8976 4.07037 2.02268 3.74874C2.18706 3.32348 2.38719 3.01615 2.70524 2.69809C3.02687 2.37647 3.33063 2.17992 3.75589 2.01553C4.07752 1.89045 4.56353 1.74036 5.45336 1.70105C6.41467 1.65817 6.70414 1.64744 9.1485 1.64744ZM9.1485 0C6.66483 0 6.35392 0.0107209 5.37832 0.0536045C4.40629 0.0964881 3.73802 0.253728 3.15909 0.478867C2.55515 0.714727 2.04412 1.02563 1.53666 1.53666C1.02563 2.04412 0.714727 2.55515 0.478867 3.15552C0.253728 3.73802 0.0964881 4.40272 0.0536045 5.37474C0.0107209 6.35392 0 6.66483 0 9.1485C0 11.6322 0.0107209 11.9431 0.0536045 12.9187C0.0964881 13.8907 0.253728 14.559 0.478867 15.1379C0.714727 15.7419 1.02563 16.2529 1.53666 16.7603C2.04412 17.2678 2.55515 17.5823 3.15552 17.8146C3.73802 18.0397 4.40272 18.1969 5.37474 18.2398C6.35035 18.2827 6.66125 18.2934 9.14493 18.2934C11.6286 18.2934 11.9395 18.2827 12.9151 18.2398C13.8871 18.1969 14.5554 18.0397 15.1343 17.8146C15.7347 17.5823 16.2457 17.2678 16.7532 16.7603C17.2606 16.2529 17.5751 15.7419 17.8074 15.1415C18.0326 14.559 18.1898 13.8943 18.2327 12.9223C18.2756 11.9467 18.2863 11.6358 18.2863 9.15208C18.2863 6.6684 18.2756 6.35749 18.2327 5.38189C18.1898 4.40986 18.0326 3.74159 17.8074 3.16267C17.5823 2.55515 17.2714 2.04412 16.7603 1.53666C16.2529 1.02921 15.7419 0.714727 15.1415 0.482441C14.559 0.257302 13.8943 0.100062 12.9223 0.0571781C11.9431 0.0107209 11.6322 0 9.1485 0Z" fill="currentColor"></path> <path d="M9.14855 4.44922C6.55409 4.44922 4.44922 6.55409 4.44922 9.14855C4.44922 11.743 6.55409 13.8479 9.14855 13.8479C11.743 13.8479 13.8479 11.743 13.8479 9.14855C13.8479 6.55409 11.743 4.44922 9.14855 4.44922ZM9.14855 12.1969C7.46537 12.1969 6.10024 10.8317 6.10024 9.14855C6.10024 7.46537 7.46537 6.10024 9.14855 6.10024C10.8317 6.10024 12.1969 7.46537 12.1969 9.14855C12.1969 10.8317 10.8317 12.1969 9.14855 12.1969Z" fill="currentColor"></path> <path d="M15.1307 4.26312C15.1307 4.87064 14.6376 5.36023 14.0336 5.36023C13.4261 5.36023 12.9365 4.86707 12.9365 4.26312C12.9365 3.6556 13.4297 3.16602 14.0336 3.16602C14.6376 3.16602 15.1307 3.65918 15.1307 4.26312Z" fill="currentColor"></path> </g> <defs> <clippath id="clip0_144_2613"> <rect width="18.297" height="18.297" fill="currentColor"></rect> </clippath> </defs> </svg> </a>
+                    <a aria-label="TikTok" href="{{ section.settings.url_tiktok }}" target="_blank" class="footer_social-link w-inline-block"> <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 19 19" fill="none"> <g clip-path="url(#clip0_144_2614)"> <path d="M13.0158 0H9.93223V12.4632C9.93223 13.9482 8.74626 15.168 7.27036 15.168C5.79446 15.168 4.60847 13.9482 4.60847 12.4632C4.60847 11.0047 5.76811 9.81141 7.19131 9.7584V6.62936C4.05501 6.68237 1.5249 9.25457 1.5249 12.4632C1.5249 15.6983 4.10772 18.297 7.29673 18.297C10.4857 18.297 13.0685 15.6718 13.0685 12.4632V6.07247C14.2282 6.92104 15.6513 7.42487 17.1536 7.4514V4.32234C14.8343 4.24278 13.0158 2.33353 13.0158 0Z" fill="currentColor"></path> </g> <defs> <clippath id="clip0_144_2614"> <rect width="18.297" height="18.297" fill="currentColor"></rect> </clippath> </defs> </svg> </a>
+                  </div>
+                </div>
+              </div>
+              <div class="footer_link-wrapper">
+                <a aria-label="Retour à l'accueil" href="routes.root_url" class="footer_logo-link w-inline-block"><img loading="lazy" src="{{ 'Logo-PB-officiel.svg' | asset_url }}" alt="PB Cosmetics" class="footer_logo-image"></a>
+                <nav role="navigation" aria-label="Navigation footer" class="footer_link-grid">
+                  {% for link in linklists[section.settings.footer_menu].links %}    <div li-for="link in linklists[section.settings.footer_menu].links" x-data="{ open: false }" class="footer_link-colum">
+                                    <button type="button" aria-expanded="false" x-bind:aria-expanded="open.toString()" class="footer_link-heading" aria-controls="footer-list-{{ forloop.index }}">
+                      <div li-object="link.title" id="footer-heading-{{ forloop.index }}">{{ link.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 17 17" fill="none" class="footer_link-heading-icon">
+                        <rect x="7.43457" y="16.2217" width="16.2216" height="1.3518" transform="rotate(-90 7.43457 16.2217)" fill="currentColor" class="footer_link-heading-icon-path"></rect>
+                        <rect y="7.43457" width="16.2216" height="1.3518" fill="currentColor" class="footer_link-heading-icon-path"></rect>
+                      </svg>
+                    </button>
+                            
+                    
+                            <div x-show="window.innerWidth>= 992 || open" li-for:inside="child_link in link.links" x-collapse="" role="region" class="footer_link-list">
+        {% for child_link in link.links %}                            
+                      
+                            <a li-object="child_link.title" li-object:href="child_link.url" href="{{ child_link.url }}" class="footer_link">{{ child_link.title }}</a>
+                            
+                    
+                    {% endfor %}    </div>
+                            
+                  
+                        </div>
+{% endfor %}
+                </nav>
+                <nav aria-label="Réseaux sociaux" role="navigation" class="footer_social-wrapper hide-desktop">
+                  <div class="text-size-medium text-weight-bold">NOS RÉSEAUX</div>
+                  <div class="footer_socials-links">
+                    <a aria-label="LinkedIn" href="section.settings.linkedin" target="_blank" class="footer_social-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 19 19" fill="none">
+                        <g clip-path="url(#clip0_144_2612)">
+                          <path d="M16.9426 0H1.35083C0.603944 0 0 0.58965 0 1.31867V16.9748C0 17.7038 0.603944 18.297 1.35083 18.297H16.9426C17.6895 18.297 18.297 17.7038 18.297 16.9783V1.31867C18.297 0.58965 17.6895 0 16.9426 0ZM5.42835 15.5918H2.71239V6.8578H5.42835V15.5918ZM4.07037 5.66778C3.1984 5.66778 2.4944 4.96378 2.4944 4.09538C2.4944 3.22699 3.1984 2.52298 4.07037 2.52298C4.93876 2.52298 5.64277 3.22699 5.64277 4.09538C5.64277 4.9602 4.93876 5.66778 4.07037 5.66778ZM15.5918 15.5918H12.8794V11.3463C12.8794 10.3349 12.8615 9.03057 11.4678 9.03057C10.0562 9.03057 9.84179 10.1348 9.84179 11.2748V15.5918H7.13297V6.8578H9.73458V8.0514H9.77031C10.1313 7.36526 11.0175 6.63981 12.3362 6.63981C15.0843 6.63981 15.5918 8.44807 15.5918 10.7995V15.5918Z" fill="currentColor"></path>
+                        </g>
+                        <defs>
+                          <clippath id="clip0_144_2612">
+                            <rect width="18.297" height="18.297" fill="currentColor"></rect>
+                          </clippath>
+                        </defs>
+                      </svg></a>
+                    <a aria-label="Instagram" href="section.settings.instagram" target="_blank" class="footer_social-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 19 19" fill="none">
+                        <g clip-path="url(#clip0_144_2613)">
+                          <path d="M9.1485 1.64744C11.5929 1.64744 11.8823 1.65817 12.8436 1.70105C13.737 1.74036 14.2195 1.89045 14.5411 2.01553C14.9664 2.17992 15.2737 2.38004 15.5918 2.69809C15.9134 3.01972 16.1099 3.32348 16.2743 3.74874C16.3994 4.07037 16.5495 4.55638 16.5888 5.44622C16.6317 6.4111 16.6424 6.70056 16.6424 9.14135C16.6424 11.5857 16.6317 11.8752 16.5888 12.8365C16.5495 13.7299 16.3994 14.2123 16.2743 14.534C16.1099 14.9592 15.9098 15.2666 15.5918 15.5846C15.2701 15.9062 14.9664 16.1028 14.5411 16.2672C14.2195 16.3923 13.7335 16.5423 12.8436 16.5817C11.8788 16.6245 11.5893 16.6353 9.1485 16.6353C6.70414 16.6353 6.41467 16.6245 5.45336 16.5817C4.55996 16.5423 4.07752 16.3923 3.75589 16.2672C3.33063 16.1028 3.02329 15.9027 2.70524 15.5846C2.38361 15.263 2.18706 14.9592 2.02268 14.534C1.8976 14.2123 1.74751 13.7263 1.7082 12.8365C1.66531 11.8716 1.65459 11.5821 1.65459 9.14135C1.65459 6.69699 1.66531 6.40752 1.7082 5.44622C1.74751 4.55281 1.8976 4.07037 2.02268 3.74874C2.18706 3.32348 2.38719 3.01615 2.70524 2.69809C3.02687 2.37647 3.33063 2.17992 3.75589 2.01553C4.07752 1.89045 4.56353 1.74036 5.45336 1.70105C6.41467 1.65817 6.70414 1.64744 9.1485 1.64744ZM9.1485 0C6.66483 0 6.35392 0.0107209 5.37832 0.0536045C4.40629 0.0964881 3.73802 0.253728 3.15909 0.478867C2.55515 0.714727 2.04412 1.02563 1.53666 1.53666C1.02563 2.04412 0.714727 2.55515 0.478867 3.15552C0.253728 3.73802 0.0964881 4.40272 0.0536045 5.37474C0.0107209 6.35392 0 6.66483 0 9.1485C0 11.6322 0.0107209 11.9431 0.0536045 12.9187C0.0964881 13.8907 0.253728 14.559 0.478867 15.1379C0.714727 15.7419 1.02563 16.2529 1.53666 16.7603C2.04412 17.2678 2.55515 17.5823 3.15552 17.8146C3.73802 18.0397 4.40272 18.1969 5.37474 18.2398C6.35035 18.2827 6.66125 18.2934 9.14493 18.2934C11.6286 18.2934 11.9395 18.2827 12.9151 18.2398C13.8871 18.1969 14.5554 18.0397 15.1343 17.8146C15.7347 17.5823 16.2457 17.2678 16.7532 16.7603C17.2606 16.2529 17.5751 15.7419 17.8074 15.1415C18.0326 14.559 18.1898 13.8943 18.2327 12.9223C18.2756 11.9467 18.2863 11.6358 18.2863 9.15208C18.2863 6.6684 18.2756 6.35749 18.2327 5.38189C18.1898 4.40986 18.0326 3.74159 17.8074 3.16267C17.5823 2.55515 17.2714 2.04412 16.7603 1.53666C16.2529 1.02921 15.7419 0.714727 15.1415 0.482441C14.559 0.257302 13.8943 0.100062 12.9223 0.0571781C11.9431 0.0107209 11.6322 0 9.1485 0Z" fill="currentColor"></path>
+                          <path d="M9.14855 4.44922C6.55409 4.44922 4.44922 6.55409 4.44922 9.14855C4.44922 11.743 6.55409 13.8479 9.14855 13.8479C11.743 13.8479 13.8479 11.743 13.8479 9.14855C13.8479 6.55409 11.743 4.44922 9.14855 4.44922ZM9.14855 12.1969C7.46537 12.1969 6.10024 10.8317 6.10024 9.14855C6.10024 7.46537 7.46537 6.10024 9.14855 6.10024C10.8317 6.10024 12.1969 7.46537 12.1969 9.14855C12.1969 10.8317 10.8317 12.1969 9.14855 12.1969Z" fill="currentColor"></path>
+                          <path d="M15.1307 4.26312C15.1307 4.87064 14.6376 5.36023 14.0336 5.36023C13.4261 5.36023 12.9365 4.86707 12.9365 4.26312C12.9365 3.6556 13.4297 3.16602 14.0336 3.16602C14.6376 3.16602 15.1307 3.65918 15.1307 4.26312Z" fill="currentColor"></path>
+                        </g>
+                        <defs>
+                          <clippath id="clip0_144_2613">
+                            <rect width="18.297" height="18.297" fill="currentColor"></rect>
+                          </clippath>
+                        </defs>
+                      </svg></a>
+                    <a aria-label="TikTok" href="section.settings.tiktok" target="_blank" class="footer_social-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 19 19" fill="none">
+                        <g clip-path="url(#clip0_144_2614)">
+                          <path d="M13.0158 0H9.93223V12.4632C9.93223 13.9482 8.74626 15.168 7.27036 15.168C5.79446 15.168 4.60847 13.9482 4.60847 12.4632C4.60847 11.0047 5.76811 9.81141 7.19131 9.7584V6.62936C4.05501 6.68237 1.5249 9.25457 1.5249 12.4632C1.5249 15.6983 4.10772 18.297 7.29673 18.297C10.4857 18.297 13.0685 15.6718 13.0685 12.4632V6.07247C14.2282 6.92104 15.6513 7.42487 17.1536 7.4514V4.32234C14.8343 4.24278 13.0158 2.33353 13.0158 0Z" fill="currentColor"></path>
+                        </g>
+                        <defs>
+                          <clippath id="clip0_144_2614">
+                            <rect width="18.297" height="18.297" fill="currentColor"></rect>
+                          </clippath>
+                        </defs>
+                      </svg></a>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-spacer is-l"></div>
+        <div class="nav_bottom-bar">
+          {% assign block_count = section.blocks.size %}
+          {% if block_count == 1 %}    <div li-if="block_count == 1" class="swiper is-bottom-bar">
+    
+            <div class="swiper-wrapper is-bottom-bar">
+              {% for block in section.blocks %}
+    {% if block.type == "annonce" %}
+                    <div li-block="Annonce" class="swiper-slide is-bottom-bar">
+                                    
+                
+                                    <a href="{{ block.settings.url_lien }}" class="nav_bottom-bar-link w-inline-block"> <div class="nav_bottom-bar-text">{{ block.settings.text_texte }}</div> </a>
+                                    
+              
+                            </div>
+            {% endif %}
+{% endfor %}
+            </div>
+              </div>
+{% endif %}
+          <div class="hide w-embed w-script">
+            <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const bottomBarSwiper = document.querySelector('.swiper.is-bottom-bar');
+  if (bottomBarSwiper) {
+    const slides = bottomBarSwiper.querySelectorAll('.swiper-slide');
+    if (slides.length > 1) {
+      new Swiper(bottomBarSwiper, {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 10000,
+          disableOnInteraction: false,
+        },
+      });
+    }
+  }
+});
+</script>
+          </div>
+        </div> {% schema %} {
+    "tag": "footer",
+    "name": "Footer",
+    "class": "section_footer",
+    "blocks": [
+        {
+            "name": "Annonce",
+            "type": "annonce",
+            "settings": [
+                {
+                    "id": "url_lien",
+                    "type": "url",
+                    "label": "Lien"
+                },
+                {
+                    "id": "text_texte",
+                    "type": "text",
+                    "label": "Texte",
+                    "default": "-15\u20ac SUR VOTRE PREMIER COMMANDE AVEC LE CODE \u201cNEWBRAND\u201d"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "image_reassurance_1_image",
+            "type": "image_picker",
+            "label": "Reassurance 1 - Image"
+        },
+        {
+            "id": "text_reassurance_1_titre",
+            "type": "text",
+            "label": "Reassurance 1 - Titre",
+            "default": "LIVRAISON OFFERTE"
+        },
+        {
+            "id": "text_reassurance_1_sous_titre",
+            "type": "text",
+            "label": "Reassurance 1 - Sous-titre",
+            "default": "d\u00e8s 25\u20ac (En relay)"
+        },
+        {
+            "id": "image_reassurance_2_image",
+            "type": "image_picker",
+            "label": "Reassurance 2 - Image"
+        },
+        {
+            "id": "image_reassurance_3_image",
+            "type": "image_picker",
+            "label": "Reassurance 3 - Image"
+        },
+        {
+            "id": "text_checkbox",
+            "type": "text",
+            "label": "Checkbox",
+            "default": "By subscribing you agree to with our <a href=\"#\"><span>Privacy Policy<\/span><\/a> and provide consent to receive updates from our company."
+        },
+        {
+            "id": "url_linkedin",
+            "type": "url",
+            "label": "LinkedIn"
+        },
+        {
+            "id": "url_instagram",
+            "type": "url",
+            "label": "Instagram"
+        },
+        {
+            "id": "url_tiktok",
+            "type": "url",
+            "label": "TikTok"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Footer",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "annonce"
+                }
+            ]
+        }
+    ],
+    "enabled_on": {
+        "groups": [
+            "*"
+        ]
+    }
+} {% endschema %}

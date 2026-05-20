@@ -1,0 +1,59 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "hero_collection": {
+            "type": "hero_collection"
+        },
+        "sous_categories": {
+            "type": "sous_categories"
+        },
+        "grille_de_produits": {
+            "type": "grille_de_produits"
+        },
+        "familles": {
+            "type": "familles",
+            "blocks": {
+                "famille": {
+                    "type": "famille",
+                    "name": "Famille"
+                }
+            },
+            "block_order": [
+                "famille"
+            ]
+        },
+        "gammes": {
+            "type": "gammes",
+            "blocks": {
+                "gamme": {
+                    "type": "gamme",
+                    "name": "Gamme"
+                }
+            },
+            "block_order": [
+                "gamme"
+            ]
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "navbar",
+        "hero_collection",
+        "sous_categories",
+        "grille_de_produits",
+        "familles",
+        "gammes"
+    ]
+}

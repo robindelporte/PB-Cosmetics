@@ -1,0 +1,87 @@
+<div class="container-1710">
+            <div class="conseils_component">
+              <div class="conseils_image-wrapper">{% if section.settings.image_conseil_utilisation_image %}
+{{ section.settings.image_conseil_utilisation_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'conseils_image' }}
+{% else %}
+<img src="{{ 'prafums-recharge.avif' | asset_url }}" loading="lazy" alt="" class="conseils_image">
+{% endif %}</div>
+              <div class="conseils_content-wrapper">
+                <h2>
+{{ section.settings.text_conseil_utilisation_titre }}
+</h2>
+                <ul x-data="{open: 1}" role="list" class="faq_faq-list">
+                  {% for block in section.blocks %}
+    {% if block.type == "conseil-utilisation" %}
+                    <li li-block="Conseil utilisation" role="button" tabindex="0" aria-controls="faq-body-{{forloop.index}}" x-on:click="open = (open === {{forloop.index}} ? 0 : {{forloop.index}}); $el.setAttribute('aria-expanded', open === {{forloop.index}} ? 'true' : 'false')" id="w-node-_9d4c98dd-e91f-c7d5-04c3-731501498cd8-ce204b61" class="faq-faq_item">
+                                    
+                    
+                                    <div class="faq_item-heading">
+                      <h3 id="faq-heading-{{forloop.index}}" class="text-size-medium">
+{{ block.settings.text_conseil_utilisation_titre }}
+</h3>
+                      <div x-bind:style="open === {{ forloop.index }} ? 'transform: rotate(45deg)' : 'transform: rotate(0deg)'" class="faq_icon w-embed"><svg width="21" height="21" viewbox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.3153 9.88046e-06V9.57357H20.8889L20.8882 11.3144H11.3146L11.3153 20.8873H9.57519L9.57449 11.3144H0.000932157L0.00162269 9.57357L9.5738 9.57357L9.57449 0.000700414L11.3153 9.88046e-06Z" fill="#B1B1B1"></path>
+                        </svg></div>
+                    </div>
+                                    
+                    
+                                    <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloak="" aria-labelledby="faq-heading-{{forloop.index}}" class="faq_item-body">
+                      <div class="text-rich-text margin-top margin-small w-richtext"> {{ block.settings.richtext_conseil_utilisation_texte }} </div>
+                    </div>
+                                    
+                  
+                            </li>
+            {% endif %}
+{% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "Conseils LP",
+    "class": "section_conseils",
+    "blocks": [
+        {
+            "name": "Conseil utilisation",
+            "type": "conseil-utilisation",
+            "settings": [
+                {
+                    "id": "text_conseil_utilisation_titre",
+                    "type": "text",
+                    "label": "Conseil utilisation - Titre",
+                    "default": "Heading"
+                },
+                {
+                    "id": "richtext_conseil_utilisation_texte",
+                    "type": "richtext",
+                    "label": "Conseil utilisation - Texte",
+                    "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "image_conseil_utilisation_image",
+            "type": "image_picker",
+            "label": "Conseil utilisation - Image"
+        },
+        {
+            "id": "text_conseil_utilisation_titre",
+            "type": "text",
+            "label": "Conseil utilisation - Titre",
+            "default": "Conseils d\u2019utilisation"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Conseils LP",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "conseil-utilisation"
+                }
+            ]
+        }
+    ]
+} {% endschema %}

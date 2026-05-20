@@ -1,0 +1,151 @@
+{% paginate article in blog.articles by 9 %}
+    <div li-paginate:by="9" li-paginate="article in blog.articles" class="padding-global" by="9">
+          <div class="padding-section-small">
+            <div class="container-large">
+              <div class="blog_component">
+                <div class="blog_tagged-wrapper">
+                  <div li-for:inside="tag in blog.all_tags" class="blog_tags-list">
+        {% for tag in blog.all_tags %}                            
+                    
+                            <a li-object:href="blog.url | append: '/tagged/' | append: tag | handleize" href="{{ blog.url | append: '/tagged/' | append: tag | handleize }}" class="blog_tag-button w-inline-block">
+                      <div li-object="tag">{{ tag }}</div>
+                    </a>
+                            
+                    
+                            <a li-object:href="blog.url | append: '/tagged/' | append: tag | handleize" href="{{ blog.url | append: '/tagged/' | append: tag | handleize }}" class="blog_tag-button w-inline-block">
+                      <div li-object="tag">{{ tag }}</div>
+                    </a>
+                            
+                    
+                            <a li-object:href="blog.url | append: '/tagged/' | append: tag | handleize" href="{{ blog.url | append: '/tagged/' | append: tag | handleize }}" class="blog_tag-button w-inline-block">
+                      <div li-object="tag">{{ tag }}</div>
+                    </a>
+                            
+                    
+                            <a li-object:href="blog.url | append: '/tagged/' | append: tag | handleize" href="{{ blog.url | append: '/tagged/' | append: tag | handleize }}" class="blog_tag-button w-inline-block">
+                      <div li-object="tag">{{ tag }}</div>
+                    </a>
+                            
+                    
+                            <a li-object:href="blog.url | append: '/tagged/' | append: tag | handleize" href="{{ blog.url | append: '/tagged/' | append: tag | handleize }}" class="blog_tag-button w-inline-block">
+                      <div li-object="tag">{{ tag }}</div>
+                    </a>
+                            
+                  
+                    {% endfor %}    </div>
+                  <a li-object:href="blog.url" href="{{ blog.url }}" class="blog_tag-button w-inline-block">
+                    <div>Tout voir</div>
+                  </a>
+                </div>
+                <div class="blog_list-wrapper">
+                  <div class="blog_collection-wrapper w-dyn-list">
+                    {% if blog.articles != blank %}    <div li-if="blog.articles != blank" role="list" class="blog_collection-list w-dyn-items">
+    
+                      {% for article in blog.articles %}    <div li-for="article in blog.articles" role="listitem" class="blog_collection-item w-dyn-item">
+                                    <img src="{{ article.image | image_url: width: 450 }}" loading="lazy" li-object:src="article.image | image_url: width: 450" li-object:alt="article.image.alt" alt="{{ article.image.alt }}" class="blog_item-image">
+                            
+                        
+                            <div class="blog_item-content">
+                          <div li-object="article.published_at | date: '%d %B %Y'" class="text-size-small text-color-grey-bordure">{{ article.published_at | date: '%d %B %Y' }}</div>
+                          <h2 li-object="article.title" class="blog_item-heading">{{ article.title }}</h2>
+                          <div class="blog_item-content-content">
+                            <div class="blog_item-author">
+                              <div>Par</div>
+                              <div li-object="article.author">{{ article.author }}</div>
+                            </div>
+                            <p li-object="article.excerpt_or_content | strip_html | truncate: 150" class="text-color-grey text-size-tiny-mobile text-style-3lines">{{ article.excerpt_or_content | strip_html | truncate: 150 }}</p>
+                            <a li-object:href="article.url" href="{{ article.url }}" class="blog_item-link">Lire plus</a>
+                          </div>
+                        </div>
+                            
+                        
+                            <div class="clickable_wrap">
+                          <a li-object:href="article.url" href="{{ article.url }}" class="clickable_link w-inline-block"><span li-object="article.title" class="sr-only">{{ article.title }}</span></a>
+                        </div>
+                            
+                      
+                        </div>
+{% endfor %}
+                        </div>
+{% endif %}
+                    <div class="w-dyn-empty">
+                      <div>No items found.</div>
+                    </div>
+                  </div>
+                  {% if paginate.pages > 1 %}    <nav li-if="paginate.pages > 1" class="pagination_component">
+    
+                    <ul role="list" class="pagination_list w-list-unstyled">
+                      {% if paginate.previous %}    <li li-if="paginate.previous" class="pagination_item">
+    
+                        <a li-object:href="paginate.previous.url" href="{{ paginate.previous.url }}" class="pagination_button w-inline-block">
+                          <div class="pagination_button-icon w-embed"><svg width="7" height="11" viewbox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 5.19604L6.75 10.3922V-0.000107288L0 5.19604Z" fill="currentColor"></path>
+                            </svg></div>
+                        </a>
+                          </li>
+{% endif %}
+                      {% if paginate.previous == false %}    <li li-if="paginate.previous == false" class="pagination_item is-disabled">
+    
+                        <a li-object:href="paginate.previous.url" href="{{ paginate.previous.url }}" class="pagination_button w-inline-block">
+                          <div class="pagination_button-icon w-embed"><svg width="7" height="11" viewbox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 5.19604L6.75 10.3922V-0.000107288L0 5.19604Z" fill="currentColor"></path>
+                            </svg></div>
+                        </a>
+                          </li>
+{% endif %}
+                      {% for part in paginate.parts %}    <li li-for="part in paginate.parts" class="pagination_item">
+                                    
+                        
+                            {% if part.is_link %}    <div li-if="part.is_link">
+    
+                          <a li-object:href="part.url" href="{{ part.url }}" class="pagination_count w-inline-block">
+                            <div li-object="part.title">{{ part.title }}</div>
+                          </a>
+                            </div>
+{% endif %}
+                            
+                      
+                        </li>
+{% endfor %}
+                      {% if paginate.next == false %}    <li li-if="paginate.next == false" class="pagination_item is-disabled">
+    
+                        <a li-object:href="paginate.next.url" href="{{ paginate.next.url }}" class="pagination_button w-inline-block">
+                          <div class="pagination_button-icon w-embed"><svg width="7" height="11" viewbox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6.75 5.19604L0 10.3922V-0.000107288L6.75 5.19604Z" fill="currentColor"></path>
+                            </svg></div>
+                        </a>
+                          </li>
+{% endif %}
+                      {% if paginate.next %}    <li li-if="paginate.next" class="pagination_item">
+    
+                        <a li-object:href="paginate.next.url" href="{{ paginate.next.url }}" class="pagination_button w-inline-block">
+                          <div class="pagination_button-icon w-embed"><svg width="7" height="11" viewbox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6.75 5.19604L0 10.3922V-0.000107288L6.75 5.19604Z" fill="currentColor"></path>
+                            </svg></div>
+                        </a>
+                          </li>
+{% endif %}
+                    </ul>
+                      </nav>
+{% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>{% endpaginate %} {% schema %} {
+    "tag": "section",
+    "name": "Articles",
+    "class": "section_blog",
+    "presets": [
+        {
+            "name": "Articles",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "blog"
+        ]
+    }
+} {% endschema %}

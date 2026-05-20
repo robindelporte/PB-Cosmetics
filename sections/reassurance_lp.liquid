@@ -1,0 +1,81 @@
+<div class="padding-global">
+            <div class="padding-section-xxsmall">
+              <div class="container-large">
+                <div class="reassurance_component">
+                  <div class="reassurance_item">
+                    <p class="text-size-large text-style-allcaps text-weight-semibold">
+{{ section.settings.text_item_1_titre }}
+</p>
+                    <p class="text-size-small">
+{{ section.settings.text_item_1_texte }}
+</p>
+                  </div>
+                  <div class="reassurance_item">
+                    <p class="text-size-large text-style-allcaps text-weight-semibold">
+{{ section.settings.text_item_2_titre }}
+</p>
+                    <p class="text-size-small">
+{{ section.settings.text_item_2_texte }}
+</p>
+                  </div>
+                  <div class="reassurance_item">
+                    <p class="text-size-large text-style-allcaps text-weight-semibold">
+{{ section.settings.text_item_3_titre }}
+</p>
+                    <p class="text-size-small">
+{{ section.settings.text_item_3_texte }}
+</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "Reassurance LP",
+    "class": "section_reassurance",
+    "settings": [
+        {
+            "id": "text_item_1_titre",
+            "type": "text",
+            "label": "Item 1 - Titre",
+            "default": "LIVRAISON OFFERT"
+        },
+        {
+            "id": "text_item_1_texte",
+            "type": "text",
+            "label": "Item 1 - Texte",
+            "default": "d\u00e8s 25\u20ac (Mondial Relay)"
+        },
+        {
+            "id": "text_item_2_titre",
+            "type": "text",
+            "label": "Item 2 - Titre",
+            "default": "PAIEMENT S\u00c9CURIS\u00c9"
+        },
+        {
+            "id": "text_item_2_texte",
+            "type": "text",
+            "label": "Item 2 - Texte",
+            "default": "condition &amp; options"
+        },
+        {
+            "id": "text_item_3_titre",
+            "type": "text",
+            "label": "Item 3 - Titre",
+            "default": "RETOUR 30JouRS"
+        },
+        {
+            "id": "text_item_3_texte",
+            "type": "text",
+            "label": "Item 3 - Texte",
+            "default": "condition &amp; options"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Reassurance LP",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

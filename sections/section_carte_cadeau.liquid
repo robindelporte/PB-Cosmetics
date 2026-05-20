@@ -1,0 +1,61 @@
+<div class="padding-global">
+          <div class="padding-section-medium">
+            <div class="container-large">
+              <div class="hero-gift_component">
+                <div class="max-width-818 text-align-center">
+                  <h1>
+{{ section.settings.text_titre }}
+</h1>
+                </div>
+                <div class="hero-gift_content-wrappert"><img src="{{ 'hero-background.avif' | asset_url }}" loading="lazy" alt="" class="hero-gift_image">
+                  {% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: class: 'hero-gift_content' }}
+{% else %}
+<img class="hero-gift_content">
+{% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Section - Carte Cade",
+    "class": "section_hero",
+    "settings": [
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "OFFREZ LE PLUS BEAU DES CADEAUX"
+        },
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        },
+        {
+            "id": "richtext_contenu_tooltip",
+            "type": "richtext",
+            "label": "Contenu Tooltip",
+            "default": "<p><strong>Carte physique<\/strong> : est utilisable uniquement dans la boutique physique vendeuse de la carte. \u200d(condition &amp; utilisation propre au revendeur)\u2028 \u200d <strong>Carte num\u00e9rique <\/strong>: rendez-vous dans votre panier et ajouter le code au dos de votre carte dans le section \u201ccode promo\u2019\" Le montant de la carte sera r\u00e9duit de votre panier.<\/p>"
+        },
+        {
+            "id": "url_lien",
+            "type": "url",
+            "label": "Lien"
+        },
+        {
+            "id": "text_texte",
+            "type": "text",
+            "label": "Texte",
+            "default": "OFFRIR UNE CARTE CADEAU"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Section - Carte Cade",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

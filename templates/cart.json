@@ -1,0 +1,29 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "panier": {
+            "type": "panier"
+        },
+        "produits_3": {
+            "type": "produits_3"
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "navbar",
+        "panier",
+        "produits_3"
+    ]
+}

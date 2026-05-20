@@ -1,0 +1,58 @@
+<div class="hero-categories_component-wrapper">
+          <div class="hero_slide-content z-index-1">
+            <div class="padding-global">
+              <div class="container-large">
+                <div class="hero_content">
+                  <div class="hero-categories_breadcrubms-wrapper">
+                    <a li-object:href="routes.root_url" href="{{ routes.root_url }}" class="hero_breadcrumbs-link w-inline-block">
+                      <div class="text-weight-medium text-style-allcaps">Accueil</div>
+                    </a>
+                    <div class="text-weight-medium text-style-allcaps">-</div>
+                    <div class="text-weight-medium text-style-allcaps">
+{{ section.settings.text_fil_dariane }}
+</div>
+                  </div>
+                  <div>
+                    <h1 class="heading-style-h1">
+{{ section.settings.text_titre }}
+</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: class: 'hero_bg-img', width: '1440', sizes: '(max-width: 1439px) 100vw, 1440px', loading: 'lazy' }}
+{% else %}
+<img class="hero_bg-img" src="{{ 'background.avif' | asset_url }}" width="1440" alt="" sizes="(max-width: 1439px) 100vw, 1440px" loading="lazy" srcset="{{ 'background-p-500.png' | asset_url }} 500w, {{ 'background.avif' | asset_url }} 1440w">
+{% endif %}
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Hero Plein",
+    "class": "section_hero-categories",
+    "settings": [
+        {
+            "id": "text_fil_dariane",
+            "type": "text",
+            "label": "Fil d'ariane",
+            "default": "Points de vente"
+        },
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "NOS POINTS DE VENTE"
+        },
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Hero Plein",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

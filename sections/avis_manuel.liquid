@@ -1,0 +1,120 @@
+<div class="padding-section-medium">
+      <div class="container-1710">
+        <div class="retours_component-wrapper">
+          <div class="retours_image-wrapper">{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: width: '734', loading: 'lazy', class: 'retours_image' }}
+{% else %}
+<img width="734" alt="" src="{{ 'retours_image.avif' | asset_url }}" loading="lazy" class="retours_image">
+{% endif %}</div>
+          <div class="retours_slider-wrapper">
+            <div class="retours_heading">
+              <h2>
+{{ section.settings.text_titre }}
+</h2>
+            </div>
+            <div class="swiper is-retours">
+              <div li-for:inside="avis in shop.metaobjects.avis.values" class="swiper-wrapper is-retours">
+        {% for avis in shop.metaobjects.avis.values %}                            
+                
+                            <div class="swiper-slide is-retours">
+                  <div class="retours_slide-content">
+                    <div class="retours_slide-heading">
+                      <div class="retours_slide-stars-wrapper">
+                        <div class="icon-1x1-18 w-embed"><svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.29297 0L10.2505 6.02451H16.585L11.4602 9.74786L13.4177 15.7724L8.29297 12.049L3.16822 15.7724L5.1257 9.74786L0.000945091 6.02451H6.33549L8.29297 0Z" fill="#EEA5EA"></path>
+                          </svg></div>
+                        {% if avis.note >= 2 %}    <div li-if="avis.note >= 2" class="icon-1x1-18 w-embed">
+    <svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.29297 0L10.2505 6.02451H16.585L11.4602 9.74786L13.4177 15.7724L8.29297 12.049L3.16822 15.7724L5.1257 9.74786L0.000945091 6.02451H6.33549L8.29297 0Z" fill="#EEA5EA"></path>
+                          </svg>    </div>
+{% endif %}
+                        {% if avis.note >= 3 %}    <div li-if="avis.note >= 3" class="icon-1x1-18 w-embed">
+    <svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.29297 0L10.2505 6.02451H16.585L11.4602 9.74786L13.4177 15.7724L8.29297 12.049L3.16822 15.7724L5.1257 9.74786L0.000945091 6.02451H6.33549L8.29297 0Z" fill="#EEA5EA"></path>
+                          </svg>    </div>
+{% endif %}
+                        {% if avis.note >= 4 %}    <div li-if="avis.note >= 4" class="icon-1x1-18 w-embed">
+    <svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.29297 0L10.2505 6.02451H16.585L11.4602 9.74786L13.4177 15.7724L8.29297 12.049L3.16822 15.7724L5.1257 9.74786L0.000945091 6.02451H6.33549L8.29297 0Z" fill="#EEA5EA"></path>
+                          </svg>    </div>
+{% endif %}
+                        {% if avis.note >= 5 %}    <div li-if="avis.note >= 5" class="icon-1x1-18 w-embed">
+    <svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.29297 0L10.2505 6.02451H16.585L11.4602 9.74786L13.4177 15.7724L8.29297 12.049L3.16822 15.7724L5.1257 9.74786L0.000945091 6.02451H6.33549L8.29297 0Z" fill="#EEA5EA"></path>
+                          </svg>    </div>
+{% endif %}
+                      </div>
+                      <div li-object="avis.nom_client" class="text-size-medium text-weight-bold">{{ avis.nom_client }}</div>
+                      <a li-object="avis.produit.value.title" href="avis.produit.value.url" class="retours_product-link">{{ avis.produit.value.title }}</a>
+                    </div>
+                    <div class="retours_slide-testimonial">
+                      <p li-object="avis.date | date: '%d %B %Y'" class="text-size-small text-color-grey">{{ avis.date | date: '%d %B %Y' }}</p>
+                      <div class="text-color-grey">12 Janvier</div>
+                    </div>
+                  </div>
+                  <div class="retour_slide-image-wrapper"><img li-object:src="avis.produit.value.featured_image | image_url: width: 400" li-object:alt="avis.produit.value.title" alt="{{ avis.produit.value.title }}" src="{{ avis.produit.value.featured_image | image_url: width: 400 }}" loading="lazy" class="retours_slide-image"></div>
+                </div>
+                            
+              
+                    {% endfor %}    </div>
+              <div class="retours_controls"><button class="retours-slider_prev">
+                  <div class="icon-1x1-11 w-embed"><svg width="7" height="11" viewbox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 5.19629L6.75 10.3924V0.000136852L0 5.19629Z" fill="#3E3E3E"></path>
+                    </svg></div>
+                </button><button class="retours-slider_next">
+                  <div class="icon-1x1-11 w-embed"><svg width="7" height="11" viewbox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6.75 5.19629L0 10.3924V0.000136852L6.75 5.19629Z" fill="#3E3E3E"></path>
+                    </svg></div>
+                </button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hide w-embed w-script">
+      <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var swiperEl = document.querySelector('.swiper.is-retours');
+  var parentWidth = swiperEl.parentElement.offsetWidth;
+  var swiper = new Swiper(swiperEl, {
+    slidesPerView: 'auto',
+    spaceBetween: 16,
+    speed: 600,
+    width: parentWidth,
+    navigation: {
+      nextEl: ".retours-slider_next",
+      prevEl: ".retours-slider_prev",
+      disabledClass: "is-disabled"
+    }
+  });
+  window.addEventListener('resize', function() {
+    swiper.params.width = swiperEl.parentElement.offsetWidth;
+    swiper.update();
+  });
+});
+</script>
+    </div> {% schema %} {
+    "tag": "div",
+    "name": "Avis - Manuel",
+    "class": "section_retours",
+    "settings": [
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        },
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "VOS RETOURS"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Avis - Manuel",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}
