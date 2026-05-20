@@ -1,1 +1,63 @@
-{"type":"header","name":"Header Group","sections":{"navbar":{"type":"navbar","settings":{}}},"order":["navbar"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "navbar": {
+      "type": "navbar",
+      "blocks": {
+        "annonce_jHga74": {
+          "type": "annonce",
+          "settings": {
+            "url_lien": "",
+            "text_texte": "-15€ SUR VOTRE PREMIER COMMANDE AVEC LE CODE “NEWBRAND”"
+          }
+        }
+      },
+      "block_order": [
+        "annonce_jHga74"
+      ],
+      "settings": {
+        "mini_cart_content_position": "right",
+        "mini_cart_content_animation": "slide-left",
+        "mini_cart_content_animation_easing": "ease",
+        "mini_cart_content_animation_duration": 500,
+        "mini_cart_modal_animation": "slide-left",
+        "mini_cart_modal_animation_easing": "ease",
+        "mini_cart_modal_animation_duration": 300,
+        "mini_cart_free_shipping": true,
+        "mini_cart_free_shipping_threshold": 80,
+        "aria_label_open_mini_cart": "Open Mini Cart",
+        "aria_label_close_mini_cart": "Close Mini Cart",
+        "aria_label_remove_product": "Remove Product",
+        "aria_label_increase_product_quantity": "Increase Product Quantity",
+        "aria_label_decrease_product_quantity": "Decrease Product Quantity",
+        "text_mini_cart_heading": "Panier",
+        "text_reassurance_1_titre": "LIVRAISON OFFERTE",
+        "text_reassurance_1_sous_titre": "dès 25€ (En relay)",
+        "text_reassurance_2_titre": "PAIEMENT SÉCURISÉ",
+        "text_reassurance_2_sous_titre": "paiement vérifié",
+        "text_reassurance_3_titre": "EXPÉDITION RAPIDE",
+        "text_reassurance_3_sous_titre": "sous 1 à 3 jours ouvré",
+        "text_mini_cart_cart_message_heading": "Message",
+        "text_mini_cart_empty_heading": "Cart",
+        "text_mini_cart_empty_content": "No products in your cart",
+        "collection_bestseller": "",
+        "collection_bestseller_limit": 6,
+        "collection_collection_pro": "",
+        "collection_collection_pro_limit": 6
+      }
+    }
+  },
+  "order": [
+    "navbar"
+  ]
+}

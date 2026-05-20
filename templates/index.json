@@ -9,27 +9,18 @@
  */
 {
   "sections": {
-    "navbar": {
-      "type": "navbar",
-      "blocks": {
-        "annonce": {
-          "type": "annonce",
-          "name": "Annonce",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "annonce"
-      ],
-      "settings": {}
-    },
     "hero_slider": {
       "type": "hero_slider",
       "blocks": {
         "slide": {
           "type": "slide",
           "name": "Slide",
-          "settings": {}
+          "settings": {
+            "text_tagline": "This is some text inside of a div block.",
+            "text_titre": "Heading",
+            "url_lien": "",
+            "text_texte": "AJOUTER AU PANIER"
+          }
         }
       },
       "block_order": [
@@ -39,7 +30,13 @@
     },
     "produits_4": {
       "type": "produits_4",
-      "settings": {}
+      "settings": {
+        "text_titre": "MEILLEURES VENTES",
+        "url_lien": "",
+        "text_texte": "TOUS NOS BESTSELLER",
+        "collection": "",
+        "limit": 4
+      }
     },
     "familles": {
       "type": "familles",
@@ -47,21 +44,37 @@
         "famille": {
           "type": "famille",
           "name": "Famille",
-          "settings": {}
+          "settings": {
+            "text_nom": "Teint",
+            "url_lien": ""
+          }
         }
       },
       "block_order": [
         "famille"
       ],
-      "settings": {}
+      "settings": {
+        "collection_list": [],
+        "collection_limit": 4
+      }
     },
     "showcased": {
       "type": "showcased",
-      "settings": {}
+      "settings": {
+        "text_titre": "GAMME PARFUMÉ",
+        "url_lien": "",
+        "text_texte": "DÉCOUVRIR NOS PARFUMS"
+      }
     },
     "section_pleine_large": {
       "type": "section_pleine_large",
-      "settings": {}
+      "settings": {
+        "text_tagline": "-15% sur tes produits",
+        "text_titre": "BUNDLE",
+        "text_paragraphe": "Découvrez notre nouveau bundle beauté : un duo pensé pour illuminer votre routine. Un mélange malin entre éclat, fraîcheur et plaisir d’utilisation  le tout réuni dans une sélection simple, efficace, et prête à sublimer vos journées. Parce qu’un bon rituel, ça ne s’improvise pas… mais ça se partage avec style",
+        "url_lien": "",
+        "text_texte": "AJOUTER AU PANIER"
+      }
     },
     "reseaux": {
       "type": "reseaux",
@@ -79,7 +92,9 @@
     },
     "avis_manuel": {
       "type": "avis_manuel",
-      "settings": {}
+      "settings": {
+        "text_titre": "VOS RETOURS"
+      }
     },
     "faq": {
       "type": "faq",
@@ -87,13 +102,18 @@
         "faq-item": {
           "type": "faq-item",
           "name": "FAQ Item",
-          "settings": {}
+          "settings": {
+            "text_question": "Heading",
+            "richtext_reponse": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>"
+          }
         }
       },
       "block_order": [
         "faq-item"
       ],
-      "settings": {}
+      "settings": {
+        "text_heading": "FAQs"
+      }
     },
     "gammes": {
       "type": "gammes",
@@ -101,19 +121,24 @@
         "gamme": {
           "type": "gamme",
           "name": "Gamme",
-          "settings": {}
+          "settings": {
+            "url_lien": "",
+            "text_nom": "Bell’ânesse"
+          }
         }
       },
       "block_order": [
         "gamme"
       ],
-      "settings": {}
+      "settings": {
+        "text_titre": "NOS GAMMES À NE PAS MANQUER",
+        "text_description": "Découvrez notre nouveau bundle beauté : un duo pensé pour illuminer votre routine. Un mélange malin entre éclat, fraîcheur et plaisir d’utilisation  le tout réuni dans une sélection simple, efficace, et prête à sublimer vos journées. Parce qu’un bon rituel, ça ne s’improvise pas… mais ça se partage avec style"
+      }
     }
   },
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
-    "navbar",
     "hero_slider",
     "produits_4",
     "familles",
