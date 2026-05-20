@@ -1,102 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "navbar": {
-            "type": "navbar",
-            "blocks": {
-                "annonce": {
-                    "type": "annonce",
-                    "name": "Annonce"
-                }
-            },
-            "block_order": [
-                "annonce"
-            ]
-        },
-        "hero_slider": {
-            "type": "hero_slider",
-            "blocks": {
-                "slide": {
-                    "type": "slide",
-                    "name": "Slide"
-                }
-            },
-            "block_order": [
-                "slide"
-            ]
-        },
-        "produits_4": {
-            "type": "produits_4"
-        },
-        "familles": {
-            "type": "familles",
-            "blocks": {
-                "famille": {
-                    "type": "famille",
-                    "name": "Famille"
-                }
-            },
-            "block_order": [
-                "famille"
-            ]
-        },
-        "showcased": {
-            "type": "showcased"
-        },
-        "section_pleine_large": {
-            "type": "section_pleine_large"
-        },
-        "reseaux": {
-            "type": "reseaux",
-            "blocks": {
-                "video": {
-                    "type": "video",
-                    "name": "Vid\u00e9o"
-                }
-            },
-            "block_order": [
-                "video"
-            ]
-        },
-        "avis_manuel": {
-            "type": "avis_manuel"
-        },
-        "faq": {
-            "type": "faq",
-            "blocks": {
-                "faq-item": {
-                    "type": "faq-item",
-                    "name": "FAQ Item"
-                }
-            },
-            "block_order": [
-                "faq-item"
-            ]
-        },
-        "gammes": {
-            "type": "gammes",
-            "blocks": {
-                "gamme": {
-                    "type": "gamme",
-                    "name": "Gamme"
-                }
-            },
-            "block_order": [
-                "gamme"
-            ]
+  "sections": {
+    "navbar": {
+      "type": "navbar",
+      "blocks": {
+        "annonce": {
+          "type": "annonce",
+          "name": "Annonce",
+          "settings": {}
         }
+      },
+      "block_order": [
+        "annonce"
+      ],
+      "settings": {}
     },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "navbar",
-        "hero_slider",
-        "produits_4",
-        "familles",
-        "showcased",
-        "section_pleine_large",
-        "reseaux",
-        "avis_manuel",
-        "faq",
-        "gammes"
-    ]
+    "hero_slider": {
+      "type": "hero_slider",
+      "blocks": {
+        "slide": {
+          "type": "slide",
+          "name": "Slide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "slide"
+      ],
+      "settings": {}
+    },
+    "produits_4": {
+      "type": "produits_4",
+      "settings": {}
+    },
+    "familles": {
+      "type": "familles",
+      "blocks": {
+        "famille": {
+          "type": "famille",
+          "name": "Famille",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "famille"
+      ],
+      "settings": {}
+    },
+    "showcased": {
+      "type": "showcased",
+      "settings": {}
+    },
+    "section_pleine_large": {
+      "type": "section_pleine_large",
+      "settings": {}
+    },
+    "reseaux": {
+      "type": "reseaux",
+      "blocks": {
+        "video": {
+          "type": "video",
+          "name": "Vidéo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "video"
+      ],
+      "settings": {}
+    },
+    "avis_manuel": {
+      "type": "avis_manuel",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq-item": {
+          "type": "faq-item",
+          "name": "FAQ Item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "faq-item"
+      ],
+      "settings": {}
+    },
+    "gammes": {
+      "type": "gammes",
+      "blocks": {
+        "gamme": {
+          "type": "gamme",
+          "name": "Gamme",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "gamme"
+      ],
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "navbar",
+    "hero_slider",
+    "produits_4",
+    "familles",
+    "showcased",
+    "section_pleine_large",
+    "reseaux",
+    "avis_manuel",
+    "faq",
+    "gammes"
+  ]
 }

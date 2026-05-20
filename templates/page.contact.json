@@ -1,54 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "navbar": {
-            "type": "navbar",
-            "blocks": {
-                "annonce": {
-                    "type": "annonce",
-                    "name": "Annonce"
-                }
-            },
-            "block_order": [
-                "annonce"
-            ]
-        },
-        "contact": {
-            "type": "contact",
-            "blocks": {
-                "champ-texte": {
-                    "type": "champ-texte",
-                    "name": "Champ texte"
-                },
-                "champ-email": {
-                    "type": "champ-email",
-                    "name": "Champ email"
-                },
-                "select-4-options": {
-                    "type": "select-4-options",
-                    "name": "Select 4 options"
-                },
-                "champ-message": {
-                    "type": "champ-message",
-                    "name": "Champ message"
-                },
-                "consentement": {
-                    "type": "consentement",
-                    "name": "Consentement"
-                }
-            },
-            "block_order": [
-                "champ-texte",
-                "champ-email",
-                "select-4-options",
-                "champ-message",
-                "consentement"
-            ]
+  "sections": {
+    "navbar": {
+      "type": "navbar",
+      "blocks": {
+        "annonce": {
+          "type": "annonce",
+          "name": "Annonce",
+          "settings": {}
         }
+      },
+      "block_order": [
+        "annonce"
+      ],
+      "settings": {}
     },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "navbar",
-        "contact"
-    ]
+    "contact": {
+      "type": "contact",
+      "blocks": {
+        "champ-texte": {
+          "type": "champ-texte",
+          "name": "Champ texte",
+          "settings": {}
+        },
+        "champ-email": {
+          "type": "champ-email",
+          "name": "Champ email",
+          "settings": {}
+        },
+        "select-4-options": {
+          "type": "select-4-options",
+          "name": "Select 4 options",
+          "settings": {}
+        },
+        "champ-message": {
+          "type": "champ-message",
+          "name": "Champ message",
+          "settings": {}
+        },
+        "consentement": {
+          "type": "consentement",
+          "name": "Consentement",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "champ-texte",
+        "champ-email",
+        "select-4-options",
+        "champ-message",
+        "consentement"
+      ],
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "navbar",
+    "contact"
+  ]
 }

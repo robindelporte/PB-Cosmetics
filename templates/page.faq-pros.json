@@ -1,38 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "navbar": {
-            "type": "navbar",
-            "blocks": {
-                "annonce": {
-                    "type": "annonce",
-                    "name": "Annonce"
-                }
-            },
-            "block_order": [
-                "annonce"
-            ]
-        },
-        "hero_plein": {
-            "type": "hero_plein"
-        },
-        "faq_pros": {
-            "type": "faq_pros",
-            "blocks": {
-                "faq-item-pro": {
-                    "type": "faq-item-pro",
-                    "name": "FAQ Item Pro"
-                }
-            },
-            "block_order": [
-                "faq-item-pro"
-            ]
+  "sections": {
+    "navbar": {
+      "type": "navbar",
+      "blocks": {
+        "annonce": {
+          "type": "annonce",
+          "name": "Annonce",
+          "settings": {}
         }
+      },
+      "block_order": [
+        "annonce"
+      ],
+      "settings": {}
     },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "navbar",
-        "hero_plein",
-        "faq_pros"
-    ]
+    "hero_plein": {
+      "type": "hero_plein",
+      "settings": {}
+    },
+    "faq_pros": {
+      "type": "faq_pros",
+      "blocks": {
+        "faq-item-pro": {
+          "type": "faq-item-pro",
+          "name": "FAQ Item Pro",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "faq-item-pro"
+      ],
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "navbar",
+    "hero_plein",
+    "faq_pros"
+  ]
 }

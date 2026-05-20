@@ -1,59 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "navbar": {
-            "type": "navbar",
-            "blocks": {
-                "annonce": {
-                    "type": "annonce",
-                    "name": "Annonce"
-                }
-            },
-            "block_order": [
-                "annonce"
-            ]
-        },
-        "hero_collection": {
-            "type": "hero_collection"
-        },
-        "sous_categories": {
-            "type": "sous_categories"
-        },
-        "grille_de_produits": {
-            "type": "grille_de_produits"
-        },
-        "familles": {
-            "type": "familles",
-            "blocks": {
-                "famille": {
-                    "type": "famille",
-                    "name": "Famille"
-                }
-            },
-            "block_order": [
-                "famille"
-            ]
-        },
-        "gammes": {
-            "type": "gammes",
-            "blocks": {
-                "gamme": {
-                    "type": "gamme",
-                    "name": "Gamme"
-                }
-            },
-            "block_order": [
-                "gamme"
-            ]
+  "sections": {
+    "navbar": {
+      "type": "navbar",
+      "blocks": {
+        "annonce": {
+          "type": "annonce",
+          "name": "Annonce",
+          "settings": {}
         }
+      },
+      "block_order": [
+        "annonce"
+      ],
+      "settings": {}
     },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "navbar",
-        "hero_collection",
-        "sous_categories",
-        "grille_de_produits",
-        "familles",
-        "gammes"
-    ]
+    "hero_collection": {
+      "type": "hero_collection",
+      "settings": {}
+    },
+    "sous_categories": {
+      "type": "sous_categories",
+      "settings": {}
+    },
+    "grille_de_produits": {
+      "type": "grille_de_produits",
+      "settings": {}
+    },
+    "familles": {
+      "type": "familles",
+      "blocks": {
+        "famille": {
+          "type": "famille",
+          "name": "Famille",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "famille"
+      ],
+      "settings": {}
+    },
+    "gammes": {
+      "type": "gammes",
+      "blocks": {
+        "gamme": {
+          "type": "gamme",
+          "name": "Gamme",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "gamme"
+      ],
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "navbar",
+    "hero_collection",
+    "sous_categories",
+    "grille_de_produits",
+    "familles",
+    "gammes"
+  ]
 }

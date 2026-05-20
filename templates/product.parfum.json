@@ -1,133 +1,166 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "navbar": {
-            "type": "navbar",
-            "blocks": {
-                "annonce": {
-                    "type": "annonce",
-                    "name": "Annonce"
-                }
-            },
-            "block_order": [
-                "annonce"
-            ]
-        },
-        "hero_parfum": {
-            "type": "hero_parfum"
-        },
-        "tabs": {
-            "type": "tabs",
-            "blocks": {
-                "tab-composition": {
-                    "type": "tab-composition",
-                    "name": "Tab - Composition"
-                },
-                "tab-conseils": {
-                    "type": "tab-conseils",
-                    "name": "Tab - Conseils"
-                },
-                "tab-description": {
-                    "type": "tab-description",
-                    "name": "Tab - Description"
-                },
-                "tab-pyramide": {
-                    "type": "tab-pyramide",
-                    "name": "Tab - Pyramide"
-                },
-                "faq-description": {
-                    "type": "faq-description",
-                    "name": "FAQ - Description"
-                },
-                "faq-composition": {
-                    "type": "faq-composition",
-                    "name": "FAQ - Composition"
-                },
-                "faq-conseils": {
-                    "type": "faq-conseils",
-                    "name": "FAQ - Conseils"
-                },
-                "faq-pyramide": {
-                    "type": "faq-pyramide",
-                    "name": "FAQ - Pyramide"
-                }
-            },
-            "block_order": [
-                "tab-composition",
-                "tab-conseils",
-                "tab-description",
-                "tab-pyramide",
-                "faq-description",
-                "faq-composition",
-                "faq-conseils",
-                "faq-pyramide"
-            ]
-        },
-        "recharge": {
-            "type": "recharge"
-        },
-        "produits_3": {
-            "type": "produits_3"
-        },
-        "hero_produit_b2b": {
-            "type": "hero_produit_b2b"
-        },
-        "tabs_b2b": {
-            "type": "tabs_b2b",
-            "blocks": {
-                "tab-composition": {
-                    "type": "tab-composition",
-                    "name": "Tab - Composition"
-                },
-                "tab-conseils": {
-                    "type": "tab-conseils",
-                    "name": "Tab - Conseils"
-                },
-                "tab-description": {
-                    "type": "tab-description",
-                    "name": "Tab - Description"
-                },
-                "tab-pyramide": {
-                    "type": "tab-pyramide",
-                    "name": "Tab - Pyramide"
-                },
-                "faq-description": {
-                    "type": "faq-description",
-                    "name": "FAQ - Description"
-                },
-                "faq-composition": {
-                    "type": "faq-composition",
-                    "name": "FAQ - Composition"
-                },
-                "faq-conseils": {
-                    "type": "faq-conseils",
-                    "name": "FAQ - Conseils"
-                },
-                "faq-pyramide": {
-                    "type": "faq-pyramide",
-                    "name": "FAQ - Pyramide"
-                }
-            },
-            "block_order": [
-                "tab-composition",
-                "tab-conseils",
-                "tab-description",
-                "tab-pyramide",
-                "faq-description",
-                "faq-composition",
-                "faq-conseils",
-                "faq-pyramide"
-            ]
+  "sections": {
+    "navbar": {
+      "type": "navbar",
+      "blocks": {
+        "annonce": {
+          "type": "annonce",
+          "name": "Annonce",
+          "settings": {}
         }
+      },
+      "block_order": [
+        "annonce"
+      ],
+      "settings": {}
     },
-    "layout": "theme",
-    "wrapper": "div.main-wrapper",
-    "order": [
-        "navbar",
-        "hero_parfum",
-        "tabs",
-        "recharge",
-        "produits_3",
-        "hero_produit_b2b",
-        "tabs_b2b"
-    ]
+    "hero_parfum": {
+      "type": "hero_parfum",
+      "settings": {}
+    },
+    "tabs": {
+      "type": "tabs",
+      "blocks": {
+        "tab-composition": {
+          "type": "tab-composition",
+          "name": "Tab - Composition",
+          "settings": {}
+        },
+        "tab-conseils": {
+          "type": "tab-conseils",
+          "name": "Tab - Conseils",
+          "settings": {}
+        },
+        "tab-description": {
+          "type": "tab-description",
+          "name": "Tab - Description",
+          "settings": {}
+        },
+        "tab-pyramide": {
+          "type": "tab-pyramide",
+          "name": "Tab - Pyramide",
+          "settings": {}
+        },
+        "faq-description": {
+          "type": "faq-description",
+          "name": "FAQ - Description",
+          "settings": {}
+        },
+        "faq-composition": {
+          "type": "faq-composition",
+          "name": "FAQ - Composition",
+          "settings": {}
+        },
+        "faq-conseils": {
+          "type": "faq-conseils",
+          "name": "FAQ - Conseils",
+          "settings": {}
+        },
+        "faq-pyramide": {
+          "type": "faq-pyramide",
+          "name": "FAQ - Pyramide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "tab-composition",
+        "tab-conseils",
+        "tab-description",
+        "tab-pyramide",
+        "faq-description",
+        "faq-composition",
+        "faq-conseils",
+        "faq-pyramide"
+      ],
+      "settings": {}
+    },
+    "recharge": {
+      "type": "recharge",
+      "settings": {}
+    },
+    "produits_3": {
+      "type": "produits_3",
+      "settings": {}
+    },
+    "hero_produit_b2b": {
+      "type": "hero_produit_b2b",
+      "settings": {}
+    },
+    "tabs_b2b": {
+      "type": "tabs_b2b",
+      "blocks": {
+        "tab-composition": {
+          "type": "tab-composition",
+          "name": "Tab - Composition",
+          "settings": {}
+        },
+        "tab-conseils": {
+          "type": "tab-conseils",
+          "name": "Tab - Conseils",
+          "settings": {}
+        },
+        "tab-description": {
+          "type": "tab-description",
+          "name": "Tab - Description",
+          "settings": {}
+        },
+        "tab-pyramide": {
+          "type": "tab-pyramide",
+          "name": "Tab - Pyramide",
+          "settings": {}
+        },
+        "faq-description": {
+          "type": "faq-description",
+          "name": "FAQ - Description",
+          "settings": {}
+        },
+        "faq-composition": {
+          "type": "faq-composition",
+          "name": "FAQ - Composition",
+          "settings": {}
+        },
+        "faq-conseils": {
+          "type": "faq-conseils",
+          "name": "FAQ - Conseils",
+          "settings": {}
+        },
+        "faq-pyramide": {
+          "type": "faq-pyramide",
+          "name": "FAQ - Pyramide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "tab-composition",
+        "tab-conseils",
+        "tab-description",
+        "tab-pyramide",
+        "faq-description",
+        "faq-composition",
+        "faq-conseils",
+        "faq-pyramide"
+      ],
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "div.main-wrapper",
+  "order": [
+    "navbar",
+    "hero_parfum",
+    "tabs",
+    "recharge",
+    "produits_3",
+    "hero_produit_b2b",
+    "tabs_b2b"
+  ]
 }

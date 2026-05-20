@@ -1,37 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "navbar": {
-            "type": "navbar",
-            "blocks": {
-                "annonce": {
-                    "type": "annonce",
-                    "name": "Annonce"
-                }
-            },
-            "block_order": [
-                "annonce"
-            ]
-        },
-        "article_hero": {
-            "type": "article_hero"
-        },
-        "article_content": {
-            "type": "article_content"
-        },
-        "cta_full": {
-            "type": "cta_full"
-        },
-        "articles_lies": {
-            "type": "articles_lies"
+  "sections": {
+    "navbar": {
+      "type": "navbar",
+      "blocks": {
+        "annonce": {
+          "type": "annonce",
+          "name": "Annonce",
+          "settings": {}
         }
+      },
+      "block_order": [
+        "annonce"
+      ],
+      "settings": {}
     },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "navbar",
-        "article_hero",
-        "article_content",
-        "cta_full",
-        "articles_lies"
-    ]
+    "article_hero": {
+      "type": "article_hero",
+      "settings": {}
+    },
+    "article_content": {
+      "type": "article_content",
+      "settings": {}
+    },
+    "cta_full": {
+      "type": "cta_full",
+      "settings": {}
+    },
+    "articles_lies": {
+      "type": "articles_lies",
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "navbar",
+    "article_hero",
+    "article_content",
+    "cta_full",
+    "articles_lies"
+  ]
 }
