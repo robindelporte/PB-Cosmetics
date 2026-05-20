@@ -1,0 +1,31 @@
+{% assign words = article.content | strip_html | split: ' ' | size %}
+        {% assign minutes = words | divided_by: 200 | at_least: 1 %}
+        <div class="padding-global">
+          <div class="container-large is-relative">
+            <div class="container-small">
+              {% assign content_parts = article.content | split: '[PRODUITS]' %}{% for part in content_parts %}<div class="article-rich-text">{{part}}</div>{% unless forloop.last %}{% if article.metafields.custom.produits.value %}<div class="article_components">{% for product in article.metafields.custom.produits.value %}{% render 'product_item', product: product %}{% endfor %}</div>{% endif %}{% endunless %}{% endfor %}
+            </div>
+            <div class="article_read-time-wrapper">
+              <div x-init="window.addEventListener('scroll', () => { const article = document.querySelector('.section_article'); if (!article) return; const top = article.offsetTop; const height = article.offsetHeight; const scrolled = Math.min(Math.max((window.scrollY - top + window.innerHeight) / height, 0), 1); progress = scrolled; })" x-data="{ progress: 0 }" class="article_read-time">
+                <div class="article_read-time-track">
+                  <div x-bind:style="'height: ' + (progress * 100) + '%'" class="article_read-time-handler"></div>
+                </div>
+                <div class="article_read-time-time-wrapper">
+                  <div>0min</div>
+                  <div li-object="minutes | append: 'min'">{{ minutes | append: 'min' }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Article Content",
+    "class": "section_article",
+    "presets": [
+        {
+            "name": "Article Content",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

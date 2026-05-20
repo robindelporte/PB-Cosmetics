@@ -1,0 +1,42 @@
+<li li-block="FAQ Item Pro" role="button" tabindex="0" aria-controls="faq-body-{{block.id}}" x-on:click="open = (open === '{{block.id}}' ? 0 : '{{block.id}}'); $el.setAttribute('aria-expanded', open === '{{block.id}}' ? 'true' : 'false')" id="w-node-e50ed938-cee0-f03c-4994-3f260e6f3564-bada2d3d" class="faq-faq_item" {{ block.shopify_attributes }}>
+                    
+                          
+                    <div class="faq_item-heading">
+                            <h3 id="faq-heading-{{block.id}}" class="text-size-medium">
+{{ block.settings.text_question }}
+</h3>
+                            <div x-bind:style="open === '{{ block.id }}' ? 'transform: rotate(45deg)' : 'transform: rotate(0deg)'" class="faq_icon w-embed"><svg width="21" height="21" viewbox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.3153 9.88046e-06V9.57357H20.8889L20.8882 11.3144H11.3146L11.3153 20.8873H9.57519L9.57449 11.3144H0.000932157L0.00162269 9.57357L9.5738 9.57357L9.57449 0.000700414L11.3153 9.88046e-06Z" fill="#B1B1B1"></path>
+                              </svg></div>
+                          </div>
+                    
+                          
+                    <div id="faq-body-{{block.id}}" x-show="open === '{{ block.id }}'" x-collapse="" x-cloak="" aria-labelledby="faq-heading-{{block.id}}" class="faq_item-body">
+                            <div class="text-rich-text margin-top margin-small w-richtext"> {{ block.settings.richtext_reponse }} </div>
+                          </div>
+                    
+                        
+                </li> {% schema %} {
+    "name": "FAQ Item Pro",
+    "settings": [
+        {
+            "id": "text_question",
+            "type": "text",
+            "label": "Question",
+            "default": "Heading"
+        },
+        {
+            "id": "richtext_reponse",
+            "type": "richtext",
+            "label": "R\u00e9ponse",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "FAQ Item Pro",
+            "blocks": []
+        }
+    ],
+    "tag": null
+} {% endschema %}

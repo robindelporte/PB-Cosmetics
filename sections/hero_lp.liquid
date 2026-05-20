@@ -1,0 +1,30 @@
+<div class="hero-lp_component-wrapper">
+            <div class="hero-lp_heading-wrapper">
+              <h1 li-object="product.title" class="hero-lp_heading">{{ product.title }}</h1>
+              <div class="hero-product_stars-wrapper">
+                <div class="icon-1x1-20 w-embed"><svg width="19" height="18" viewbox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.26504 0L11.4522 6.73128L18.5299 6.73128L12.8039 10.8914L14.991 17.6227L9.26504 13.4626L3.53907 17.6227L5.72619 10.8914L0.000225067 6.73128L7.07791 6.73128L9.26504 0Z" fill="#EEA5EA"></path>
+                  </svg></div>
+              </div>
+            </div>
+            <div class="hero-lp_buy-component">
+              {% render 'purchase_module', product: product %}
+            </div>
+          </div>
+          <div class="hero-lp_image-wrapper"><img src="{{ product.metafields.custom.lp_hero_image | image_url: width: 2880 }}" loading="eager" li-object:src="product.metafields.custom.lp_hero_image | image_url: width: 2880" li-object:alt="product.title" alt="{{ product.title }}" class="hero-lp_image"></div> {% schema %} {
+    "tag": "div",
+    "name": "Hero LP",
+    "class": "section_hero-lp",
+    "presets": [
+        {
+            "name": "Hero LP",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "product"
+        ]
+    }
+} {% endschema %}

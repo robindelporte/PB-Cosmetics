@@ -1,0 +1,29 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "hero_carte_cadeau": {
+            "type": "hero_carte_cadeau"
+        },
+        "produits_3": {
+            "type": "produits_3"
+        }
+    },
+    "layout": "theme",
+    "wrapper": "div.main-wrapper",
+    "order": [
+        "navbar",
+        "hero_carte_cadeau",
+        "produits_3"
+    ]
+}

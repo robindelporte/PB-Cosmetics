@@ -1,0 +1,359 @@
+<div class="padding-global">
+          <div class="padding-section-small">
+            <div class="container-large">
+              <div class="contact_component-wrapper">
+                <div class="contact_breadcrumbs">
+                  <a li-object:href="routes.root_url" href="{{ routes.root_url }}" class="hero-product_breadcrumbs-links">Accueil</a>
+                  <div class="hero-product_breadcrumbs-separator w-embed"><svg width="5" height="2" viewbox="0 0 5 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 1.40625V0H4.42969V1.40625H0Z" fill="currentColor"></path>
+                    </svg></div>
+                  <div class="hero-product_breadcrumbs-links">
+                    <div>
+{{ section.settings.text_fil_darianne }}
+</div>
+                  </div>
+                </div>
+                <div class="contact_component">
+                  <div class="contact_heading">
+                    <h1>
+{{ section.settings.text_titre }}
+</h1>
+                  </div>
+                  <div class="contact_form-wrapper">
+                    <div class="contact_form-container">
+                      <div class="contact_form-heading">
+                        <div class="text-size-large text-style-allcaps trim-text">
+{{ section.settings.text_sous_titre }}
+</div>
+                      </div>
+                      <div class="contact_form-block w-form">
+                        {% form 'contact', return_to: '/', class: 'contact_form' %}
+{% for block in section.blocks %}
+    {% if block.type == "champ-texte" %}
+                    <div li-block="Champ texte" class="form_field-wrapper">
+                                    
+                            
+                                    
+                                    <label for="Nom" li-object="block.settings.label" class="form_field-label">{{ block.settings.label }}</label>
+                                    <input class="form_input w-input" maxlength="256" name="contact[{{ block.settings.name }}]" data-name="Nom" placeholder="{{ block.settings.placeholder }}" type="text" id="Nom" {% if block.settings.required %}required{% endif %}>
+                                    
+                          
+                            </div>
+            {% endif %}
+{% endfor %}
+                          {% for block in section.blocks %}
+    {% if block.type == "champ-email" %}
+                    <div li-block="Champ email" class="form_field-wrapper">
+                                    
+                            
+                                    
+                                    <label li-object="block.settings.label" class="form_field-label">{{ block.settings.label }}</label>
+                                    <input class="form_input w-input" maxlength="256" name="contact[email]" data-name="Email" placeholder="{{ block.settings.placeholder }}" type="email" id="Email" {% if block.settings.required %}required{% endif %}>
+                                    
+                          
+                            </div>
+            {% endif %}
+{% endfor %}
+                          {% for block in section.blocks %}
+    {% if block.type == "select-4-options" %}
+                    <div li-block="Select 4 options" class="form_field-wrapper">
+                                    
+                            
+                                    
+                                    <label for="Sujet" li-object="block.settings.label" class="form_field-label">{{ block.settings.label }}</label>
+                                    <select placeholder="Sujet" class="form_input is-select-input" name="contact[{{ block.settings.name }}]" {% if block.settings.required %}required{% endif %}>
+                              {% if block.settings.option_1 %}    <option li-if="block.settings.option_1 != ''" li-object="block.settings.option_1">
+    Option 1    </option>
+{% endif %}
+                              {% if block.settings.option_2 %}    <option li-if="block.settings.option_2 != ''" li-object="block.settings.option_2">
+    Option 2    </option>
+{% endif %}
+                              {% if block.settings.option_3 %}    <option li-if="block.settings.option_3 != ''" li-object="block.settings.option_3">
+    Option 3    </option>
+{% endif %}
+                              {% if block.settings.option_4 %}    <option li-if="block.settings.option_4 != ''" li-object="block.settings.option_4">
+    Option 4    </option>
+{% endif %}
+                              {% if block.settings.option_5 %}    <option li-if="block.settings.option_5 != ''" li-object="block.settings.option_5">
+    Option 5    </option>
+{% endif %}
+                              {% if block.settings.option_6 %}    <option li-if="block.settings.option_6 != ''" li-object="block.settings.option_6">
+    Option 6    </option>
+{% endif %}
+                            </select>
+                                    
+                          
+                            </div>
+            {% endif %}
+{% endfor %}
+                          {% for block in section.blocks %}
+    {% if block.type == "champ-message" %}
+                    <div li-block="Champ message" class="form_field-wrapper">
+                                    
+                            
+                                    
+                                    <label for="Message" li-object="block.settings.label" class="form_field-label">{{ block.settings.label }}</label>
+                                    <textarea class="form_input is-text-area w-input" maxlength="5000" name="contact[body]" data-name="Message" placeholder="{{ block.settings.placeholder }}" id="Message" {% if block.settings.required %}required{% endif %}></textarea>
+                                    
+                          
+                            </div>
+            {% endif %}
+{% endfor %}
+                          {% for block in section.blocks %}
+    {% if block.type == "consentement" %}
+                    <div li-block="Consentement" class="form_field-wrapper">
+                                    <label id="Contact-5-Checkbox" class="w-checkbox form_checkbox" name="contact[checkbox]">
+                              <div class="w-checkbox-input w-checkbox-input--inputType-custom form_checkbox-icon"></div><input type="checkbox" name="Checkbox-2" id="Checkbox-2" data-name="Checkbox 2" required="" style="opacity:0;position:absolute;z-index:-1"><div for="Checkbox-2" class="form_checkbox-label text-size-small trim-text w-form-label"> {{ block.settings.richtext_i_accept_the_terms }} </div>
+                            </label>
+                            </div>
+            {% endif %}
+{% endfor %}
+                          <div class="form_button-wrapper"><input type="submit" data-wait="Envoi en cours" class="button is-alternate w-button" value="SOUMETTRE">
+                            <div class="text-size-small text-color-grey">*Champ obligatoire</div>
+                          </div>
+                        {% endform %}
+                        <div class="w-form-done">
+                          <div>Thank you! Your submission has been received!</div>
+                        </div>
+                        <div class="w-form-fail">
+                          <div>Oops! Something went wrong while submitting the form.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contact_form-image-wrapper">{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'contact_form-image' }}
+{% else %}
+<img src="{{ 'hero-1.avif' | asset_url }}" loading="lazy" alt="" class="contact_form-image">
+{% endif %}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "div",
+    "name": "Contact",
+    "class": "section_contact",
+    "blocks": [
+        {
+            "name": "Champ texte",
+            "type": "champ-texte",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "champ-texte"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label",
+                    "default": "Nom"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Name (contact[xxx])",
+                    "default": "first_name"
+                },
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "Placeholder",
+                    "default": "Votre nom"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Obligatoire",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "name": "Champ email",
+            "type": "champ-email",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "champ-texte"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label",
+                    "default": "Email"
+                },
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "Placeholder",
+                    "default": "Votre adresse email"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Obligatoire",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "name": "Select 4 options",
+            "type": "select-4-options",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "champ-select"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label",
+                    "default": "Sujet"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Name (contact[xxx])",
+                    "default": "sujet"
+                },
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "Texte par d\u00e9faut",
+                    "default": "S\u00e9lectionner votre sujet"
+                },
+                {
+                    "type": "text",
+                    "id": "option_1",
+                    "label": "Option 1",
+                    "default": "Commande"
+                },
+                {
+                    "type": "text",
+                    "id": "option_2",
+                    "label": "Option 2",
+                    "default": "Retour"
+                },
+                {
+                    "type": "text",
+                    "id": "option_3",
+                    "label": "Option 3",
+                    "default": "Produit"
+                },
+                {
+                    "type": "text",
+                    "id": "option_4",
+                    "label": "Option 4",
+                    "default": "R\u00e9clamation"
+                },
+                {
+                    "type": "text",
+                    "id": "option_5",
+                    "label": "Option 5",
+                    "default": "Partenariat"
+                },
+                {
+                    "type": "text",
+                    "id": "option_6",
+                    "label": "Option 6",
+                    "default": "Autre"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Obligatoire",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "name": "Champ message",
+            "type": "champ-message",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "champ-texte"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label",
+                    "default": "Message"
+                },
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "Placeholder",
+                    "default": "Message..."
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Obligatoire",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "name": "Consentement",
+            "type": "consentement",
+            "settings": [
+                {
+                    "id": "richtext_i_accept_the_terms",
+                    "type": "richtext",
+                    "label": "I accept the Terms",
+                    "default": "<p>I accept the Terms<\/p>"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "text_fil_darianne",
+            "type": "text",
+            "label": "Fil d'arianne",
+            "default": "Contact"
+        },
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "Une question ? "
+        },
+        {
+            "id": "text_sous_titre",
+            "type": "text",
+            "label": "Sous-titre",
+            "default": "Nous contacter"
+        },
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Contact",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "champ-texte"
+                },
+                {
+                    "type": "champ-email"
+                },
+                {
+                    "type": "select-4-options"
+                },
+                {
+                    "type": "champ-message"
+                },
+                {
+                    "type": "consentement"
+                }
+            ]
+        }
+    ]
+} {% endschema %}

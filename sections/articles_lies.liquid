@@ -1,0 +1,57 @@
+<div class="padding-global padding-section-medium">
+          <div class="container-large">
+            {% assign current_article = article.title %}
+            <div class="related-articles_component">
+              <h2 class="text-align-center">
+{{ section.settings.text_heading }}
+</h2>
+              <div class="blog_list-wrapper w-dyn-list">
+                <div li-for:inside="article in blog.articles limit: 3" role="list" class="blog_list w-dyn-items">
+        {% for article in blog.articles limit: 3 %}                            
+                  
+                            {% if article.title != current_article %}    <div li-if="article.title != current_article" role="listitem" class="blog_list-item w-dyn-item">
+    <img src="{{ article.image | image_url: width: 450 }}" loading="lazy" li-object:src="article.image | image_url: width: 450" li-object:alt="article.image.alt" alt="{{ article.image.alt }}" class="blog_item-image">
+                    <div class="clickable_wrap">
+                      <a li-object:href="article.url" href="{{ article.url }}" class="clickable_link w-inline-block"><span li-object="article.title" class="sr-only">{{ article.title }}</span></a>
+                    </div>
+                    <div class="blog_item-content">
+                      <div li-object="article.published_at | date: '%d %B %Y'" class="text-size-small text-color-grey-bordure">{{ article.published_at | date: '%d %B %Y' }}</div>
+                      <h2 li-object="article.title" class="blog_item-heading">{{ article.title }}</h2>
+                      <div class="blog_item-content-content">
+                        <div class="blog_item-author">
+                          <div>Par</div>
+                          <div li-object="article.author">{{ article.author }}</div>
+                        </div>
+                        <p li-object="article.excerpt_or_content | strip_html | truncate: 150" class="text-color-grey text-size-tiny-mobile text-style-3lines">{{ article.excerpt_or_content | strip_html | truncate: 150 }}</p>
+                        <a li-object:href="article.url" href="{{ article.url }}" class="blog_item-link">Lire plus</a>
+                      </div>
+                    </div>
+                      </div>
+{% endif %}
+                            
+                
+                    {% endfor %}    </div>
+                <div class="hide w-dyn-empty"></div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Articles Li\u00e9s",
+    "class": "section_related-articles",
+    "settings": [
+        {
+            "id": "text_heading",
+            "type": "text",
+            "label": "Heading",
+            "default": "PLUS D\u2019ARTICLES"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Articles Li\u00e9s",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

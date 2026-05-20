@@ -1,0 +1,43 @@
+{% if collection.metafields.custom.collection_parent != blank %}{% assign famille = collection.metafields.custom.collection_parent.value %}{% else %}{% assign famille = collection %}{% endif %}
+        <section li-for:inside="child_collection in famille.metafields.custom.collections_fille.value" class="section_products">
+        {% for child_collection in famille.metafields.custom.collections_fille.value %}                            
+          
+                            <div class="padding-global">
+            <div class="padding-section-small">
+              <div class="container-large">
+                <div class="products_component-wrapper">
+                  <div class="products_heading">
+                    <h2 li-object="child_collection.title">{{ child_collection.title }}</h2>
+                  </div>
+                  <div li-for:inside="product in child_collection.products" class="product_list">
+        {% for product in child_collection.products %}                            
+                    
+                            {% render 'product_item', product: product %}
+                            
+  
+                    {% endfor %}    </div>
+  <div class="products_link-wrapper">
+    <a li-object:href="child_collection.url" href="{{ child_collection.url }}" class="button is-link w-inline-block">
+      <div>VOIR TOUT</div>
+      <div class="icon-1x1-18 w-embed"><svg width="20" height="15" viewbox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.25 0.530273L18 7.28027M18 7.28027L11.25 14.0303M18 7.28027L0 7.28027" stroke="#151515" stroke-width="1.5"></path>
+        </svg></div>
+    </a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+                            
+  
+                    {% endfor %}    </section> {% schema %} {
+    "tag": "div",
+    "name": "Famille Produit",
+    "presets": [
+        {
+            "name": "Famille Produit",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

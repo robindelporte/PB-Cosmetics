@@ -1,0 +1,32 @@
+<div class="padding-section-xsmall">
+          <div class="container-large">
+            {% if collection.metafields.custom.collection_parent != blank %}{% assign famille = collection.metafields.custom.collection_parent.value %}{% else %}{% assign famille = collection %}{% endif %}{% assign couleur_famille = famille.metafields.custom.couleur_famille %}
+            {% if famille.metafields.custom.collections_fille != blank %}    <div li-if="famille.metafields.custom.collections_fille != blank" class="subcategories_list">
+    
+              <div li-for:inside="child in famille.metafields.custom.collections_fille.value">
+        {% for child in famille.metafields.custom.collections_fille.value %}                            
+                
+                            <a li-object:href="child.url" href="{{ child.url }}" class="{% if child.handle == collection.handle %}is-active{% endif %}">
+                  <div li-object="child.title">{{ child.title }}</div>
+                </a>
+                            
+              
+                    {% endfor %}    </div>
+              <a li-object:href="famille.url" href="{{ famille.url }}" aria-current="page" class="{% if famille.handle == collection.handle %}is-active{% endif %}">
+                <div>Tout voir</div>
+              </a>
+                </div>
+{% endif %}
+          </div>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Sous-Cat\u00e9gories",
+    "class": "section_subcategories",
+    "presets": [
+        {
+            "name": "Sous-Cat\u00e9gories",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

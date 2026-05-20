@@ -1,0 +1,26 @@
+<div class="padding-global">
+          <div class="padding-section-small">
+            <div class="container-large">
+              <div class="products_component-wrapper">
+                <div li-for:inside="product in collection.products" class="product_list">
+        {% for product in collection.products %}                            
+                  
+                            {% render 'product_item', product: product %}
+                            
+  
+                    {% endfor %}    </div>
+  </div>
+  </div>
+  </div>
+  </div> {% schema %} {
+    "tag": "section",
+    "name": "Grille de produits",
+    "class": "section_products",
+    "presets": [
+        {
+            "name": "Grille de produits",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

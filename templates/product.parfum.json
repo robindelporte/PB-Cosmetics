@@ -1,0 +1,133 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "hero_parfum": {
+            "type": "hero_parfum"
+        },
+        "tabs": {
+            "type": "tabs",
+            "blocks": {
+                "tab-composition": {
+                    "type": "tab-composition",
+                    "name": "Tab - Composition"
+                },
+                "tab-conseils": {
+                    "type": "tab-conseils",
+                    "name": "Tab - Conseils"
+                },
+                "tab-description": {
+                    "type": "tab-description",
+                    "name": "Tab - Description"
+                },
+                "tab-pyramide": {
+                    "type": "tab-pyramide",
+                    "name": "Tab - Pyramide"
+                },
+                "faq-description": {
+                    "type": "faq-description",
+                    "name": "FAQ - Description"
+                },
+                "faq-composition": {
+                    "type": "faq-composition",
+                    "name": "FAQ - Composition"
+                },
+                "faq-conseils": {
+                    "type": "faq-conseils",
+                    "name": "FAQ - Conseils"
+                },
+                "faq-pyramide": {
+                    "type": "faq-pyramide",
+                    "name": "FAQ - Pyramide"
+                }
+            },
+            "block_order": [
+                "tab-composition",
+                "tab-conseils",
+                "tab-description",
+                "tab-pyramide",
+                "faq-description",
+                "faq-composition",
+                "faq-conseils",
+                "faq-pyramide"
+            ]
+        },
+        "recharge": {
+            "type": "recharge"
+        },
+        "produits_3": {
+            "type": "produits_3"
+        },
+        "hero_produit_b2b": {
+            "type": "hero_produit_b2b"
+        },
+        "tabs_b2b": {
+            "type": "tabs_b2b",
+            "blocks": {
+                "tab-composition": {
+                    "type": "tab-composition",
+                    "name": "Tab - Composition"
+                },
+                "tab-conseils": {
+                    "type": "tab-conseils",
+                    "name": "Tab - Conseils"
+                },
+                "tab-description": {
+                    "type": "tab-description",
+                    "name": "Tab - Description"
+                },
+                "tab-pyramide": {
+                    "type": "tab-pyramide",
+                    "name": "Tab - Pyramide"
+                },
+                "faq-description": {
+                    "type": "faq-description",
+                    "name": "FAQ - Description"
+                },
+                "faq-composition": {
+                    "type": "faq-composition",
+                    "name": "FAQ - Composition"
+                },
+                "faq-conseils": {
+                    "type": "faq-conseils",
+                    "name": "FAQ - Conseils"
+                },
+                "faq-pyramide": {
+                    "type": "faq-pyramide",
+                    "name": "FAQ - Pyramide"
+                }
+            },
+            "block_order": [
+                "tab-composition",
+                "tab-conseils",
+                "tab-description",
+                "tab-pyramide",
+                "faq-description",
+                "faq-composition",
+                "faq-conseils",
+                "faq-pyramide"
+            ]
+        }
+    },
+    "layout": "theme",
+    "wrapper": "div.main-wrapper",
+    "order": [
+        "navbar",
+        "hero_parfum",
+        "tabs",
+        "recharge",
+        "produits_3",
+        "hero_produit_b2b",
+        "tabs_b2b"
+    ]
+}

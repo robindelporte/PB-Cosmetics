@@ -1,0 +1,37 @@
+{% assign mv = product.metafields.custom.multiple_de_vente | default: 1 %}
+                                  <div x-data="{ min: {{ product.selected_or_first_available_variant.quantity_rule.min | default: 1 }}, max: {{ product.selected_or_first_available_variant.quantity_rule.max | default: 9999 }}, step: {{ product.selected_or_first_available_variant.quantity_rule.increment | default: 1 }}, quantity: {{ product.selected_or_first_available_variant.quantity_rule.min | default: 1 }} }" class="product-pro_item">
+                                    <div class="product-pro_content">
+                                      <div class="product-pro_image-wrapper"><img class="product-pro_image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | default: product.title }}" sizes="100vw" li-object:src="product.featured_image | image_url: width: 400" loading="lazy" li-object:alt="product.featured_image.alt | default: product.title" srcset="{{ 'parfum-3-p-500.avif' | asset_url }} 500w, {{ 'parfum-3-p-800.avif' | asset_url }} 800w, {{ 'parfum-3.avif' | asset_url }} 1468w"></div>
+                                      <div class="product-pro_infos">
+                                        <div class="product-pro_heading">
+                                          <div li-object="product.title" class="text-style-allcaps">{{ product.title }}</div>
+                                          <div li-object="product.selected_or_first_available_variant.sku" class="text-size-tiny text-style-allcaps text-color-grey">{{ product.selected_or_first_available_variant.sku }}</div>
+                                          {% if product.selected_or_first_available_variant.title %}    <div li-if="product.has_only_default_variant != true" li-object="product.selected_or_first_available_variant.title" class="text-size-tiny text-style-allcaps">
+    Variante    </div>
+{% endif %}
+                                        </div>
+                                        <div class="product-pro_quantity">
+                                          <div class="mini-cart_item-quantity"><button type="button" x-on:click="quantity = quantity > min ? quantity - step : min" class="mini-cart_item-quantity-adjust">
+                                              <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewbox="0 0 10 11" fill="none">
+                                                  <path d="M0.0654297 5.49414H9.5752" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                </svg></div>
+                                            </button><input type="text" name="updates[]" x-model="quantity" li-element="add-to-cart-quantity" class="mini-cart_item-quantity-adjust is-input" value="1"><button aria-label="{{ aria_label_increase_product_quantity }}" x-on:click="quantity = quantity + step" class="mini-cart_item-quantity-adjust">
+                                              <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewbox="0 0 11 11" fill="none">
+                                                  <path d="M0.555664 5.49414H10.0654" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                  <path d="M5.31055 10.249L5.31055 0.739258" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                </svg></div>
+                                            </button></div>
+                                          <div x-text="'produit vendu par ' + step" class="text-size-small text-color-grey">produit vendu par 6</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="product-pro_buy">
+                                      <div class="product-pro_buy-price">
+                                        <div x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')" li-js-price="product.selected_or_first_available_variant.price" class="text-size-medium">17HT€</div>
+                                        <div x-text="'Prix de vente conseillé : ' + LiquifyHelper.moneyFormat({{ product.metafields.custom.pvc.value }}) + ' TTC'" class="text-size-small text-color-grey">Prix de ventre conseillé : 12€ TTC</div>
+                                      </div>
+                                      <input type="hidden" name="properties[_sous_titre]" value="product.metafields.custom.texte_sous_titre"><input type="hidden" name="properties[_multiple]" value="product.selected_or_first_available_variant.quantity_rule.increment | default: 1"><input type="hidden" name="properties[_couleur_code]" value="product.selected_or_first_available_variant.metafields.custom.couleur_code"><button type="button" li-element="add-to-cart" class="button is-search" @click="addToCart($event, true)" :disabled="!addToCartButton">
+                                          <div class="text-size-small">AJOUTER AU PANIER</div>
+                                        </button>
+                                    </div>
+                                  </div>

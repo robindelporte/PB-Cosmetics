@@ -1,0 +1,94 @@
+<div class="padding-global">
+            <div class="padding-section-small">
+              <div class="container-large">
+                <div class="swiper_component is-lp">
+                  <div class="swiper is-lp">
+                    <div role="list" class="swiper-wrapper is-lp">
+                      {% for block in section.blocks %}
+    {% if block.type == "slide" %}
+                    <div li-block="Slide" class="swiper-slide is-lp">
+                                    {% if block.settings.image_image %}
+{{ block.settings.image_image | image_url: width: 1000 | image_tag: class: 'slider_image', width: '1440', sizes: '(max-width: 1439px) 100vw, 1440px', loading: 'lazy' }}
+{% else %}
+<img class="slider_image" src="{{ 'hero-1.avif' | asset_url }}" width="1440" alt="" sizes="(max-width: 1439px) 100vw, 1440px" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
+{% endif %}
+                            </div>
+            {% endif %}
+{% endfor %}
+                    </div>
+                  </div>
+                  <div class="hero_swiper-pagination">
+                    <div class="padding-global">
+                      <div class="container-large">
+                        <div class="hero_swiper-pagination-holder">
+                          <div class="swiper_pagination is-lp is-mixed">
+                            <div class="swiper_bullet is-lp">01</div>
+                            <div class="swiper_bullet is-lp is-active">01</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hide w-embed w-script">
+                  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      new Swiper('.swiper.is-lp', {
+        spaceBetween: 0,
+        speed: 800,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        pagination: {
+          el: '.hero_swiper-pagination-holder',
+          clickable: true,
+          bulletClass: 'swiper_bullet is-lp',
+          bulletActiveClass: 'is-active',
+          renderBullet: function (index, className) {
+            return '<button class="' + className + '">' + String(index + 1).padStart(2, '0') + '';
+          }
+        },
+        slideActiveClass: 'is-active',
+        a11y: { slideRole: 'listitem' },
+        on: {
+          slideChange: function() {
+            this.pagination.update();
+          }
+        }
+      });
+    });
+  </script>
+                </div>
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "div",
+    "name": "Slider - Pleine page",
+    "class": "section_slider",
+    "blocks": [
+        {
+            "name": "Slide",
+            "type": "slide",
+            "settings": [
+                {
+                    "id": "image_image",
+                    "type": "image_picker",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Slider - Pleine page",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "slide"
+                }
+            ]
+        }
+    ]
+} {% endschema %}

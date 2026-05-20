@@ -1,0 +1,29 @@
+{
+    "sections": {
+        "navbar": {
+            "type": "navbar",
+            "blocks": {
+                "annonce": {
+                    "type": "annonce",
+                    "name": "Annonce"
+                }
+            },
+            "block_order": [
+                "annonce"
+            ]
+        },
+        "hero_plein": {
+            "type": "hero_plein"
+        },
+        "point_de_vente": {
+            "type": "point_de_vente"
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "navbar",
+        "hero_plein",
+        "point_de_vente"
+    ]
+}

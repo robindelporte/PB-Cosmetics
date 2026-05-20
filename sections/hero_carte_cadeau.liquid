@@ -1,0 +1,150 @@
+<div class="container-1710">
+          <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
+<div li-element="product-variant-container" class="hero-product_component" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
+            <div li-render-custom="target" class="hero-product_image-wrapper"><img src="{{ product.featured_image | image_url: width: 1000 }}" loading="lazy" li-object:src="product.featured_image | image_url: width: 1000" li-object:alt="product.title" alt="{{ product.title }}" class="hero-product_image"></div>
+            <div class="hero-product_details is-carte-cadeau">
+              <div class="hero-product_heading">
+                <div class="hero-product_breadcrumbs">
+                  <a li-object:href="routes.root_url" href="{{ routes.root_url }}" class="hero-product_breadcrumbs-links">Accueil</a>
+                  <div class="hero-product_breadcrumbs-separator w-embed"><svg width="5" height="2" viewbox="0 0 5 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 1.40625V0H4.42969V1.40625H0Z" fill="currentColor"></path>
+                    </svg></div>
+                  <div class="hero-product_breadcrumbs-links">
+                    <div li-object="product.title">{{ product.title }}</div>
+                  </div>
+                </div>
+                <h1 li-object="product.title" class="hero-product_h1">{{ product.title }}</h1>
+                <div class="hero-product_stars-wrapper">
+                  <div class="icon-1x1-20 w-embed"><svg width="19" height="18" viewbox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.26504 0L11.4522 6.73128L18.5299 6.73128L12.8039 10.8914L14.991 17.6227L9.26504 13.4626L3.53907 17.6227L5.72619 10.8914L0.000225067 6.73128L7.07791 6.73128L9.26504 0Z" fill="#EEA5EA"></path>
+                    </svg></div>
+                </div>
+              </div>
+              <div class="hero-product_description-wrapper">
+                <div li-object="product.description" class="hero-product_description w-richtext">{{ product.description }}</div>
+              </div>
+              <div class="product-hero_form-block is-gift-card w-form">
+                {% form 'product', product, class: 'product-hero_form is-gift-card' %}
+<div class="product-hero_reassurance-wrapper">
+                    <div class="swiper is-reassurance">
+                      <div class="swiper-wrapper is-reassurance">
+                        <div class="swiper-slide is-reassurance">
+                          <div class="gift-card_reassurance">
+                            <div class="text-size-tiny text-weight-bold text-style-allcaps">
+{{ section.settings.text_reassurance_1_titre }}
+</div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide is-reassurance">
+                          <div class="gift-card_reassurance">
+                            <div class="text-size-tiny text-weight-bold text-style-allcaps">
+{{ section.settings.text_reassurance_2_titre }}
+</div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide is-reassurance">
+                          <div class="gift-card_reassurance">
+                            <div class="text-size-tiny text-weight-bold text-style-allcaps">
+{{ section.settings.text_reassurance_3_titre }}
+</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-pagination">
+                      <div class="swiper-dots is-active"></div>
+                      <div class="swiper-dots"></div>
+                    </div>
+                    <div class="hide w-embed w-script">
+                      <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const reassuranceEl = document.querySelector('.swiper.is-reassurance');
+  if (reassuranceEl && window.innerWidth <= 767) {
+    new Swiper(reassuranceEl, {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      initialSlide: 0,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.product-hero_reassurance-wrapper .swiper-pagination',
+        clickable: true,
+        bulletClass: 'swiper-dots',
+        bulletActiveClass: 'is-active',
+      },
+    });
+  }
+});
+</script>
+                    </div>
+                  </div>
+                  {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="gift-card_radio-wrapper">
+    
+                    <div li-for:inside="option in product.options_with_values" class="gift-card_radio-list">
+        {% for option in product.options_with_values %}                            {% for value in option.values %}    <label li-for="value in option.values" class="gift-card_radio w-radio">
+                                    
+                        
+                            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom gift-card_radio-button w-radio-input"></div>
+                            <input li-render-custom-trigger="input" name="{{ option.name }}" data-name="Radio" type="radio" id="radio" li-render-custom-value="{{ product.url }}?section_id={{ section.id }}&variant={{ value.variant.id }}" style="opacity:0;position:absolute;z-index:-1" value="Radio" {% if value.selected %}checked{% endif %}>
+                            <span li-object="value" class="gift-card_radio-label w-form-label" for="radio">{{ value }}</span>
+                            
+                      
+                        </label>
+{% endfor %}
+                    {% endfor %}    </div>
+                      </div>
+{% endif %}
+                  <div class="product-hero_atc-wrapper is-gift-card">
+                    <div class="product-hero_atc">
+                      <div class="button-group is-full-width"><button li-element="add-to-cart" class="button is-add-to-cart" @click="addToCart($event, true)" :disabled="!addToCartButton">
+                          <div class="add-to-cart-text">Ajouter au panier</div>
+                          <div class="button_overlay"></div>
+                        </button>
+                        <template x-if="!selected_or_first_available_variant.available">
+            <div li-js-if="!selected_or_first_available_variant.available">
+        <input type="submit" data-wait="Please wait..." class="button is-out-of-stock w-button" value="Produit indisponible">        </div>
+    </template>
+                      </div>
+                    </div>
+                  </div>
+                {% endform %}
+                <div class="hide w-form-done"></div>
+                <div class="hide w-form-fail"></div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "div",
+    "name": "Hero Carte Cadeau",
+    "class": "section_hero-product",
+    "settings": [
+        {
+            "id": "text_reassurance_1_titre",
+            "type": "text",
+            "label": "Reassurance 1 - Titre",
+            "default": "LIVRAISON OFFERTE"
+        },
+        {
+            "id": "text_reassurance_2_titre",
+            "type": "text",
+            "label": "Reassurance 2 - Titre",
+            "default": "PAIEMENT S\u00c9CURIS\u00c9"
+        },
+        {
+            "id": "text_reassurance_3_titre",
+            "type": "text",
+            "label": "Reassurance 3 - Titre",
+            "default": "EXP\u00c9DITION RAPIDE"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Hero Carte Cadeau",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

@@ -1,0 +1,80 @@
+<div class="padding-global"><div class="padding-section-small"><div class="container-large"><div class="familles_component-wrapper"><div class="familles_heading"><h2 class="heading-style-h1">NOS CATÉGORIES</h2></div><div role="list" class="familles_list">{% for block in section.blocks %}
+    {% if block.type == "famille" %}
+                    <div li-block="Famille" class="famille_item">
+                                    {% if block.settings.image_image %}
+{{ block.settings.image_image | image_url: width: 1000 | image_tag: width: '280', loading: 'lazy', class: 'famille_item-image' }}
+{% else %}
+<img width="280" alt="" src="{{ 'teint-famille.avif' | asset_url }}" loading="lazy" class="famille_item-image">
+{% endif %}
+                                    <div class="famille_item-name-wrapper">{% if block.settings.image_svg_fond %}
+{{ block.settings.image_svg_fond | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'famille_item-name-background' }}
+{% else %}
+<img loading="lazy" alt="" src="{{ 'teint-asset.svg' | asset_url }}" class="famille_item-name-background">
+{% endif %}<div class="famille_item-name-text">
+{{ block.settings.text_nom }}
+</div></div>
+                                    <a href="{{ block.settings.url_lien }}" class="famille_item-link w-inline-block"> </a>
+                            </div>
+            {% endif %}
+{% endfor %}</div></div></div></div></div> {% schema %} {
+    "tag": "section",
+    "name": "Familles",
+    "class": "section_familles",
+    "blocks": [
+        {
+            "name": "Famille",
+            "type": "famille",
+            "settings": [
+                {
+                    "id": "image_image",
+                    "type": "image_picker",
+                    "label": "Image"
+                },
+                {
+                    "id": "image_svg_fond",
+                    "type": "image_picker",
+                    "label": "SVG fond"
+                },
+                {
+                    "id": "text_nom",
+                    "type": "text",
+                    "label": "Nom",
+                    "default": "Teint"
+                },
+                {
+                    "id": "url_lien",
+                    "type": "url",
+                    "label": "Lien"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "collection_list",
+            "id": "collection_list",
+            "label": "Collections",
+            "limit": 4
+        },
+        {
+            "type": "range",
+            "id": "collection_limit",
+            "min": 1,
+            "max": 50,
+            "step": 1,
+            "label": "Collections: Limit",
+            "default": 4
+        }
+    ],
+    "presets": [
+        {
+            "name": "Familles",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "famille"
+                }
+            ]
+        }
+    ]
+} {% endschema %}

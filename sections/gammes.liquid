@@ -1,0 +1,77 @@
+<div class="padding-global"><div class="padding-section-medium"><div class="container-large"><div class="gamme_component"><div class="gamme_heading"><h2>
+{{ section.settings.text_titre }}
+</h2><p class="text-color-grey">
+{{ section.settings.text_description }}
+</p></div><div li-content-for-blocks="" class="gamme_list">
+{% for block in section.blocks %}
+{% case block.type %}
+{% when '@app' %}
+{% render block %}
+{% when 'gamme' %}
+            <div li-block="Gamme" class="gamme_item">
+                    {% if block.settings.image_image %}
+{{ block.settings.image_image | image_url: width: 1000 | image_tag: width: '421.5', loading: 'lazy', class: 'gamme_item-image' }}
+{% else %}
+<img width="421.5" alt="" src="{{ 'gamme_image.avif' | asset_url }}" loading="lazy" class="gamme_item-image">
+{% endif %}
+                    <a href="{{ block.settings.url_lien }}" class="gamme_item-heading w-inline-block"> <h3 class="gamme_h2">{{ block.settings.text_nom }}</h3> </a>
+                </div>{% endcase %}
+{% endfor %}
+
+    </div></div></div></div></div> {% schema %} {
+    "tag": "section",
+    "name": "Gammes",
+    "class": "section_gamme",
+    "blocks": [
+        {
+            "name": "Gamme",
+            "type": "gamme",
+            "settings": [
+                {
+                    "id": "image_image",
+                    "type": "image_picker",
+                    "label": "Image"
+                },
+                {
+                    "id": "url_lien",
+                    "type": "url",
+                    "label": "Lien"
+                },
+                {
+                    "id": "text_nom",
+                    "type": "text",
+                    "label": "Nom",
+                    "default": "Bell\u2019\u00e2nesse"
+                }
+            ]
+        },
+        {
+            "type": "@app"
+        }
+    ],
+    "settings": [
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "NOS GAMMES \u00c0 NE PAS MANQUER"
+        },
+        {
+            "id": "text_description",
+            "type": "text",
+            "label": "Description",
+            "default": "D\u00e9couvrez notre nouveau bundle beaut\u00e9 : un duo pens\u00e9 pour illuminer votre routine. Un m\u00e9lange malin entre \u00e9clat, fra\u00eecheur et plaisir d\u2019utilisation \u00a0le tout r\u00e9uni dans une s\u00e9lection simple, efficace, et pr\u00eate \u00e0 sublimer vos journ\u00e9es. Parce qu\u2019un bon rituel, \u00e7a ne s\u2019improvise pas\u2026 mais \u00e7a se partage avec style"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Gammes",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "gamme"
+                }
+            ]
+        }
+    ]
+} {% endschema %}
