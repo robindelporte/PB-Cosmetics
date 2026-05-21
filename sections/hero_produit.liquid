@@ -20,32 +20,7 @@
                   </div>
                   <div class="swiper_controls is-product-gallery"><button id="" class="swiper-button-prev is-product-gallery"><img src="{{ 'swiper-arrow.svg' | asset_url }}" loading="lazy" alt="" class="swiper-button-icon"></button><button id="" class="swiper-button-next is-product-gallery"><img src="{{ 'swiper-arrow-2.svg' | asset_url }}" loading="lazy" alt="" class="swiper-button-icon"></button></div>
                 </div>
-                <div class="hide w-embed w-script">
-                  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const swiperEl = document.querySelector('.swiper.is-product-gallery');
-  const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length;
-  const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery');
-  if (slidesCount > 4) {
-    paginationEl.style.gridColumnGap = '0.5rem';
-  }
-  const productGallerySwiper = new Swiper('.swiper.is-product-gallery', {
-    slidesPerView: 1,
-    spaceBetween: 0,
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next.is-product-gallery',
-      prevEl: '.swiper-button-prev.is-product-gallery',
-      disabledClass: 'is-disabled',
-    },
-    pagination: {
-      el: '.swiper_pagination.is-product-gallery',
-      clickable: true,
-      bulletClass: 'swiper_bullet is-product-gallery',
-      bulletActiveClass: 'is-active',
-      type: slidesCount > 4 ? 'fraction' : 'bullets',
-      renderBullet: function (index, className) {
-        return '<div class="' + className + '">' + String(index + 1).padStart(2, '0') + '</script></div>';
+                <script> document.addEventListener('DOMContentLoaded', function(){const swiperEl = document.querySelector('.swiper.is-product-gallery'); const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length; const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery'); if (slidesCount > 4){paginationEl.style.gridColumnGap = '0.5rem';}const productGallerySwiper = new Swiper('.swiper.is-product-gallery',{slidesPerView: 1, spaceBetween: 0, loop: true, navigation:{nextEl: '.swiper-button-next.is-product-gallery', prevEl: '.swiper-button-prev.is-product-gallery', disabledClass: 'is-disabled',}, pagination:{el: '.swiper_pagination.is-product-gallery', clickable: true, bulletClass: 'swiper_bullet is-product-gallery', bulletActiveClass: 'is-active', type: slidesCount > 4 ? 'fraction' : 'bullets', renderBullet: function (index, className){return '<div class="' + className + '">' + String(index + 1).padStart(2, '0') + '</script>';
       },
       renderFraction: function (currentClass, totalClass) {
         return '<span class="' + currentClass + '"></span> / <span class="' + totalClass + '"></span>';
@@ -297,31 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="swiper-dots is-active"></div>
                             <div class="swiper-dots"></div>
                           </div>
-                          <div class="hide w-embed w-script">
-                            <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const reassuranceEl = document.querySelector('.swiper.is-reassurance');
-  if (reassuranceEl && window.innerWidth <= 767) {
-    new Swiper(reassuranceEl, {
-      slidesPerView: 1,
-      spaceBetween: 0,
-      loop: true,
-      initialSlide: 0,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.product-hero_reassurance-wrapper .swiper-pagination',
-        clickable: true,
-        bulletClass: 'swiper-dots',
-        bulletActiveClass: 'is-active',
-      },
-    });
-  }
-});
-</script>
-                          </div>
+                          <script> document.addEventListener('DOMContentLoaded', function(){const reassuranceEl = document.querySelector('.swiper.is-reassurance'); if (reassuranceEl && window.innerWidth <= 767){new Swiper(reassuranceEl,{slidesPerView: 1, spaceBetween: 0, loop: true, initialSlide: 0, autoplay:{delay: 3000, disableOnInteraction: false,}, pagination:{el: '.product-hero_reassurance-wrapper .swiper-pagination', clickable: true, bulletClass: 'swiper-dots', bulletActiveClass: 'is-active',},});}}); </script>
                         </div>
                       </div>
                     {% endform %}
@@ -334,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
 {{ section.settings.text_upsell_titre }}
 </div>
                   <div class="hero-product_upsell">
-                    <div class="hero-product_upsell-image-wrapper"><img class="hero-product_upsell-image" src="{{ product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500 }}" alt="" sizes="(max-width: 1728px) 100vw, 1728px" li-object:src="product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w"></div>
+                    <div class="hero-product_upsell-image-wrapper"><img class="hero-product_upsell-image" src="{{ product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w"></div>
                     {% if product.metafields.custom.produit_complementaire %}    <div li-if="product.metafields.custom.produit_complementaire" class="hero-product_upsell-content-wrapper">
     
                       <div class="hero-product_upsell-heading">
