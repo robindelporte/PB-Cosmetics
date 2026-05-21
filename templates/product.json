@@ -9,23 +9,18 @@
  */
 {
   "sections": {
-    "navbar": {
-      "type": "navbar",
-      "blocks": {
-        "annonce": {
-          "type": "annonce",
-          "name": "Annonce",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "annonce"
-      ],
-      "settings": {}
-    },
     "hero_produit": {
       "type": "hero_produit",
-      "settings": {}
+      "settings": {
+        "text_reassurance_1_titre": "LIVRAISON OFFERTE",
+        "text_reassurance_1_sous_titre": "dès 25€ (En relay)",
+        "text_reassurance_2_titre": "PAIEMENT SÉCURISÉ",
+        "text_reassurance_2_sous_titre": "paiement vérifié",
+        "text_reassurance_3_titre": "EXPÉDITION RAPIDE",
+        "text_reassurance_3_sous_titre": "sous 1 à 3 jours ouvré",
+        "text_upsell_titre": "Et si vous aviez besoin d’un pack ?",
+        "text_upsell_bouton": "Découvrir"
+      }
     },
     "tabs": {
       "type": "tabs",
@@ -33,42 +28,58 @@
         "tab-composition": {
           "type": "tab-composition",
           "name": "Tab - Composition",
-          "settings": {}
+          "settings": {
+            "text_titre": "Composition"
+          }
         },
         "tab-conseils": {
           "type": "tab-conseils",
           "name": "Tab - Conseils",
-          "settings": {}
+          "settings": {
+            "text_titre": "Conseils d'utilisation"
+          }
         },
         "tab-description": {
           "type": "tab-description",
           "name": "Tab - Description",
-          "settings": {}
+          "settings": {
+            "text_titre": "Description"
+          }
         },
         "tab-pyramide": {
           "type": "tab-pyramide",
           "name": "Tab - Pyramide",
-          "settings": {}
+          "settings": {
+            "text_titre": "Pyramide olfactive"
+          }
         },
         "faq-description": {
           "type": "faq-description",
           "name": "FAQ - Description",
-          "settings": {}
+          "settings": {
+            "text_titre": "Description"
+          }
         },
         "faq-composition": {
           "type": "faq-composition",
           "name": "FAQ - Composition",
-          "settings": {}
+          "settings": {
+            "text_titre": "Composition"
+          }
         },
         "faq-conseils": {
           "type": "faq-conseils",
           "name": "FAQ - Conseils",
-          "settings": {}
+          "settings": {
+            "text_titre": "Conseils d'utilisation"
+          }
         },
         "faq-pyramide": {
           "type": "faq-pyramide",
           "name": "FAQ - Pyramide",
-          "settings": {}
+          "settings": {
+            "text_titre": "Pyramide olfactive"
+          }
         }
       },
       "block_order": [
@@ -85,15 +96,32 @@
     },
     "section_pleine_large": {
       "type": "section_pleine_large",
-      "settings": {}
+      "settings": {
+        "text_tagline": "-15% sur tes produits",
+        "text_titre": "BUNDLE",
+        "text_paragraphe": "Découvrez notre nouveau bundle beauté : un duo pensé pour illuminer votre routine. Un mélange malin entre éclat, fraîcheur et plaisir d’utilisation  le tout réuni dans une sélection simple, efficace, et prête à sublimer vos journées. Parce qu’un bon rituel, ça ne s’improvise pas… mais ça se partage avec style",
+        "url_lien": "",
+        "text_texte": "AJOUTER AU PANIER"
+      }
     },
     "produits_recommandes": {
       "type": "produits_recommandes",
-      "settings": {}
+      "settings": {
+        "text_titre": "MEILLEURES VENTES",
+        "url_lien": "",
+        "text_texte": "TOUS NOS BESTSELLER"
+      }
     },
     "hero_produit_b2b": {
       "type": "hero_produit_b2b",
-      "settings": {}
+      "settings": {
+        "text_reassurance_1_titre": "LIVRAISON OFFERTE",
+        "text_reassurance_1_sous_titre": "dès 25€ (En relay)",
+        "text_reassurance_2_titre": "PAIEMENT SÉCURISÉ",
+        "text_reassurance_2_sous_titre": "paiement vérifié",
+        "text_reassurance_3_titre": "EXPÉDITION RAPIDE",
+        "text_reassurance_3_sous_titre": "sous 1 à 3 jours ouvré"
+      }
     },
     "tabs_b2b": {
       "type": "tabs_b2b",
@@ -101,42 +129,58 @@
         "tab-composition": {
           "type": "tab-composition",
           "name": "Tab - Composition",
-          "settings": {}
+          "settings": {
+            "text_titre": "Composition"
+          }
         },
         "tab-conseils": {
           "type": "tab-conseils",
           "name": "Tab - Conseils",
-          "settings": {}
+          "settings": {
+            "text_titre": "Conseils d'utilisation"
+          }
         },
         "tab-description": {
           "type": "tab-description",
           "name": "Tab - Description",
-          "settings": {}
+          "settings": {
+            "text_titre": "Description"
+          }
         },
         "tab-pyramide": {
           "type": "tab-pyramide",
           "name": "Tab - Pyramide",
-          "settings": {}
+          "settings": {
+            "text_titre": "Pyramide olfactive"
+          }
         },
         "faq-description": {
           "type": "faq-description",
           "name": "FAQ - Description",
-          "settings": {}
+          "settings": {
+            "text_titre": "Description"
+          }
         },
         "faq-composition": {
           "type": "faq-composition",
           "name": "FAQ - Composition",
-          "settings": {}
+          "settings": {
+            "text_titre": "Composition"
+          }
         },
         "faq-conseils": {
           "type": "faq-conseils",
           "name": "FAQ - Conseils",
-          "settings": {}
+          "settings": {
+            "text_titre": "Conseils d'utilisation"
+          }
         },
         "faq-pyramide": {
           "type": "faq-pyramide",
           "name": "FAQ - Pyramide",
-          "settings": {}
+          "settings": {
+            "text_titre": "Pyramide olfactive"
+          }
         }
       },
       "block_order": [
@@ -155,7 +199,6 @@
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
-    "navbar",
     "hero_produit",
     "tabs",
     "section_pleine_large",
