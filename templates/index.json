@@ -41,6 +41,13 @@
     "familles": {
       "type": "familles",
       "blocks": {
+        "famille_gUDAfM": {
+          "type": "famille",
+          "settings": {
+            "text_nom": "Teint",
+            "url_lien": "shopify://collections/base-fonds-de-teint"
+          }
+        },
         "famille": {
           "type": "famille",
           "name": "Famille",
@@ -51,10 +58,13 @@
         }
       },
       "block_order": [
+        "famille_gUDAfM",
         "famille"
       ],
       "settings": {
-        "collection_list": [],
+        "collection_list": [
+          "base-fonds-de-teint"
+        ],
         "collection_limit": 4
       }
     },
