@@ -32,9 +32,9 @@
       "type": "produits_4",
       "settings": {
         "text_titre": "MEILLEURES VENTES",
-        "url_lien": "",
+        "url_lien": "shopify://collections/base-fonds-de-teint",
         "text_texte": "TOUS NOS BESTSELLER",
-        "collection": "",
+        "collection": "base-fonds-de-teint",
         "limit": 4
       }
     },

@@ -24,74 +24,6 @@
     },
     "tabs": {
       "type": "tabs",
-      "blocks": {
-        "tab-composition": {
-          "type": "tab-composition",
-          "name": "Tab - Composition",
-          "settings": {
-            "text_titre": "Composition"
-          }
-        },
-        "tab-conseils": {
-          "type": "tab-conseils",
-          "name": "Tab - Conseils",
-          "settings": {
-            "text_titre": "Conseils d'utilisation"
-          }
-        },
-        "tab-description": {
-          "type": "tab-description",
-          "name": "Tab - Description",
-          "settings": {
-            "text_titre": "Description"
-          }
-        },
-        "tab-pyramide": {
-          "type": "tab-pyramide",
-          "name": "Tab - Pyramide",
-          "settings": {
-            "text_titre": "Pyramide olfactive"
-          }
-        },
-        "faq-description": {
-          "type": "faq-description",
-          "name": "FAQ - Description",
-          "settings": {
-            "text_titre": "Description"
-          }
-        },
-        "faq-composition": {
-          "type": "faq-composition",
-          "name": "FAQ - Composition",
-          "settings": {
-            "text_titre": "Composition"
-          }
-        },
-        "faq-conseils": {
-          "type": "faq-conseils",
-          "name": "FAQ - Conseils",
-          "settings": {
-            "text_titre": "Conseils d'utilisation"
-          }
-        },
-        "faq-pyramide": {
-          "type": "faq-pyramide",
-          "name": "FAQ - Pyramide",
-          "settings": {
-            "text_titre": "Pyramide olfactive"
-          }
-        }
-      },
-      "block_order": [
-        "tab-composition",
-        "tab-conseils",
-        "tab-description",
-        "tab-pyramide",
-        "faq-description",
-        "faq-composition",
-        "faq-conseils",
-        "faq-pyramide"
-      ],
       "settings": {}
     },
     "section_pleine_large": {
@@ -111,89 +43,6 @@
         "url_lien": "",
         "text_texte": "TOUS NOS BESTSELLER"
       }
-    },
-    "hero_produit_b2b": {
-      "type": "hero_produit_b2b",
-      "settings": {
-        "text_reassurance_1_titre": "LIVRAISON OFFERTE",
-        "text_reassurance_1_sous_titre": "dès 25€ (En relay)",
-        "text_reassurance_2_titre": "PAIEMENT SÉCURISÉ",
-        "text_reassurance_2_sous_titre": "paiement vérifié",
-        "text_reassurance_3_titre": "EXPÉDITION RAPIDE",
-        "text_reassurance_3_sous_titre": "sous 1 à 3 jours ouvré"
-      }
-    },
-    "tabs_b2b": {
-      "type": "tabs_b2b",
-      "blocks": {
-        "tab-composition": {
-          "type": "tab-composition",
-          "name": "Tab - Composition",
-          "settings": {
-            "text_titre": "Composition"
-          }
-        },
-        "tab-conseils": {
-          "type": "tab-conseils",
-          "name": "Tab - Conseils",
-          "settings": {
-            "text_titre": "Conseils d'utilisation"
-          }
-        },
-        "tab-description": {
-          "type": "tab-description",
-          "name": "Tab - Description",
-          "settings": {
-            "text_titre": "Description"
-          }
-        },
-        "tab-pyramide": {
-          "type": "tab-pyramide",
-          "name": "Tab - Pyramide",
-          "settings": {
-            "text_titre": "Pyramide olfactive"
-          }
-        },
-        "faq-description": {
-          "type": "faq-description",
-          "name": "FAQ - Description",
-          "settings": {
-            "text_titre": "Description"
-          }
-        },
-        "faq-composition": {
-          "type": "faq-composition",
-          "name": "FAQ - Composition",
-          "settings": {
-            "text_titre": "Composition"
-          }
-        },
-        "faq-conseils": {
-          "type": "faq-conseils",
-          "name": "FAQ - Conseils",
-          "settings": {
-            "text_titre": "Conseils d'utilisation"
-          }
-        },
-        "faq-pyramide": {
-          "type": "faq-pyramide",
-          "name": "FAQ - Pyramide",
-          "settings": {
-            "text_titre": "Pyramide olfactive"
-          }
-        }
-      },
-      "block_order": [
-        "tab-composition",
-        "tab-conseils",
-        "tab-description",
-        "tab-pyramide",
-        "faq-description",
-        "faq-composition",
-        "faq-conseils",
-        "faq-pyramide"
-      ],
-      "settings": {}
     }
   },
   "layout": "theme",
@@ -202,8 +51,6 @@
     "hero_produit",
     "tabs",
     "section_pleine_large",
-    "produits_recommandes",
-    "hero_produit_b2b",
-    "tabs_b2b"
+    "produits_recommandes"
   ]
 }
