@@ -20,16 +20,7 @@
                   </div>
                   <div class="swiper_controls is-product-gallery"><button id="" class="swiper-button-prev is-product-gallery"><img src="{{ 'swiper-arrow.svg' | asset_url }}" loading="lazy" alt="" class="swiper-button-icon"></button><button id="" class="swiper-button-next is-product-gallery"><img src="{{ 'swiper-arrow-2.svg' | asset_url }}" loading="lazy" alt="" class="swiper-button-icon"></button></div>
                 </div>
-                <script> document.addEventListener('DOMContentLoaded', function(){const swiperEl = document.querySelector('.swiper.is-product-gallery'); const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length; const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery'); if (slidesCount > 4){paginationEl.style.gridColumnGap = '0.5rem';}const productGallerySwiper = new Swiper('.swiper.is-product-gallery',{slidesPerView: 1, spaceBetween: 0, loop: true, navigation:{nextEl: '.swiper-button-next.is-product-gallery', prevEl: '.swiper-button-prev.is-product-gallery', disabledClass: 'is-disabled',}, pagination:{el: '.swiper_pagination.is-product-gallery', clickable: true, bulletClass: 'swiper_bullet is-product-gallery', bulletActiveClass: 'is-active', type: slidesCount > 4 ? 'fraction' : 'bullets', renderBullet: function (index, className){return '<div class="' + className + '">' + String(index + 1).padStart(2, '0') + '</script>';
-      },
-      renderFraction: function (currentClass, totalClass) {
-        return '<span class="' + currentClass + '"></span> / <span class="' + totalClass + '"></span>';
-      },
-    },
-  });
-});
-
-                </div>
+                <script> document.addEventListener('DOMContentLoaded', function(){const swiperEl = document.querySelector('.swiper.is-product-gallery'); const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length; const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery'); if (slidesCount > 4){paginationEl.style.gridColumnGap = '0.5rem';}const productGallerySwiper = new Swiper('.swiper.is-product-gallery',{slidesPerView: 1, spaceBetween: 0, loop: true, navigation:{nextEl: '.swiper-button-next.is-product-gallery', prevEl: '.swiper-button-prev.is-product-gallery', disabledClass: 'is-disabled',}, pagination:{el: '.swiper_pagination.is-product-gallery', clickable: true, bulletClass: 'swiper_bullet is-product-gallery', bulletActiveClass: 'is-active', type: slidesCount > 4 ? 'fraction' : 'bullets', renderBullet: function (index, className){return '<div class="' + className + '">' + String(index + 1).padStart(2, '0') + '<\/div>';}, renderFraction: function (currentClass, totalClass){return '<span class="' + currentClass + '"><\/span> / <span class="' + totalClass + '"><\/span>';},},});}); </script>
               </div>
               <div class="hero-product_details">
                 <div class="product-hero_tag-wrapper hide-desktop">
@@ -328,7 +319,8 @@
               
                         </div>
 {% endfor %}
-            </div> {% schema %} {
+            </div>
+          </div> {% schema %} {
     "tag": "div",
     "name": "Hero Produit",
     "class": "section_hero-product",
