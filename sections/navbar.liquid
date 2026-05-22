@@ -1,4 +1,44 @@
 <div x-data="{ menu: 0, menuOpen: false, showSearch: false }" class="nav_containers">
+          <div class="nav_bottom-bar">
+            {% assign block_count = section.blocks.size %}
+            {% if block_count == 1 %}    <div li-if="block_count == 1" class="swiper is-bottom-bar">
+    
+              <div class="swiper-wrapper is-bottom-bar">
+                {% for block in section.blocks %}
+    {% if block.type == "annonce" %}
+                    <div li-block="Annonce" class="swiper-slide is-bottom-bar">
+                                    
+                  
+                                    <a href="{{ block.settings.url_lien }}" class="nav_bottom-bar-link w-inline-block"> <div class="nav_bottom-bar-text">{{ block.settings.text_texte }}</div> </a>
+                                    
+                
+                            </div>
+            {% endif %}
+{% endfor %}
+              </div>
+                </div>
+{% endif %}
+            <div class="hide w-embed w-script">
+              <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const bottomBarSwiper = document.querySelector('.swiper.is-bottom-bar');
+  if (bottomBarSwiper) {
+    const slides = bottomBarSwiper.querySelectorAll('.swiper-slide');
+    if (slides.length > 1) {
+      new Swiper(bottomBarSwiper, {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 10000,
+          disableOnInteraction: false,
+        },
+      });
+    }
+  }
+});
+</script>
+            </div>
+          </div>
           <div class="nav_wrapper">
             <div class="nav_bg-overlay"></div>
             <div class="nav_component">
@@ -27,7 +67,7 @@
                               <div x-on:mouseover="if (window.innerWidth > 991) menu = {{forloop.index}}" li-object="link.title" class="text-size-medium text-style-allcaps">{{ link.title }}</div><button id="dropdown-toggle-{{forloop.index}}" aria-controls="dropdown-list-{{forloop.index}}" aria-haspopup="menu" x-bind:aria-expanded="menu === {{forloop.index}} ? true : false" x-on:mouseover="menu = {{forloop.index}}" x-on:click="menu = {{forloop.index}}" aria-label="dropdown button" class="nav_overlay-button"></button>
                               <div class="nav_link-stroke"></div>
                             </div>
-                            <nav aria-labelledby="dropdown-toggle-{{forloop.index}}" id="dropdown-list-{{forloop.index}}" x-show="menu === {{forloop.index}}" x-transition:enter-start="nav_animation-start" x-transition:enter-end="nav_animation-end" x-transition:leave-start="nav_animation-end" x-transition:leave-end="nav_animation-start" x-cloak="" li-cloak="" class="nav_dropdown-list">
+                            <nav aria-labelledby="dropdown-toggle-{{forloop.index}}" id="dropdown-list-{{forloop.index}}" x-show="menu === {{forloop.index}}" x-cloak="" li-cloak="" x-collapse="" class="nav_dropdown-list">
                               <div class="container-large">
                                 <div class="nav_dropdown-wrapper">
                                   <div li-for:inside="child_link in link.links" class="nav_dropdown-grid">
@@ -593,46 +633,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </aside>
                   </div>
 {% endif %}
-            </div>
-          </div>
-          <div class="nav_bottom-bar">
-            {% assign block_count = section.blocks.size %}
-            {% if block_count == 1 %}    <div li-if="block_count == 1" class="swiper is-bottom-bar">
-    
-              <div class="swiper-wrapper is-bottom-bar">
-                {% for block in section.blocks %}
-    {% if block.type == "annonce" %}
-                    <div li-block="Annonce" class="swiper-slide is-bottom-bar">
-                                    
-                  
-                                    <a href="{{ block.settings.url_lien }}" class="nav_bottom-bar-link w-inline-block"> <div class="nav_bottom-bar-text">{{ block.settings.text_texte }}</div> </a>
-                                    
-                
-                            </div>
-            {% endif %}
-{% endfor %}
-              </div>
-                </div>
-{% endif %}
-            <div class="hide w-embed w-script">
-              <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const bottomBarSwiper = document.querySelector('.swiper.is-bottom-bar');
-  if (bottomBarSwiper) {
-    const slides = bottomBarSwiper.querySelectorAll('.swiper-slide');
-    if (slides.length > 1) {
-      new Swiper(bottomBarSwiper, {
-        slidesPerView: 1,
-        loop: true,
-        autoplay: {
-          delay: 10000,
-          disableOnInteraction: false,
-        },
-      });
-    }
-  }
-});
-</script>
             </div>
           </div>
           
