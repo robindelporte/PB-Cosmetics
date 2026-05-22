@@ -12,7 +12,9 @@
     "product_search_placeholder": "Rechercher un produit",
     "product_search_label": "Recherche produit",
     "search_empty": "Aucun résultat pour votre recherche \"{{ search_term }}\"",
-    "products": "Produits"
+    "products": "Produits",
+    "bestseller": "Meilleures ventes",
+    "recently_seen": "Vus récemment"
   },
   "aria_labels": {
     "open_close_menu": "Ouvrir/fermer le menu",
