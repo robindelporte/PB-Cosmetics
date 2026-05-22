@@ -21,7 +21,7 @@
                         <div li-for:inside="link in linklists[section.settings.menu_left].links" class="nav_links">
         {% for link in linklists[section.settings.menu_left].links %}                            
                           
-                            {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="nav_menu-dropdown">
+                            {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" x-on:mouseleave="menu = 0" class="nav_menu-dropdown">
     
                             <div x-bind:class="menu === {{forloop.index}} ? 'is-open' : ''" class="nav_dropdown-toggle">
                               <div x-on:mouseover="if (window.innerWidth > 991) menu = {{forloop.index}}" li-object="link.title" class="text-size-medium text-style-allcaps">{{ link.title }}</div><button id="dropdown-toggle-{{forloop.index}}" aria-controls="dropdown-list-{{forloop.index}}" aria-haspopup="menu" x-bind:aria-expanded="menu === {{forloop.index}} ? true : false" x-on:mouseover="menu = {{forloop.index}}" x-on:click="menu = {{forloop.index}}" aria-label="dropdown button" class="nav_overlay-button"></button>
