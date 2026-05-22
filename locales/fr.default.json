@@ -11,10 +11,17 @@
   "search": {
     "product_search_placeholder": "Rechercher un produit",
     "product_search_label": "Recherche produit",
-    "search_empty": "Aucun résultat pour \"{{ search_term }}\""
+    "search_empty": "Aucun résultat pour votre recherche \"{{ search_term }}\"",
+    "products": "Produits"
   },
   "aria_labels": {
     "open_close_menu": "Ouvrir/fermer le menu",
-    "open_search": "Ouvrir la recherche"
+    "open_search": "Ouvrir la recherche",
+    "close_search": "Fermer la recherche",
+    "open_mini_cart": "Ouvrir le mini panier",
+    "close_mini_cart": "Fermer le mini panier",
+    "remove_product": "Retirer le produit",
+    "increase_quantity": "Augmenter la quantité",
+    "decrease_quantity": "Diminuer la quantité"
   }
 }
