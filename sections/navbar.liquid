@@ -252,9 +252,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <aside id="predictive-search-wrap" x-show="showSearch" x-transition:enter-start="predictive-search_animation-start" x-transition:enter-end="predictive-search_animation-end" x-transition:leave-start="predictive-search_animation-end" x-transition:leave-end="predictive-search_animation-start" x-bind:class="{'is-open' : showSearch}" x-data="handleRecentlyViewedProducts()" x-init="getProducts()" li-render-search="wrapper" x-on:click.away="showSearch = false" x-cloak="" x-trap.noscroll="showSearch" class="nav_predictive-search">
                   <div class="nav_predictive-search-content">
                     <div class="container-large">
-                      <form action="/search" class="predictive-search_wrap">
+                      <form action="/search" x-on:submit="$event.preventDefault()" class="predictive-search_wrap">
                         <div class="predictive-search_top-bar">
-                          <div class="predictive-search_input-wrap"><input type="search" id="predictive-search" placeholder="{{ 'search.product_search_placeholder' | t }}" name="q" li-render-search="input" data-predictive-search-input="" class="predictive-search_input"><label for="predictive-search" li-object="'search.product_search_label' | t " class="screen-reader-content">{{ 'search.product_search_label' | t  }}</label></div><button x-on:click="showSearch = false" aria-controls="predictive-search-wrap" x-bind:aria-expanded="showSearch ? 'true' : 'false'" type=" button" class="predictive-search_close">
+                          <div class="predictive-search_input-wrap"><input type="search" id="predictive-search" placeholder="{{ 'search.product_search_placeholder' | t }}" name="q" li-render-search="input" data-predictive-search-input="" class="predictive-search_input"><label for="predictive-search" li-object="'search.product_search_label' | t " class="screen-reader-content">{{ 'search.product_search_label' | t  }}</label></div><button x-on:click="showSearch = false" aria-controls="predictive-search-wrap" x-bind:aria-expanded="showSearch ? 'true' : 'false'" type="button" class="predictive-search_close">
                             <div class="nav_dropdown-close-icon w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.001 1.23047L9.23145 8L16.001 14.7695L14.7695 16L8 9.23047L1.23145 16L0.000976562 14.7695L6.76953 8L0 1.23047L1.23145 0L8 6.76855L14.7695 0L16.001 1.23047Z" fill="#1C1C1C"></path>
                               </svg></div>
@@ -264,8 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div li-render-search="target" class="predictive-search_overflow">
                           {% unless predictive_search.performed %}    <div li-unless="predictive_search.performed" class="predictive-search_initial">
     <template x-if="products.length">
-                              {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0" class="predictive-search_topic">
-    
+                              <div class="predictive-search_topic">
                                 <div class="predictive-search_headline">
                                   <div li-object="'search.recently_seen' | t">{{ 'search.recently_seen' | t }}</div>
                                 </div>
@@ -282,11 +281,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                       </div>
                                     </template></div>
                                 </div>
-                                  </div>
-{% endif %}
+                              </div>
                             </template><template x-if="products.length === 0">
-                              {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0" class="predictive-search_topic">
-    
+                              <div class="predictive-search_topic">
                                 <div class="predictive-search_headline">
                                   <div li-object="'search.bestseller' | t">{{ 'search.bestseller' | t }}</div>
                                 </div>
@@ -309,8 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endfor %}
                                   </div>
                                 </div>
-                                  </div>
-{% endif %}
+                              </div>
                             </template>    </div>
 {% endunless %}
                           <div class="predictive-search_results-wrap">
