@@ -1,7 +1,7 @@
 <div class="padding-global"><div class="padding-section-small"><div class="container-large"><div class="showcased_component">{% if section.settings.image_image_ordinateur %}
-{{ section.settings.image_image_ordinateur | image_url: width: 1000 | image_tag: class: 'showcased_image', width: '1287', sizes: '(max-width: 1439px) 100vw, 1287px', loading: 'lazy' }}
+{{ section.settings.image_image_ordinateur | image_url: width: 1000 | image_tag: class: 'showcased_image', width: '1287', sizes: '(max-width: 991px) 100vw, 1287px', loading: 'lazy' }}
 {% else %}
-<img class="showcased_image" src="{{ 'showcased_image.avif' | asset_url }}" width="1287" alt="" sizes="(max-width: 1439px) 100vw, 1287px" loading="lazy" srcset="{{ 'showcased_image-p-500.avif' | asset_url }} 500w, {{ 'showcased_image-p-800.avif' | asset_url }} 800w, {{ 'showcased_image-p-1080.avif' | asset_url }} 1080w, {{ 'showcased_image.avif' | asset_url }} 2574w">
+<img class="showcased_image" src="{{ 'showcased_image.avif' | asset_url }}" width="1287" alt="" sizes="(max-width: 991px) 100vw, 1287px" loading="lazy" srcset="{{ 'showcased_image-p-500.avif' | asset_url }} 500w, {{ 'showcased_image-p-800.avif' | asset_url }} 800w, {{ 'showcased_image-p-1080.avif' | asset_url }} 1080w, {{ 'showcased_image.avif' | asset_url }} 2574w">
 {% endif %}{% if section.settings.image_image_mobile %}
 {{ section.settings.image_image_mobile | image_url: width: 1000 | image_tag: width: '1287', loading: 'lazy', class: 'showcased_image is-mobile' }}
 {% else %}
