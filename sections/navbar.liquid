@@ -1,10 +1,50 @@
 <div x-data="{ menu: 0, menuOpen: false, showSearch: false }" class="nav_containers">
+          <div class="nav_bottom-bar">
+            {% assign block_count = section.blocks.size %}
+            {% if block_count == 1 %}    <div li-if="block_count == 1" class="swiper is-bottom-bar">
+    
+              <div class="swiper-wrapper is-bottom-bar">
+                {% for block in section.blocks %}
+    {% if block.type == "annonce" %}
+                    <div li-block="Annonce" class="swiper-slide is-bottom-bar">
+                                    
+                  
+                                    <a href="{{ block.settings.url_lien }}" class="nav_bottom-bar-link w-inline-block"> <div class="nav_bottom-bar-text">{{ block.settings.text_texte }}</div> </a>
+                                    
+                
+                            </div>
+            {% endif %}
+{% endfor %}
+              </div>
+                </div>
+{% endif %}
+            <div class="hide w-embed w-script">
+              <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const bottomBarSwiper = document.querySelector('.swiper.is-bottom-bar');
+  if (bottomBarSwiper) {
+    const slides = bottomBarSwiper.querySelectorAll('.swiper-slide');
+    if (slides.length > 1) {
+      new Swiper(bottomBarSwiper, {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 10000,
+          disableOnInteraction: false,
+        },
+      });
+    }
+  }
+});
+</script>
+            </div>
+          </div>
           <div class="nav_wrapper">
             <div class="nav_bg-overlay"></div>
             <div class="nav_component">
               <div class="nav_container">
                 <nav id="" class="nav_top-content">
-                  <div class="nav_mobile-icons"><button aria-haspopup="menu" aria-controls="nav-menu" x-bind:aria-expanded="menuOpen" aria-label="{{ 'aria_labels.open_close_menu' | t }}" x-bind:class="{'is-open' : menuOpen}" class="nav_hambuger-button">
+                  <div class="nav_mobile-icons"><button aria-haspopup="menu" aria-controls="nav-menu" x-bind:aria-expanded="menuOpen" aria-label="{{ 'aria_labels.open_close_menu' | t }}" x-bind:class="{'is-open' : menuOpen}" x-on:click="menuOpen = !menuOpen" class="nav_hambuger-button">
                       <div class="nav_hamburger-line"></div>
                       <div class="nav_hamburger-line"></div>
                       <div class="nav_hamburger-line"></div>
@@ -13,7 +53,7 @@
                       </svg></button></div>
                   <div x-bind:class="{'is-open' : menuOpen && !showSearch}" class="nav_main-menu" id="nav-menu">
                     <div class="nav_menu-content">
-                      <div class="nav_menu-mobile-header"><img loading="lazy" src="{{ 'Logo-PB-officiel.svg' | asset_url }}" alt="" class="nav_menu-mobile-logo"><button class="nav_menu-mobile-close"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 15 15" fill="none">
+                      <div class="nav_menu-mobile-header"><img loading="lazy" src="{{ 'Logo-PB-officiel.svg' | asset_url }}" alt="" class="nav_menu-mobile-logo"><button x-on:click="	menuOpen = false" class="nav_menu-mobile-close"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 15 15" fill="none">
                             <rect y="13.8461" width="19.5803" height="1.63169" transform="rotate(-45 0 13.8461)" fill="currentColor"></rect>
                             <rect x="1.1543" y="0.000488281" width="19.5803" height="1.63169" transform="rotate(45 1.1543 0.000488281)" fill="currentColor"></rect>
                           </svg></button></div>
@@ -121,7 +161,7 @@
                       </div>
                     </div>
                   </div>
-                  <a href="#" class="nav_logo-link w-inline-block"><img loading="lazy" src="{{ 'Logo-PB-officiel.svg' | asset_url }}" alt="" class="nav_logo"></a>
+                  <a li-object:href="routes.root_url" href="{{ routes.root_url }}" class="nav_logo-link w-inline-block"><img loading="lazy" src="{{ 'Logo-PB-officiel.svg' | asset_url }}" alt="" class="nav_logo"></a>
                   <div class="nav_right-menu">
                     <div class="hide-tablet">
                       <div li-for:inside="link in linklists[section.settings.menu_right].links" class="nav_links">
@@ -367,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endif %}
                                 </div>
 {% endif %}
-                            {% if first_column_results_size == 0 %}    <div li-if="first_column_results_size == 0" class="predictive-search_results">
+                            {% if predictive_search.performed and first_column_results_size == 0 %}    <div li-if="predictive_search.performed and first_column_results_size == 0" class="predictive-search_results">
     
                               <div class="predictive-search_empty">
                                 <div li-object="'search.search_empty' | t: search_term: predictive_search.terms" class="text-size-large text-style-allcaps">{{ 'search.search_empty' | t: search_term: predictive_search.terms }}</div>
@@ -589,46 +629,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </aside>
                   </div>
 {% endif %}
-            </div>
-          </div>
-          <div class="nav_bottom-bar">
-            {% assign block_count = section.blocks.size %}
-            {% if block_count == 1 %}    <div li-if="block_count == 1" class="swiper is-bottom-bar">
-    
-              <div class="swiper-wrapper is-bottom-bar">
-                {% for block in section.blocks %}
-    {% if block.type == "annonce" %}
-                    <div li-block="Annonce" class="swiper-slide is-bottom-bar">
-                                    
-                  
-                                    <a href="{{ block.settings.url_lien }}" class="nav_bottom-bar-link w-inline-block"> <div class="nav_bottom-bar-text">{{ block.settings.text_texte }}</div> </a>
-                                    
-                
-                            </div>
-            {% endif %}
-{% endfor %}
-              </div>
-                </div>
-{% endif %}
-            <div class="hide w-embed w-script">
-              <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const bottomBarSwiper = document.querySelector('.swiper.is-bottom-bar');
-  if (bottomBarSwiper) {
-    const slides = bottomBarSwiper.querySelectorAll('.swiper-slide');
-    if (slides.length > 1) {
-      new Swiper(bottomBarSwiper, {
-        slidesPerView: 1,
-        loop: true,
-        autoplay: {
-          delay: 10000,
-          disableOnInteraction: false,
-        },
-      });
-    }
-  }
-});
-</script>
             </div>
           </div>
           
