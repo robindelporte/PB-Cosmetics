@@ -87,6 +87,16 @@
                               </div>
 {% endif %}
                             
+                          
+                            {% if link.links.size == 0 %}    <div li-if="link.links.size == 0" class="nav_menu-link">
+    
+                            <a x-on:mouseover="menu = 0" li-object:href="link.url" href="{{ link.url }}" class="nav_link w-inline-block">
+                              <div li-object="link.title" class="text-size-medium text-style-allcaps">{{ link.title }}</div>
+                              <div class="nav_link-stroke"></div>
+                            </a>
+                              </div>
+{% endif %}
+                            
                         
                     {% endfor %}    </div>
                         <div class="hide-tablet"><button aria-label="{{ 'aria_labels.open_search' | t }}" x-bind:aria-expanded="showSearch" aria-controls="predictive-search-wrap" x-on:click="menu = 0; menuOpen = false; showSearch = true; setTimeout(() => {document.querySelector('[data-predictive-search-input]')?.focus()}, 500);" class="nav_icon-button is-pro"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav_icon iconify iconify--carbon" width="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 32 32">
