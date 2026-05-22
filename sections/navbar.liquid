@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </button><button aria-label="{{ 'aria_labels.open_search' | t }}" x-bind:aria-expanded="showSearch" aria-controls="predictive-search-wrap" x-on:click="menu = 0; menuOpen = false; showSearch = true; setTimeout(() => {document.querySelector('[data-predictive-search-input]')?.focus()}, 500);" class="nav_icon-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav_icon iconify iconify--carbon" width="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 32 32">
                         <path fill="currentColor" d="m29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9Z"></path>
                       </svg></button></div>
-                  <div x-bind:class="{'is-open' : menuOpen && !showSearch}" class="nav_main-menu" id="nav-menu">
+                  <div x-bind:class="{'is-open' : menuOpen && !showSearch}" class="nav_main-menu is-open" id="nav-menu">
                     <div class="nav_menu-content">
                       <div class="nav_menu-mobile-header"><img loading="lazy" src="{{ 'Logo-PB-officiel.svg' | asset_url }}" alt="" class="nav_menu-mobile-logo"><button x-on:click="	menuOpen = false" class="nav_menu-mobile-close"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 15 15" fill="none">
                             <rect y="13.8461" width="19.5803" height="1.63169" transform="rotate(-45 0 13.8461)" fill="currentColor"></rect>
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                               <div x-on:mouseover="if (window.innerWidth > 991) menu = {{forloop.index}}" li-object="link.title" class="text-size-medium text-style-allcaps">{{ link.title }}</div><button id="dropdown-toggle-{{forloop.index}}" aria-controls="dropdown-list-{{forloop.index}}" aria-haspopup="menu" x-bind:aria-expanded="menu === {{forloop.index}} ? true : false" x-on:mouseover="menu = {{forloop.index}}" x-on:click="menu = {{forloop.index}}" aria-label="dropdown button" class="nav_overlay-button"></button>
                               <div class="nav_link-stroke"></div>
                             </div>
-                            <nav aria-labelledby="dropdown-toggle-{{forloop.index}}" id="dropdown-list-{{forloop.index}}" x-show="menu === {{forloop.index}}" x-cloak="" li-cloak="" x-collapse="" class="nav_dropdown-list">
+                            <nav aria-labelledby="dropdown-toggle-{{forloop.index}}" id="dropdown-list-{{forloop.index}}" x-show="window.innerWidth <= 991 || menu === {{forloop.index}}" x-cloak="" li-cloak="" x-collapse="" class="nav_dropdown-list">
                               <div class="container-large">
                                 <div class="nav_dropdown-wrapper">
                                   <div li-for:inside="child_link in link.links" class="nav_dropdown-grid">
