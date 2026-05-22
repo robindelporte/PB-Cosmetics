@@ -474,19 +474,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
             </div>
           </div>
-          <div class="li-custom w-embed">[
-            {
-            "type": "link_list",
-            "id": "menu_left",
-            "label": "Menu Gauche",
-            "default": "main-menu"
-            },
-            {
-            "type": "link_list",
-            "id": "menu_right",
-            "label": "Menu Droite"
-            }
-            ]</div>
             </div>
 {% endunless %}
         {% if customer.b2b? %}    <div li-if="customer.b2b?">
@@ -509,8 +496,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <rect y="13.8461" width="19.5803" height="1.63169" transform="rotate(-45 0 13.8461)" fill="currentColor"></rect>
                             <rect x="1.1543" y="0.000488281" width="19.5803" height="1.63169" transform="rotate(45 1.1543 0.000488281)" fill="currentColor"></rect>
                           </svg></button></div>
-                      <div li-for:inside="link in linklists[section.settings.menu_left].links" class="nav_links">
-        {% for link in linklists[section.settings.menu_left].links %}                            
+                      <div li-for:inside="link in linklists[section.settings.menu_b2b_left].links" class="nav_links">
+        {% for link in linklists[section.settings.menu_b2b_left].links %}                            
                         
                             {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="nav_menu-dropdown">
     
@@ -608,8 +595,8 @@ document.addEventListener('DOMContentLoaded', function() {
                   <a aria-label="Logo PB Cosmetics" href="#" class="nav_logo-link w-inline-block"><img loading="lazy" src="{{ 'Logo-PB-officiel.svg' | asset_url }}" alt="" class="nav_logo"></a>
                   <div class="nav_right-menu">
                     <div class="hide-tablet">
-                      <div li-for:inside="link in linklists[section.settings.menu_pro].links" class="nav_links">
-        {% for link in linklists[section.settings.menu_pro].links %}                            
+                      <div li-for:inside="link in linklists[section.settings.menu_b2b_right].links" class="nav_links">
+        {% for link in linklists[section.settings.menu_b2b_right].links %}                            
                         
                             {% if link.links.size == 0 %}    <div li-if="link.links.size == 0" class="nav_menu-link">
     
@@ -915,21 +902,31 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
             </div>
           </div>
-          <div class="li-custom w-embed">[
-            {
-            "type": "link_list",
-            "id": "menu_left",
-            "label": "Menu Gauche",
-            "default": "main-menu"
-            },
-            {
-            "type": "link_list",
-            "id": "menu_right",
-            "label": "Menu Droite"
-            }
-            ]</div>
             </div>
-{% endif %} {% schema %} {
+{% endif %}
+        <div class="li-custom w-embed">[
+          {
+          "type": "link_list",
+          "id": "menu_left",
+          "label": "Menu B2C - Gauche",
+          "default": "main-menu"
+          },
+          {
+          "type": "link_list",
+          "id": "menu_right",
+          "label": "Menu B2C - Droite"
+          },
+          {
+          "type": "link_list",
+          "id": "menu_b2b_left",
+          "label": "Menu B2B - Gauche"
+          },
+          {
+          "type": "link_list",
+          "id": "menu_b2b_right",
+          "label": "Menu B2B - Droite"
+          }
+          ]</div> {% schema %} {
     "tag": "div",
     "name": "Navbar",
     "class": "section_navbar",
