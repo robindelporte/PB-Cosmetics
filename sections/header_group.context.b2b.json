@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "b2b"
+  },
+  "parent": "header_group.json",
+  "sections": {
+    "navbar": {
+      "settings": {
+        "menu_b2b_right": "menu_left",
+        "menu_right": "menu_left"
+      },
+      "blocks": {}
+    }
+  }
+}
