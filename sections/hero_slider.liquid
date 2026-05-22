@@ -1,55 +1,55 @@
 <div class="swiper_component is-hero">
-          <div class="swiper is-hero">
-            <div role="list" class="swiper-wrapper is-hero">
-              {% for block in section.blocks %}
+      <div class="swiper is-hero">
+        <div role="list" class="swiper-wrapper is-hero">
+          {% for block in section.blocks %}
     {% if block.type == "slide" %}
                     <div li-block="Slide" class="swiper-slide is-hero">
                                     
-                
+            
                                     <div class="hero_slide-content z-index-1">
-                  <div class="padding-global">
-                    <div class="container-large">
-                      <div class="hero_content">
-                        <div class="text-size-small">
+              <div class="padding-global">
+                <div class="container-large">
+                  <div class="hero_content">
+                    <div class="text-size-small">
 {{ block.settings.text_tagline }}
 </div>
-                        <div class="max-width-medium">
-                          <h1 class="heading-style-h1-2">
+                    <div class="max-width-medium">
+                      <h1 class="heading-style-h1-2">
 {{ block.settings.text_titre }}
 </h1>
-                        </div>
-                        <a href="{{ block.settings.url_lien }}" class="button w-inline-block"> <div class="button_text">{{ block.settings.text_texte }}</div> <div class="button_overlay"></div> </a>
-                      </div>
                     </div>
+                    <a href="{{ block.settings.url_lien }}" class="button w-inline-block"> <div class="button_text">{{ block.settings.text_texte }}</div> <div class="button_overlay"></div> </a>
                   </div>
                 </div>
+              </div>
+            </div>
                                     {% if block.settings.image_image %}
 {{ block.settings.image_image | image_url: width: 1000 | image_tag: class: 'hero_bg-img', width: '1440', sizes: '(max-width: 1439px) 100vw, 1440px', loading: 'lazy' }}
 {% else %}
 <img class="hero_bg-img" src="{{ 'hero-1.avif' | asset_url }}" width="1440" alt="" sizes="(max-width: 1439px) 100vw, 1440px" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
 {% endif %}
                                     
-              
+          
                             </div>
             {% endif %}
 {% endfor %}
-            </div>
-          </div>
-          <div class="hero_swiper-pagination">
-            <div class="padding-global">
-              <div class="container-large">
-                <div class="hero_swiper-pagination-holder">
-                  <div class="swiper_pagination is-hero is-mixed">
-                    <div class="swiper_bullet is-hero">01</div>
-                    <div class="swiper_bullet is-hero is-active">01</div>
-                  </div>
-                </div>
+        </div>
+      </div>
+      <div class="hero_swiper-pagination">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="hero_swiper-pagination-holder">
+              <div class="swiper_pagination is-hero is-mixed">
+                <div class="swiper_bullet is-hero">01</div>
+                <div class="swiper_bullet is-hero is-active">01</div>
               </div>
             </div>
           </div>
         </div>
-        <div class="hide w-embed w-script">
-          <script>
+      </div>
+    </div>
+    <div class="hide w-embed w-script">
+      <script>
 document.addEventListener('DOMContentLoaded', function() {
   var swiper = new Swiper(".swiper.is-hero", {
     spaceBetween: 0,
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-        </div> {% schema %} {
+    </div> {% schema %} {
     "tag": "section",
     "name": "Hero Slider",
     "class": "section_hero",

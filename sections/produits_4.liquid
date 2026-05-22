@@ -1,15 +1,15 @@
 <div class="padding-global">
-            <div class="padding-section-small">
-              <div class="container-large">
-                <div class="products_component-wrapper">
-                  <div class="products_heading">
-                    <h2 class="heading-style-h1 text-style-allcaps">
+          <div class="padding-section-small">
+            <div class="container-large">
+              <div class="products_component-wrapper">
+                <div class="products_heading">
+                  <h2 class="heading-style-h1 text-style-allcaps">
 {{ section.settings.text_titre }}
 </h2>
-                  </div>
-                  <div li-for:inside="product in collection.products limit: section.settings.limit" class="product_list">
+                </div>
+                <div li-for:inside="product in collection.products limit: section.settings.limit" class="product_list">
         {% for product in collection.products limit: section.settings.limit %}                            
-                    
+                  
                             {% render 'product_item', product: product %}
                             
   
