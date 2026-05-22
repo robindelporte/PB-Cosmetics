@@ -1,19 +1,37 @@
-{% assign has_color_variants = false %}
-                    {% for option in product.options_with_values %}{% if option.name == 'Couleur' and option.values.size > 1 %}{% assign has_color_variants = true %}{% endif %}{% endfor %}{% assign first_variant = product.selected_or_first_available_variant %}<div class="product-item_component"><div class="product-item_image-link"><a li-object:href="product.url" href="{{ product.url }}" class="product-item_image-wrapper w-inline-block"><img width="191.5" height="800" alt="{{ product.featured_image.alt | default: product.title }}" src="{{ product.featured_image | image_url: width: 800, height: 800 }}" loading="lazy" li-object:alt="product.featured_image.alt | default: product.title" li-object:src="product.featured_image | image_url: width: 800, height: 800" class="product-item_image"></a></div><div class="product-item_content-wrapper"><div class="product-item_heading"><a li-object:href="product.url" href="{{ product.url }}" class="product-item_text-link w-inline-block"><div class="product-item_left"><div li-object="product.title" class="product_item-name">{{ product.title }}</div></div><div class="product-item_price"><div x-text="(() => { const price = product.price; const rate = 0.20; const centsHT = Math.round(price / (1 + rate)); return LiquifyHelper.moneyFormat(centsHT, true, '{{ shop.money_format }}') + ' HT';})()" li-object="product.price | money">{{ product.price | money }}</div>{% if product.compare_at_price_max > product.price %}    <div li-if="product.compare_at_price_max > product.price">
-    <div x-text="(() => { const price = product.compare_at_price; const rate = 0.20; const centsHT = Math.round(price / (1 + rate)); return LiquifyHelper.moneyFormat(centsHT, true, '{{ shop.money_format }}') + ' HT';})()" li-object="product.compare_at_price | money" class="text-style-strikethrough text-style-muted">{{ product.compare_at_price | money }}</div>    </div>
-{% endif %}</div></a></div><div class="product-item_variant-wrapper"><div li-object="product.metafields.custom.texte_sous_titre" class="product_item-tagline">{{ product.metafields.custom.texte_sous_titre }}</div>{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true">
-    {% form 'product', product %}
-{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-item_option-list">
-    <template x-for="(option, optionKey) in product.options" :key="optionKey">
-    <div li-element="product-options-loop" class="product-item_option" data-ProductVariantsLoop="true"><div class="product-item_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
-    <label li-element="product-option-loop" class="product-item_radio w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom product-item_radio-button w-radio-input"></div><input type="radio" li-element="product-option-input" style="opacity:0;position:absolute;z-index:-1" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'"><span li-element="product-option-name" class="hide w-form-label" for="radio-2" x-text="variantName" :for="variantName">XS</span></label></template></div></div></template>{% if product.options_with_values[0].values.size > 4 %}    <div li-if="product.options_with_values[0].values.size > 4">
-    <a li-object:href="product.url" class="product-item_radio is-plus" href="{{ product.url }}"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 25 25" fill="none" class="product-item_radio-plus"><rect x="0.67094" y="0.67094" width="23.6581" height="23.6581" rx="11.8291" stroke="currentColor" stroke-width="1.34188"></rect><path d="M16.6527 13.0933H13.0934V16.6525H11.9069V13.0933H8.34766V11.9068H11.9069V8.34753H13.0934V11.9068H16.6527V13.0933Z" fill="currentColor"></path></svg></a>    </div>
-{% endif %}    </div>
-{% endif %}{% endform %}    </div>
-{% endif %}{% if product.metafields.custom.parfum_tags %}    <div li-if="product.metafields.custom.parfum_tags">
-    {% assign parfum_tags = product.metafields.custom.parfum_tags.value %}<div li-for:inside="tag in parfum_tags" class="product-item_tags">
-        {% for tag in parfum_tags %}                            <div li-object="tag.senteur" class="product-snippet_tag">{{ tag.senteur }}</div>
-                    {% endfor %}    </div>    </div>
-{% endif %}</div></div><div class="product-item_buttons"><div class="product-item_button"><a li-object:href="product.url" class="button is-product-card" href="{{ product.url }}"><div class="button_text is-product-card">Voir le produit</div><div class="button_overlay"></div></a></div>{% if product.available != true %}    <div li-if="product.available != true" class="product-item_button">
-    <a href="#" class="button is-secondary pointer-events-off max-width-full is-out-of-stock w-button">Rupture de stock</a>    </div>
-{% endif %}</div></div>
+{% assign mv = product.metafields.custom.multiple_de_vente | default: 1 %}
+                                      <div x-data="{ min: {{ product.selected_or_first_available_variant.quantity_rule.min | default: 1 }}, max: {{ product.selected_or_first_available_variant.quantity_rule.max | default: 9999 }}, step: {{ product.selected_or_first_available_variant.quantity_rule.increment | default: 1 }}, quantity: {{ product.selected_or_first_available_variant.quantity_rule.min | default: 1 }} }" class="product-pro_item">
+                                        <div class="product-pro_content">
+                                          <div class="product-pro_image-wrapper"><img class="product-pro_image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | default: product.title }}" sizes="100vw" li-object:src="product.featured_image | image_url: width: 400" loading="lazy" li-object:alt="product.featured_image.alt | default: product.title" srcset="{{ 'parfum-3-p-500.avif' | asset_url }} 500w, {{ 'parfum-3-p-800.avif' | asset_url }} 800w, {{ 'parfum-3.avif' | asset_url }} 1468w"></div>
+                                          <div class="product-pro_infos">
+                                            <div class="product-pro_heading">
+                                              <div li-object="product.title" class="text-style-allcaps">{{ product.title }}</div>
+                                              <div li-object="product.selected_or_first_available_variant.sku" class="text-size-tiny text-style-allcaps text-color-grey">{{ product.selected_or_first_available_variant.sku }}</div>
+                                              {% if product.selected_or_first_available_variant.title %}    <div li-if="product.has_only_default_variant != true" li-object="product.selected_or_first_available_variant.title" class="text-size-tiny text-style-allcaps">
+    Variante    </div>
+{% endif %}
+                                            </div>
+                                            <div class="product-pro_quantity">
+                                              <div class="mini-cart_item-quantity"><button type="button" x-on:click="quantity = quantity > min ? quantity - step : min" class="mini-cart_item-quantity-adjust">
+                                                  <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewbox="0 0 10 11" fill="none">
+                                                      <path d="M0.0654297 5.49414H9.5752" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                    </svg></div>
+                                                </button><input type="text" name="updates[]" x-model="quantity" li-element="add-to-cart-quantity" class="mini-cart_item-quantity-adjust is-input" value="1"><button aria-label="{{ aria_label_increase_product_quantity }}" x-on:click="quantity = quantity + step" class="mini-cart_item-quantity-adjust">
+                                                  <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewbox="0 0 11 11" fill="none">
+                                                      <path d="M0.555664 5.49414H10.0654" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                      <path d="M5.31055 10.249L5.31055 0.739258" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                    </svg></div>
+                                                </button></div>
+                                              <div x-text="'produit vendu par ' + step" class="text-size-small text-color-grey">produit vendu par 6</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="product-pro_buy">
+                                          <div class="product-pro_buy-price">
+                                            <div x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')" li-js-price="product.selected_or_first_available_variant.price" class="text-size-medium">17HT€</div>
+                                            <div x-text="'Prix de vente conseillé : ' + LiquifyHelper.moneyFormat({{ product.metafields.custom.pvc.value }}) + ' TTC'" class="text-size-small text-color-grey">Prix de ventre conseillé : 12€ TTC</div>
+                                          </div>
+                                          <input type="hidden" name="properties[_sous_titre]" value="product.metafields.custom.texte_sous_titre"><input type="hidden" name="properties[_multiple]" value="product.selected_or_first_available_variant.quantity_rule.increment | default: 1"><input type="hidden" name="properties[_couleur_code]" value="product.selected_or_first_available_variant.metafields.custom.couleur_code"><button type="button" li-element="add-to-cart" class="button is-search" @click="addToCart($event, true)" :disabled="!addToCartButton">
+                                              <div class="text-size-small">AJOUTER AU PANIER</div>
+                                            </button>
+                                        </div>
+                                      </div>

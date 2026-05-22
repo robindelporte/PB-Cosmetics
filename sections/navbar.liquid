@@ -17,20 +17,20 @@
                             <rect y="13.8461" width="19.5803" height="1.63169" transform="rotate(-45 0 13.8461)" fill="currentColor"></rect>
                             <rect x="1.1543" y="0.000488281" width="19.5803" height="1.63169" transform="rotate(45 1.1543 0.000488281)" fill="currentColor"></rect>
                           </svg></button></div>
-                      <div li-for:inside="link in linklists[section.settings.menu_left].links" class="nav_links">
+                      <div class="nav_links">
+                        <div li-for:inside="link in linklists[section.settings.menu_left].links" class="nav_links">
         {% for link in linklists[section.settings.menu_left].links %}                            
-                        
+                          
                             {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="nav_menu-dropdown">
     
-                          <div x-bind:class="menu === {{forloop.index}} ? 'is-open' : ''" class="nav_dropdown-toggle">
-                            <div x-on:mouseover="if (window.innerWidth > 991) menu = {{forloop.index}}" li-object="link.title" class="text-size-medium text-style-allcaps">{{ link.title }}</div><button id="dropdown-toggle-{{forloop.index}}" aria-controls="dropdown-list-{{forloop.index}}" aria-haspopup="menu" x-bind:aria-expanded="menu === {{forloop.index}} ? true : false" x-on:mouseover="menu = {{forloop.index}}" x-on:click="menu = {{forloop.index}}" aria-label="dropdown button" class="nav_overlay-button"></button>
-                            <div class="nav_link-stroke"></div>
-                          </div>
-                          <nav aria-labelledby="dropdown-toggle-{{forloop.index}}" id="dropdown-list-{{forloop.index}}" x-show="menu === {{forloop.index}}" x-transition:enter-start="nav_animation-start" x-transition:enter-end="nav_animation-end" x-transition:leave-start="nav_animation-end" x-transition:leave-end="nav_animation-start" x-cloak="" li-cloak="" class="nav_dropdown-list is-open">
-                            <div class="container-large">
-                              <div class="nav_dropdown-wrapper">
-                                <div class="nav_dropdown-grid">
-                                  <div li-for:inside="child_link in link.links">
+                            <div x-bind:class="menu === {{forloop.index}} ? 'is-open' : ''" class="nav_dropdown-toggle">
+                              <div x-on:mouseover="if (window.innerWidth > 991) menu = {{forloop.index}}" li-object="link.title" class="text-size-medium text-style-allcaps">{{ link.title }}</div><button id="dropdown-toggle-{{forloop.index}}" aria-controls="dropdown-list-{{forloop.index}}" aria-haspopup="menu" x-bind:aria-expanded="menu === {{forloop.index}} ? true : false" x-on:mouseover="menu = {{forloop.index}}" x-on:click="menu = {{forloop.index}}" aria-label="dropdown button" class="nav_overlay-button"></button>
+                              <div class="nav_link-stroke"></div>
+                            </div>
+                            <nav aria-labelledby="dropdown-toggle-{{forloop.index}}" id="dropdown-list-{{forloop.index}}" x-show="menu === {{forloop.index}}" x-transition:enter-start="nav_animation-start" x-transition:enter-end="nav_animation-end" x-transition:leave-start="nav_animation-end" x-transition:leave-end="nav_animation-start" x-cloak="" li-cloak="" class="nav_dropdown-list">
+                              <div class="container-large">
+                                <div class="nav_dropdown-wrapper">
+                                  <div li-for:inside="child_link in link.links" class="nav_dropdown-grid">
         {% for child_link in link.links %}                            
                                     
                             <div x-data="{ open: false }" class="nav_child-item">
@@ -70,31 +70,29 @@
                             
                                   
                     {% endfor %}    </div>
-                                </div>
-                                <div class="nav_dropdown-showcased"><img width="358" loading="lazy" alt="" src="{{ 'packs.avif' | asset_url }}" class="nav_dropdown-showcased-image">
-                                  <a href="#" class="nav_dropdown-showcased-link w-inline-block">
-                                    <div class="text-size-medium text-weight-bold">NOS PACKS</div>
-                                    <div class="nav_dropdown-showcased-text">
-                                      <div class="text-color-grey">TOUS NOS PACK</div>
-                                      <div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="100%" height="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
-                                          <path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"></path>
-                                        </svg></div>
-                                    </div>
-                                  </a>
+                                  <div class="nav_dropdown-showcased"><img width="358" loading="lazy" alt="" src="{{ 'packs.avif' | asset_url }}" class="nav_dropdown-showcased-image">
+                                    <a href="#" class="nav_dropdown-showcased-link w-inline-block">
+                                      <div class="text-size-medium text-weight-bold">NOS PACKS</div>
+                                      <div class="nav_dropdown-showcased-text">
+                                        <div class="text-color-grey">TOUS NOS PACK</div>
+                                        <div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="100%" height="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+                                            <path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"></path>
+                                          </svg></div>
+                                      </div>
+                                    </a>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </nav>
-                            </div>
+                            </nav>
+                              </div>
 {% endif %}
                             
                         
-                            <div class="hide-tablet"><button aria-label="{{ 'aria_labels.open_search' | t }}" x-bind:aria-expanded="showSearch" aria-controls="predictive-search-wrap" x-on:click="menu = 0; menuOpen = false; showSearch = true; setTimeout(() => {document.querySelector('[data-predictive-search-input]')?.focus()}, 500);" class="nav_icon-button is-pro"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav_icon iconify iconify--carbon" width="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 32 32">
+                    {% endfor %}    </div>
+                        <div class="hide-tablet"><button aria-label="{{ 'aria_labels.open_search' | t }}" x-bind:aria-expanded="showSearch" aria-controls="predictive-search-wrap" x-on:click="menu = 0; menuOpen = false; showSearch = true; setTimeout(() => {document.querySelector('[data-predictive-search-input]')?.focus()}, 500);" class="nav_icon-button is-pro"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav_icon iconify iconify--carbon" width="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 32 32">
                               <path fill="currentColor" d="m29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9Z"></path>
                             </svg></button></div>
-                            
-                      
-                    {% endfor %}    </div>
+                      </div>
                       <div class="nav_mobile-menu">
                         <div li-for:inside="link in linklists[section.settings.menu_right].links" class="nav_links">
         {% for link in linklists[section.settings.menu_right].links %}                            
@@ -238,142 +236,145 @@ document.addEventListener('DOMContentLoaded', function() {
                 </nav>
               </div>
             </div>
-            <aside id="predictive-search-wrap" x-show="showSearch" x-transition:enter-start="predictive-search_animation-start" x-transition:enter-end="predictive-search_animation-end" x-transition:leave-start="predictive-search_animation-end" x-transition:leave-end="predictive-search_animation-start" x-bind:class="{'is-open' : showSearch}" x-data="handleRecentlyViewedProducts()" x-init="getProducts()" li-render-search="wrapper" x-on:click.away="showSearch = false" x-cloak="" x-trap.noscroll="showSearch" class="nav_predictive-search">
-              <div class="nav_predictive-search-content">
-                <div class="container-large">
-                  <form action="/search" class="predictive-search_wrap">
-                    <div class="predictive-search_top-bar">
-                      <div class="predictive-search_input-wrap"><input type="search" id="predictive-search" placeholder="{{ 'search.product_search_placeholder' | t }}" name="q" li-render-search="input" data-predictive-search-input="" class="predictive-search_input"><label for="predictive-search" li-object="'search.product_search_label' | t " class="screen-reader-content">{{ 'search.product_search_label' | t  }}</label></div><button x-on:click="showSearch = false" aria-controls="predictive-search-wrap" x-bind:aria-expanded="showSearch ? 'true' : 'false'" type=" button" class="predictive-search_close">
-                        <div class="nav_dropdown-close-icon w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.001 1.23047L9.23145 8L16.001 14.7695L14.7695 16L8 9.23047L1.23145 16L0.000976562 14.7695L6.76953 8L0 1.23047L1.23145 0L8 6.76855L14.7695 0L16.001 1.23047Z" fill="#1C1C1C"></path>
-                          </svg></div>
-                      </button>
-                    </div>
-                    <div class="predictive-search_divider"></div>
-                    <div li-render-search="target" class="predictive-search_overflow">
-                      {% unless predictive_search.performed %}    <div li-unless="predictive_search.performed" class="predictive-search_initial">
+            <div class="nav_predictive-search-wrapper">
+              {% unless customer.b2b? %}    <div li-unless="customer.b2b?">
+    
+                <aside id="predictive-search-wrap" x-show="showSearch" x-transition:enter-start="predictive-search_animation-start" x-transition:enter-end="predictive-search_animation-end" x-transition:leave-start="predictive-search_animation-end" x-transition:leave-end="predictive-search_animation-start" x-bind:class="{'is-open' : showSearch}" x-data="handleRecentlyViewedProducts()" x-init="getProducts()" li-render-search="wrapper" x-on:click.away="showSearch = false" x-cloak="" x-trap.noscroll="showSearch" class="nav_predictive-search">
+                  <div class="nav_predictive-search-content">
+                    <div class="container-large">
+                      <form action="/search" class="predictive-search_wrap">
+                        <div class="predictive-search_top-bar">
+                          <div class="predictive-search_input-wrap"><input type="search" id="predictive-search" placeholder="{{ 'search.product_search_placeholder' | t }}" name="q" li-render-search="input" data-predictive-search-input="" class="predictive-search_input"><label for="predictive-search" li-object="'search.product_search_label' | t " class="screen-reader-content">{{ 'search.product_search_label' | t  }}</label></div><button x-on:click="showSearch = false" aria-controls="predictive-search-wrap" x-bind:aria-expanded="showSearch ? 'true' : 'false'" type=" button" class="predictive-search_close">
+                            <div class="nav_dropdown-close-icon w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.001 1.23047L9.23145 8L16.001 14.7695L14.7695 16L8 9.23047L1.23145 16L0.000976562 14.7695L6.76953 8L0 1.23047L1.23145 0L8 6.76855L14.7695 0L16.001 1.23047Z" fill="#1C1C1C"></path>
+                              </svg></div>
+                          </button>
+                        </div>
+                        <div class="predictive-search_divider"></div>
+                        <div li-render-search="target" class="predictive-search_overflow">
+                          {% unless predictive_search.performed %}    <div li-unless="predictive_search.performed" class="predictive-search_initial">
     <template x-if="products.length">
-                          {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0" class="predictive-search_topic">
+                              {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0" class="predictive-search_topic">
     
-                            <div class="predictive-search_headline">
-                              <div li-object="'search.recently_seen' | t">{{ 'search.recently_seen' | t }}</div>
-                            </div>
-                            <div class="swiper is-search">
-                              <div class="swiper-wrapper is-search"><template x-for="product in products" x-bind:key="product.handle">
-                                  <div class="swiper-slide is-search">
-                                    <a x-bind:href="product.url" href="#" class="predictive-search_line-item w-inline-block">
-                                      <div class="predictive-search_image-wrapper"><img x-bind:src="product.featured_media | image_url: width: 150" x-bind:alt="product.featured_image.alt" alt="" src="../images/platzhalter.svg" loading="lazy" class="predictive-search_image"></div>
-                                      <div class="predictive-search_product-info">
-                                        <div li-object="product.title" class="predictive-search_product-title">{{ product.title }}</div>
-                                        <div li-object="product.price | money" class="predictive-search_product-price">{{ product.price | money }}</div>
+                                <div class="predictive-search_headline">
+                                  <div li-object="'search.recently_seen' | t">{{ 'search.recently_seen' | t }}</div>
+                                </div>
+                                <div class="swiper is-search">
+                                  <div class="swiper-wrapper is-search"><template x-for="product in products" x-bind:key="product.handle">
+                                      <div class="swiper-slide is-search">
+                                        <a x-bind:href="product.url" href="#" class="predictive-search_line-item w-inline-block">
+                                          <div class="predictive-search_image-wrapper"><img x-bind:src="product.featured_media | image_url: width: 150" x-bind:alt="product.featured_image.alt" alt="" src="../images/platzhalter.svg" loading="lazy" class="predictive-search_image"></div>
+                                          <div class="predictive-search_product-info">
+                                            <div li-object="product.title" class="predictive-search_product-title">{{ product.title }}</div>
+                                            <div li-object="product.price | money" class="predictive-search_product-price">{{ product.price | money }}</div>
+                                          </div>
+                                        </a>
                                       </div>
-                                    </a>
+                                    </template></div>
+                                </div>
                                   </div>
-                                </template></div>
-                            </div>
-                              </div>
 {% endif %}
-                        </template><template x-if="products.length === 0">
-                          {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0" class="predictive-search_topic">
+                            </template><template x-if="products.length === 0">
+                              {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0" class="predictive-search_topic">
     
-                            <div class="predictive-search_headline">
-                              <div li-object="'search.bestseller' | t">{{ 'search.bestseller' | t }}</div>
-                            </div>
-                            <div class="swiper is-search">
-                              <div class="swiper-wrapper is-search">
-                                {% for product in section.settings.collection_bestseller.products limit: section.settings.collection_bestseller_limit %}
+                                <div class="predictive-search_headline">
+                                  <div li-object="'search.bestseller' | t">{{ 'search.bestseller' | t }}</div>
+                                </div>
+                                <div class="swiper is-search">
+                                  <div class="swiper-wrapper is-search">
+                                    {% for product in section.settings.collection_bestseller.products limit: section.settings.collection_bestseller_limit %}
 <div class="swiper-slide is-search">
     
-                                  
+                                      
     <a aria-label="{{ product.title }}" li-object:href="product.url" href="{{ product.url }}" class="predictive-search_line-item w-inline-block">
-                                    <div class="predictive-search_image-wrapper"><img li-object:src="product.featured_media | image_url: width: 150" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_media | image_url: width: 150 }}" loading="lazy" class="predictive-search_image"></div>
-                                    <div class="predictive-search_product-info">
-                                      <div x-text="product.title" class="text-style-allcaps">ROUGE À LÈVRES SATIN</div>
-                                      <div x-text="LiquifyHelper.moneyFormat(product.price)" class="text-style-allcaps">17€</div>
-                                    </div>
-                                  </a>
+                                        <div class="predictive-search_image-wrapper"><img li-object:src="product.featured_media | image_url: width: 150" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_media | image_url: width: 150 }}" loading="lazy" class="predictive-search_image"></div>
+                                        <div class="predictive-search_product-info">
+                                          <div x-text="product.title" class="text-style-allcaps">ROUGE À LÈVRES SATIN</div>
+                                          <div x-text="LiquifyHelper.moneyFormat(product.price)" class="text-style-allcaps">17€</div>
+                                        </div>
+                                      </a>
     
-                                
+                                    
 </div>
 {% endfor %}
-                              </div>
-                            </div>
-                              </div>
+                                  </div>
+                                </div>
+                                  </div>
 {% endif %}
-                        </template>    </div>
+                            </template>    </div>
 {% endunless %}
-                      <div class="predictive-search_results-wrap">
-                        {% assign first_column_results_size = predictive_search.resources.queries.size | plus: predictive_search.resources.collections.size | plus: predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size | plus: predictive_search.resources.products.size %}
-                        {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.collections.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.collections.size > 0" class="predictive-search_results">
+                          <div class="predictive-search_results-wrap">
+                            {% assign first_column_results_size = predictive_search.resources.queries.size | plus: predictive_search.resources.collections.size | plus: predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size | plus: predictive_search.resources.products.size %}
+                            {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.collections.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.collections.size > 0" class="predictive-search_results">
     
-                          {% if predictive_search.resources.products.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0" class="predictive-search_topic">
+                              {% if predictive_search.resources.products.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0" class="predictive-search_topic">
     
-                            <div class="predictive-search_headline">
-                              <div li-object="'search.products' | t">{{ 'search.products' | t }}</div>
-                            </div>
-                            <div class="swiper is-search">
-                              <div class="swiper-wrapper is-search">
-                                {% for product in predictive_search.resources.products limit: 8 %}    <div li-for="product in predictive_search.resources.products limit: 8" class="swiper-slide is-search">
+                                <div class="predictive-search_headline">
+                                  <div li-object="'search.products' | t">{{ 'search.products' | t }}</div>
+                                </div>
+                                <div class="swiper is-search">
+                                  <div class="swiper-wrapper is-search">
+                                    {% for product in predictive_search.resources.products limit: 8 %}    <div li-for="product in predictive_search.resources.products limit: 8" class="swiper-slide is-search">
                                     
-                                  
+                                      
                             <a li-object:href="product.url" href="{{ product.url }}" class="predictive-search_line-item w-inline-block">
-                                    <div class="predictive-search_image-wrapper"><img li-object:src="product.featured_media | image_url: width: 150" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_media | image_url: width: 150 }}" loading="lazy" class="predictive-search_image"></div>
-                                    <div class="predictive-search_product-info">
-                                      <div li-object="product.title" class="text-style-allcaps">{{ product.title }}</div>
-                                      <div li-object="product.price | money" class="text-style-allcaps">{{ product.price | money }}</div>
-                                    </div>
-                                  </a>
+                                        <div class="predictive-search_image-wrapper"><img li-object:src="product.featured_media | image_url: width: 150" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_media | image_url: width: 150 }}" loading="lazy" class="predictive-search_image"></div>
+                                        <div class="predictive-search_product-info">
+                                          <div li-object="product.title" class="text-style-allcaps">{{ product.title }}</div>
+                                          <div li-object="product.price | money" class="text-style-allcaps">{{ product.price | money }}</div>
+                                        </div>
+                                      </a>
                             
-                                
-                        </div>
-{% endfor %}
-                              </div>
-                            </div>
-                              </div>
-{% endif %}
-                          {% if predictive_search.resources.articles.size > 0 %}    <div li-if="predictive_search.resources.articles.size > 0" class="predictive-search_topic">
-    
-                            <div class="predictive-search_headline">
-                              <div>Articles</div>
-                            </div>
-                            <div class="swiper is-article">
-                              <div class="swiper-wrapper is-article">
-                                {% for article in predictive_search.resources.articles %}    <div li-for="article in predictive_search.resources.articles" class="swiper-slide is-article">
                                     
-                                  
-                            <a li-object:href="article.url" href="{{ article.url }}" class="predictive-search_line-item is-article w-inline-block">
-                                    <div class="predictive-search_image-wrapper is-article"><img li-object:src="article.image | image_url: width: 300" li-object:alt="article.image.alt | default: article.title" alt="{{ article.image.alt | default: article.title }}" src="{{ article.image | image_url: width: 300 }}" loading="lazy" class="predictive-search_image is-article">
-                                      <div class="text-size-small text-color-grey-bordure">Date</div>
-                                    </div>
-                                    <div class="predictive-search_product-info">
-                                      <div li-object="article.title" class="text-style-allcaps text-style-2lines">{{ article.title }}</div>
-                                    </div>
-                                    <div class="text-style-link text-color-pink">Lire plus</div>
-                                  </a>
-                            
-                                
                         </div>
 {% endfor %}
-                              </div>
-                            </div>
-                              </div>
+                                  </div>
+                                </div>
+                                  </div>
 {% endif %}
-                            </div>
-{% endif %}
-                        {% if first_column_results_size == 0 %}    <div li-if="first_column_results_size == 0" class="predictive-search_results">
+                              {% if predictive_search.resources.articles.size > 0 %}    <div li-if="predictive_search.resources.articles.size > 0" class="predictive-search_topic">
     
-                          <div class="predictive-search_empty">
-                            <div li-object="'search.search_empty' | t: search_term: predictive_search.terms" class="text-size-large text-style-allcaps">{{ 'search.search_empty' | t: search_term: predictive_search.terms }}</div>
-                          </div>
-                            </div>
+                                <div class="predictive-search_headline">
+                                  <div>Articles</div>
+                                </div>
+                                <div class="swiper is-article">
+                                  <div class="swiper-wrapper is-article">
+                                    {% for article in predictive_search.resources.articles %}    <div li-for="article in predictive_search.resources.articles" class="swiper-slide is-article">
+                                    
+                                      
+                            <a li-object:href="article.url" href="{{ article.url }}" class="predictive-search_line-item is-article w-inline-block">
+                                        <div class="predictive-search_image-wrapper is-article"><img li-object:src="article.image | image_url: width: 300" li-object:alt="article.image.alt | default: article.title" alt="{{ article.image.alt | default: article.title }}" src="{{ article.image | image_url: width: 300 }}" loading="lazy" class="predictive-search_image is-article">
+                                          <div class="text-size-small text-color-grey-bordure">Date</div>
+                                        </div>
+                                        <div class="predictive-search_product-info">
+                                          <div li-object="article.title" class="text-style-allcaps text-style-2lines">{{ article.title }}</div>
+                                        </div>
+                                        <div class="text-style-link text-color-pink">Lire plus</div>
+                                      </a>
+                            
+                                    
+                        </div>
+{% endfor %}
+                                  </div>
+                                </div>
+                                  </div>
 {% endif %}
-                      </div>
+                                </div>
+{% endif %}
+                            {% if first_column_results_size == 0 %}    <div li-if="first_column_results_size == 0" class="predictive-search_results">
+    
+                              <div class="predictive-search_empty">
+                                <div li-object="'search.search_empty' | t: search_term: predictive_search.terms" class="text-size-large text-style-allcaps">{{ 'search.search_empty' | t: search_term: predictive_search.terms }}</div>
+                              </div>
+                                </div>
+{% endif %}
+                          </div>
+                        </div>
+                      </form>
                     </div>
-                  </form>
-                </div>
-              </div>
-              <div class="hidden-js w-embed w-script">
-                <script>
+                  </div>
+                  <div class="hidden-js w-embed w-script">
+                    <script>
   document.addEventListener("alpine:init", () => {
     Alpine.data('handleRecentlyViewedProducts', () => ({
       products: [],
@@ -384,9 +385,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }))
   })
 </script>
-              </div>
-              <div class="hidden-js w-embed w-script">
-                <script>
+                  </div>
+                  <div class="hidden-js w-embed w-script">
+                    <script>
 document.addEventListener('DOMContentLoaded', function() {
   function initSearchSwipers() {
     document.querySelectorAll('.swiper.is-search').forEach(el => {
@@ -430,8 +431,159 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-              </div>
-            </aside>
+                  </div>
+                </aside>
+                  </div>
+{% endunless %}
+              {% if customer.b2b? %}    <div li-if="customer.b2b?">
+    
+                <aside id="predictive-search-wrap" x-show="showSearch" x-transition:enter-start="predictive-search_animation-start" x-transition:enter-end="predictive-search_animation-end" x-transition:leave-start="predictive-search_animation-end" x-transition:leave-end="predictive-search_animation-start" x-bind:class="{'is-open' : showSearch}" x-data="handleRecentlyViewedProducts()" x-init="getProducts()" li-render-search="wrapper" x-on:click.away="showSearch = false" x-cloak="" x-trap.noscroll="showSearch" class="nav_predictive-search is-pro">
+                  <div class="nav_predictive-search-content is-pro">
+                    <div class="container-large">
+                      <form action="/search" class="predictive-search_wrap">
+                        <div class="predictive-search_top-bar is-pro">
+                          <div class="predictive-search_input-wrap is-pro"><input type="search" id="predictive-search" placeholder="{{ 'search.product_search_placeholder' | t }}" name="q" li-render-search="input" data-predictive-search-input="" class="predictive-search_input is-pro"><label for="predictive-search" li-object="'search.product_search_label' | t " class="screen-reader-content">{{ 'search.product_search_label' | t  }}</label></div><button x-on:click="showSearch = false" aria-controls="predictive-search-wrap" x-bind:aria-expanded="showSearch ? 'true' : 'false'" type=" button" class="predictive-search_close">
+                            <div class="nav_dropdown-close-icon w-embed"><svg width="48" height="48" viewbox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10.9932" y="34.9785" width="33.9203" height="2.82669" transform="rotate(-45 10.9932 34.9785)" fill="#8B8B8B"></rect>
+                                <rect x="12.9922" y="10.9931" width="33.9203" height="2.82669" transform="rotate(45 12.9922 10.9931)" fill="#8B8B8B"></rect>
+                              </svg></div>
+                          </button>
+                        </div>
+                        <div class="predictive-search_overflow-wrap">
+                          <div li-render-search="target" class="predictive-search_overflow is-pro">
+                            {% unless predictive_search.performed %}    <div li-unless="predictive_search.performed" class="predictive-search_initial">
+    <template x-if="products.length === 0">
+                                {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0" class="predictive-search_topic">
+    
+                                  <div class="predictive-search_grid is-pro">
+                                    {% for product in section.settings.collection_collection_pro.products limit: section.settings.collection_collection_pro_limit %}
+<div class="predictive-search_item">
+    
+                                      
+    {% render 'product_item_b2b', product: product %}
+    
+                                    
+</div>
+{% endfor %}
+                                  </div>
+                                    </div>
+{% endif %}
+                              </template>    </div>
+{% endunless %}
+                            <div class="predictive-search_results-wrap">
+                              {% assign first_column_results_size = predictive_search.resources.queries.size | plus: predictive_search.resources.collections.size | plus: predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size | plus: predictive_search.resources.products.size %}
+                              {% if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.collections.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.collections.size > 0" class="predictive-search_results">
+    
+                                {% if predictive_search.resources.products.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0" class="predictive-search_topic">
+    
+                                  <div class="predictive-search_grid is-pro">
+                                    {% render 'product_item_b2b', product: product %}
+                                  </div>
+                                    </div>
+{% endif %}
+                                  </div>
+{% endif %}
+                              {% if first_column_results_size == 0 %}    <div li-if="first_column_results_size == 0" class="predictive-search_results">
+    
+                                <div class="predictive-search_empty">
+                                  <div li-object="'search.search_empty' | t: search_term: predictive_search.terms" class="text-size-large text-style-allcaps">{{ 'search.search_empty' | t: search_term: predictive_search.terms }}</div>
+                                </div>
+                                  </div>
+{% endif %}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="pro-search_notif" x-transition:leave="transition ease-in duration-200" x-transition:enter="transition ease-out duration-300" x-show="$store.proSearch.showNotif" x-transition:leave-end="opacity-0" x-transition:enter-end="opacity-100 transform translate-y-0" x-cloak="" x-transition:leave-start="opacity-100" x-transition:enter-start="opacity-0 transform translate-y-[-10px]" x-data="">
+                          <div>Produit ajouté au panier</div>
+                        </div>
+                        <div class="hide w-embed w-script">
+                          <script>
+document.addEventListener('alpine:init', () => {
+  Alpine.store('proSearch', {
+    addingFromSearch: false,
+    showNotif: false,
+    notifTimeout: null,
+    triggerNotif() {
+      this.showNotif = true;
+      if (this.notifTimeout) clearTimeout(this.notifTimeout);
+      this.notifTimeout = setTimeout(() => {
+        this.showNotif = false;
+      }, 3000);
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const searchWrap = document.querySelector('.nav_predictive-search.is-pro');
+  if (!searchWrap) return;
+  searchWrap.addEventListener('click', (e) => {
+    const atcButton = e.target.closest('[li-element="add-to-cart"]');
+    if (atcButton) {
+      Alpine.store('proSearch').addingFromSearch = true;
+    }
+  });
+  window.addEventListener('toggleminicart', (e) => {
+    if (Alpine.store('proSearch').addingFromSearch) {
+      e.stopImmediatePropagation();
+      Alpine.store('proSearch').addingFromSearch = false;
+      Alpine.store('proSearch').triggerNotif();
+    }
+  }, true);
+});
+</script>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="hidden-js w-embed w-script">
+                    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  function initSearchSwipers() {
+    document.querySelectorAll('.swiper.is-search').forEach(el => {
+      if (!el.swiper) {
+        new Swiper(el, {
+          slidesPerView: 'auto',
+          spaceBetween: 16,
+          breakpoints: {
+            0: {
+              spaceBetween: 8,
+            },
+            768: {
+              spaceBetween: 16,
+            },
+          },
+        });
+      }
+    });
+    document.querySelectorAll('.swiper.is-article').forEach(el => {
+      if (!el.swiper) {
+        new Swiper(el, {
+          slidesPerView: 'auto',
+          spaceBetween: 16,
+          breakpoints: {
+            0: {
+              spaceBetween: 12,
+            },
+            768: {
+              spaceBetween: 16,
+            },
+          },
+        });
+      }
+    });
+  }
+  // Init au chargement
+  initSearchSwipers();
+  // R&eacute;init apr&egrave;s rendu search
+  document.addEventListener('liquify:search-rendered', function() {
+    setTimeout(initSearchSwipers, 100);
+  });
+});
+</script>
+                  </div>
+                </aside>
+                  </div>
+{% endif %}
+            </div>
           </div>
           <div class="nav_bottom-bar">
             {% assign block_count = section.blocks.size %}
@@ -790,8 +942,18 @@ document.addEventListener('DOMContentLoaded', function() {
             "default": 6
         },
         {
-            "type": "header",
-            "content": "Menus"
+            "id": "collection_collection_pro",
+            "type": "collection",
+            "label": "Collection Pro"
+        },
+        {
+            "type": "range",
+            "id": "collection_collection_pro_limit",
+            "min": 1,
+            "max": 99,
+            "step": 1,
+            "label": "Limit: Collection Pro",
+            "default": 6
         },
         {
             "type": "link_list",
