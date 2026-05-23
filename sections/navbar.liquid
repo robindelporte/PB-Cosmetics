@@ -489,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endunless %}
               {% if customer.b2b? %}    <div li-if="customer.b2b?">
     
-                <aside id="predictive-search-wrap" x-show="showSearch" x-transition:enter-start="predictive-search_animation-start" x-transition:enter-end="predictive-search_animation-end" x-transition:leave-start="predictive-search_animation-end" x-transition:leave-end="predictive-search_animation-start" x-bind:class="{'is-open' : showSearch}" x-data="handleRecentlyViewedProducts()" x-init="getProducts()" li-render-search="wrapper" x-on:click.away="showSearch = false" x-cloak="" x-trap.noscroll="showSearch" class="nav_predictive-search is-pro">
+                <aside id="predictive-search-wrap" x-show="showSearch" x-transition:enter-start="predictive-search_animation-start" x-transition:enter-end="predictive-search_animation-end" x-transition:leave-start="predictive-search_animation-end" x-transition:leave-end="predictive-search_animation-start" x-bind:class="{'is-open' : showSearch}" x-data="handleRecentlyViewedProducts()" x-init="getProducts()" li-render-search="wrapper" x-on:click.away="showSearch = false" x-cloaks="" x-trap.noscroll="showSearch" class="nav_predictive-search is-pro">
                   <div class="nav_predictive-search-content is-pro">
                     <div class="container-large">
                       <form action="/search" class="predictive-search_wrap">
@@ -529,13 +529,20 @@ document.addEventListener('DOMContentLoaded', function() {
                                 {% if predictive_search.resources.products.size > 0 %}    <div li-if="predictive_search.resources.products.size > 0" class="predictive-search_topic">
     
                                   <div class="predictive-search_grid is-pro">
-                                    {% render 'product_item_b2b', product: product %}
+                                    {% for product in predictive_search.resources.products limit: 8 %}    <div li-for="product in predictive_search.resources.products limit: 8" class="predictive-search_item">
+                                    
+                                      
+                            {% render 'product_item_b2b', product: product %}
+                            
+                                    
+                        </div>
+{% endfor %}
                                   </div>
                                     </div>
 {% endif %}
                                   </div>
 {% endif %}
-                              {% if first_column_results_size == 0 %}    <div li-if="first_column_results_size == 0" class="predictive-search_results">
+                              {% if predictive_search.performed and first_column_results_size == 0 %}    <div li-if="predictive_search.performed and first_column_results_size == 0" class="predictive-search_results">
     
                                 <div class="predictive-search_empty">
                                   <div li-object="'search.search_empty' | t: search_term: predictive_search.terms" class="text-size-large text-style-allcaps">{{ 'search.search_empty' | t: search_term: predictive_search.terms }}</div>
