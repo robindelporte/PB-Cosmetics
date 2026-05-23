@@ -15,8 +15,9 @@
   "sections": {
     "navbar": {
       "settings": {
+        "menu_right": "menu_left",
         "menu_b2b_right": "menu_left",
-        "menu_right": "menu_left"
+        "collection_collection_pro": "base-fonds-de-teint"
       },
       "blocks": {}
     }
