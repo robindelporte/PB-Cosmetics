@@ -489,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endunless %}
               {% if customer.b2b? %}    <div li-if="customer.b2b?">
     
-                <aside id="predictive-search-wrap" x-show="showSearch" x-transition:enter-start="predictive-search_animation-start" x-transition:enter-end="predictive-search_animation-end" x-transition:leave-start="predictive-search_animation-end" x-transition:leave-end="predictive-search_animation-start" x-bind:class="{'is-open' : showSearch}" x-data="handleRecentlyViewedProducts()" x-init="getProducts()" li-render-search="wrapper" x-on:click.away="showSearch = false" x-cloak="" x-trap.noscroll="showSearch" class="nav_predictive-search is-pro">
+                <aside id="predictive-search-wrap" x-show="showSearch" x-transition:enter-start="predictive-search_animation-start" x-transition:enter-end="predictive-search_animation-end" x-transition:leave-start="predictive-search_animation-end" x-transition:leave-end="predictive-search_animation-start" x-bind:class="{'is-open' : showSearch}" x-data="handleRecentlyViewedProducts()" x-init="getProducts()" li-render-search="wrapper" x-on:click.away="showSearch = false" x-cloaks="" x-trap.noscroll="showSearch" class="nav_predictive-search is-pro">
                   <div class="container-large">
                     <div class="nav_predictive-search-content is-pro">
                       <form action="/search" x-on:submit="$event.preventDefault()" class="predictive-search_wrap">
