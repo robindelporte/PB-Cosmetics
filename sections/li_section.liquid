@@ -1,0 +1,70 @@
+<div class="padding-global">
+          <div class="padding-section-small">
+            <div class="container-large">
+              <div class="products_component-wrapper">
+                <div class="products_heading">
+                  <h2 class="heading-style-h1 text-style-allcaps">
+{{ section.settings.text_titre }}
+</h2>
+                </div>
+                <div li-for:inside="product in section.settings.collection.products limit: section.settings.limit" class="product_list">
+        {% for product in section.settings.collection.products limit: section.settings.limit %}                            
+                  
+                            {% render 'product_item', product: product %}
+                            
+  
+                    {% endfor %}    </div>
+  <div class="products_link-wrapper">
+    <a href="{{ section.settings.url_lien }}" class="button is-link w-inline-block"> <div class="button_text">{{ section.settings.text_texte }}</div> <div class="icon-1x1-18 w-embed"><svg width="20" height="15" viewbox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M11.25 0.530273L18 7.28027M18 7.28027L11.25 14.0303M18 7.28027L0 7.28027" stroke="#151515" stroke-width="1.5"></path> </svg></div> </a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div> {% schema %} {
+    "tag": "section",
+    "name": "li-section",
+    "class": "section_products",
+    "settings": [
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "MEILLEURES VENTES"
+        },
+        {
+            "id": "url_lien",
+            "type": "url",
+            "label": "Lien"
+        },
+        {
+            "id": "text_texte",
+            "type": "text",
+            "label": "Texte",
+            "default": "TOUS NOS BESTSELLER"
+        },
+        {
+            "type": "header",
+            "content": "Section Settings"
+        },
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        },
+        {
+            "type": "range",
+            "id": "limit",
+            "label": "Nombre de produits",
+            "min": 1,
+            "max": 12,
+            "default": 4
+        }
+    ],
+    "presets": [
+        {
+            "name": "li-section",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}
