@@ -530,7 +530,14 @@ document.addEventListener('DOMContentLoaded', function() {
                                     {% for product in predictive_search.resources.products limit: 8 %}    <div li-for="product in predictive_search.resources.products limit: 8" class="predictive-search_item">
                                     
                                       
+                            {% for variant in product.variants %}    <div li-for="variant in product.variants">
+                                    
+                                        
                             {% render 'product_item_b2b', product: product %}
+                            
+                                      
+                        </div>
+{% endfor %}
                             
                                     
                         </div>
