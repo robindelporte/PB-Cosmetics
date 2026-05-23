@@ -30,8 +30,9 @@
                                               <div x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')" li-js-price="product.selected_or_first_available_variant.price" class="text-size-medium">17HT€</div>
                                               <div x-text="'Prix de vente conseillé : ' + LiquifyHelper.moneyFormat({{ product.metafields.custom.pvc.value }}) + ' TTC'" class="text-size-small text-color-grey">Prix de ventre conseillé : 12€ TTC</div>
                                             </div>
-                                            <input type="hidden" name="properties[_sous_titre]" value="product.metafields.custom.texte_sous_titre"><input type="hidden" name="properties[_multiple]" value="product.selected_or_first_available_variant.quantity_rule.increment | default: 1"><input type="hidden" name="properties[_couleur_code]" value="product.selected_or_first_available_variant.metafields.custom.couleur_code"><button type="button" li-element="add-to-cart" class="button is-search" @click="addToCart($event, true)" :disabled="!addToCartButton">
+                                            {% form 'product', product, class: 'product-pro_buy-form' %}
+<input type="hidden" name="properties[_sous_titre]" value="product.metafields.custom.texte_sous_titre"><input type="hidden" name="properties[_multiple]" value="product.selected_or_first_available_variant.quantity_rule.increment | default: 1"><input type="hidden" name="properties[_couleur_code]" value="product.selected_or_first_available_variant.metafields.custom.couleur_code"><button type="button" li-element="add-to-cart" class="button is-search" @click="addToCart($event, true)" :disabled="!addToCartButton">
                                                 <div class="text-size-small">AJOUTER AU PANIER</div>
-                                              </button>
+                                              </button>{% endform %}
                                           </div>
                                         </div>
