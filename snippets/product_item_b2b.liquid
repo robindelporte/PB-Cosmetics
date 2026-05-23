@@ -39,8 +39,10 @@
                                                     </div>
 {% endif %}
                                               </div>
-                                              <div class="product-pro_buy-form"><input type="hidden" name="id" value="{{ v.id }}"><input type="hidden" name="quantity" x-bind:value="quantity"><input type="hidden" name="properties[_sous_titre]" value="{{ product.metafields.custom.texte_sous_titre }}"><input type="hidden" name="properties[_multiple]" value="{{ v.quantity_rule.increment | default: 1 }}"><input type="hidden" name="properties[_couleur_code]" value="{{ v.metafields.custom.couleur_code }}"><button type="button" li-element="add-to-cart" class="button is-search" @click="addToCart($event, true)" :disabled="!addToCartButton">
+                                              {% form 'product', product: 'product', class: 'product-pro_buy-form' %}
+<input type="hidden" name="id" value="{{ v.id }}"><input type="hidden" name="quantity" x-bind:value="quantity"><input type="hidden" name="properties[_sous_titre]" value="{{ product.metafields.custom.texte_sous_titre }}"><input type="hidden" name="properties[_multiple]" value="{{ v.quantity_rule.increment | default: 1 }}"><input type="hidden" name="properties[_couleur_code]" value="{{ v.metafields.custom.couleur_code }}"><script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
+<button type="button" li-element="direct-add-to-cart" class="button is-search" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" @click="addToCart($event, true)">
                                                   <div class="text-size-small">AJOUTER AU PANIER</div>
-                                                </button></div>
+                                                </button>{% endform %}
                                             </div>
                                           </div>
