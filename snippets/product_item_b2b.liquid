@@ -1,13 +1,15 @@
-<div x-data="variant.quantity_rule.X" class="product-pro_item">
+<div x-data="{ min: {{ v.quantity_rule.min | default: 1 }}, max: {{ v.quantity_rule.max | default: 9999 }}, step: {{ v.quantity_rule.increment | default: 1 }}, quantity: {{ v.quantity_rule.min | default: 1 }} }" class="product-pro_item">
+                                            {% assign v = variant | default: product.selected_or_first_available_variant %}
+                                            {% assign pvc = product.metafields.custom.pvc.value %}
                                             <div class="product-pro_content">
-                                              <div class="product-pro_image-wrapper"><img class="product-pro_image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | default: product.title }}" sizes="100vw" li-object:src="product.featured_image | image_url: width: 400" loading="lazy" li-object:alt="product.featured_image.alt | default: product.title" srcset="{{ 'parfum-3-p-500.avif' | asset_url }} 500w, {{ 'parfum-3-p-800.avif' | asset_url }} 800w, {{ 'parfum-3.avif' | asset_url }} 1468w"></div>
+                                              <div class="product-pro_image-wrapper"><img class="product-pro_image" src="{{ '{{ product.featured_image | image_url: width: 400 }}' | asset_url }}" alt="{{ product.featured_image.alt | default: product.title }}" sizes="100vw" loading="lazy" srcset="{{ product.featured_image | image_url: width: 500 }} 500w, {{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1468 }} 1468w"></div>
                                               <div class="product-pro_infos">
                                                 <div class="product-pro_heading">
                                                   <div li-object="product.title" class="text-style-allcaps">{{ product.title }}</div>
-                                                  <div li-object="variant.sku" class="text-size-tiny text-style-allcaps text-color-grey">{{ variant.sku }}</div>
-                                                  {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true">
+                                                  <div li-object="v.sku" class="text-size-tiny text-style-allcaps text-color-grey">{{ v.sku }}</div>
+                                                  {% if product.has_only_default_variant %}    <div li-if="product.has_only_default_variant">
     
-                                                    <div li-object="variant.title" class="text-size-tiny text-style-allcaps">{{ variant.title }}</div>
+                                                    <div li-object="v.title" class="text-size-tiny text-style-allcaps">{{ v.title }}</div>
                                                       </div>
 {% endif %}
                                                 </div>
@@ -16,7 +18,7 @@
                                                       <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewbox="0 0 10 11" fill="none">
                                                           <path d="M0.0654297 5.49414H9.5752" stroke="#1C1F31" stroke-width="0.780288"></path>
                                                         </svg></div>
-                                                    </button><input type="text" name="updates[]" x-model="quantity" li-element="add-to-cart-quantity" class="mini-cart_item-quantity-adjust is-input" value="1"><button aria-label="{{ aria_label_increase_product_quantity }}" x-on:click="quantity = quantity + step" class="mini-cart_item-quantity-adjust">
+                                                    </button><input type="text" name="updates[]" x-model="quantity" li-element="add-to-cart-quantity" class="mini-cart_item-quantity-adjust is-input" value="1"><button aria-label="Augmenter la quantité" x-on:click="quantity = quantity + step" type="button" class="mini-cart_item-quantity-adjust">
                                                       <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewbox="0 0 11 11" fill="none">
                                                           <path d="M0.555664 5.49414H10.0654" stroke="#1C1F31" stroke-width="0.780288"></path>
                                                           <path d="M5.31055 10.249L5.31055 0.739258" stroke="#1C1F31" stroke-width="0.780288"></path>
@@ -28,11 +30,15 @@
                                             </div>
                                             <div class="product-pro_buy">
                                               <div class="product-pro_buy-price">
-                                                <p li-js-price="variant.price" x-text="LiquifyHelper.moneyFormat(variant.price, true, '{{ shop.money_with_currency_format }}')" class="text-size-medium">17HT€</p>
-                                                <div x-text="'Prix de vente conseillé : ' + LiquifyHelper.moneyFormat({{ product.metafields.custom.pvc.value }}) + ' TTC'" class="text-size-small text-color-grey">Prix de ventre conseillé : 12€ TTC</div>
+                                                <div class="display-flex align-right"><span li-object="v.price | divided_by: 1.20 | money_without_currency" class="text-size-medium">{{ v.price | divided_by: 1.20 | money_without_currency }}</span><span class="text-size-medium">€ HT</span></div>
+                                                {% if pvc %}    <div li-if="pvc">
+    
+                                                  <div x-text="'Prix de vente conseillé : ' + LiquifyHelper.moneyFormat({{ pvc }}) + ' TTC" class="text-size-small text-color-grey">Prix de ventre conseillé : 12€ TTC</div>
+                                                    </div>
+{% endif %}
                                               </div>
                                               {% form 'product', product, class: 'product-pro_buy-form' %}
-<input type="hidden" name="properties[_sous_titre]" value="product.metafields.custom.texte_sous_titre"><input type="hidden" name="properties[_multiple]" value="variant.quantity_rule.increment | default: 1"><input type="hidden" name="properties[_couleur_code]" value="variant.metafields.custom.couleur_code"><button type="button" li-element="add-to-cart" class="button is-search" @click="addToCart($event, true)" :disabled="!addToCartButton">
+<input type="hidden" name="id" value="{{ v.id }}"><input type="hidden" name="quantity" value="quantity"><input type="hidden" name="properties[_sous_titre]" value="{{ product.metafields.custom.texte_sous_titre }}"><input type="hidden" name="properties[_multiple]" value="{{ v.quantity_rule.increment | default: 1 }}"><input type="hidden" name="properties[_couleur_code]" value="{{ v.metafields.custom.couleur_code }}"><button type="button" li-element="add-to-cart" x-on:click="addToCart($event, true)" class="button is-search" @click="addToCart($event, true)" :disabled="!addToCartButton">
                                                   <div class="text-size-small">AJOUTER AU PANIER</div>
                                                 </button>{% endform %}
                                             </div>
