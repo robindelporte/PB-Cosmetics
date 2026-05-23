@@ -2,7 +2,14 @@
                                           {% assign pvc = product.metafields.custom.pvc.value %}
                                           <div x-data="{ min: {{ v.quantity_rule.min | default: 1 }}, max: {{ v.quantity_rule.max | default: 9999 }}, step: {{ v.quantity_rule.increment | default: 1 }}, quantity: {{ v.quantity_rule.min | default: 1 }} }" class="product-pro_item">
                                             <div class="product-pro_content">
-                                              <div class="product-pro_image-wrapper"><img class="product-pro_image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | default: product.title }}" sizes="100vw" li-object:src="product.featured_image | image_url: width: 400" loading="lazy" li-object:alt="product.featured_image.alt | default: product.title" srcset="{{ 'parfum-3-p-500.avif' | asset_url }} 500w, {{ 'parfum-3-p-800.avif' | asset_url }} 800w, {{ 'parfum-3.avif' | asset_url }} 1468w"></div>
+                                              <div class="product-pro_image-wrapper">
+  <img class="product-pro_image"
+       src="{{ v.featured_image | default: product.featured_image | image_url: width: 400 }}"
+       alt="{{ v.featured_image.alt | default: product.featured_image.alt | default: product.title }}"
+       srcset="{{ v.featured_image | default: product.featured_image | image_url: width: 500 }} 500w, {{ v.featured_image | default: product.featured_image | image_url: width: 800 }} 800w, {{ v.featured_image | default: product.featured_image | image_url: width: 1468 }} 1468w"
+       sizes="100vw"
+       loading="lazy">
+</div>
                                               <div class="product-pro_infos">
                                                 <div class="product-pro_heading">
                                                   <div li-object="product.title" class="text-style-allcaps">{{ product.title }}</div>
