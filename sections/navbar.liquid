@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="predictive-search_item">
     
                                     
-    {% render 'product_item_b2b', product: product %}
+    {% render 'product_item_b2b', variant: variant, product: product %}
     
                                   
 </div>
@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             {% for variant in product.variants %}    <div li-for="variant in product.variants">
                                     
                                         
-                            {% render 'product_item_b2b', product: product %}
+                            {% render 'product_item_b2b', variant: variant, product: product %}
                             
                                       
                         </div>
