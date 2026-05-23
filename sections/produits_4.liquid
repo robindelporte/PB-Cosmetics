@@ -7,8 +7,8 @@
 {{ section.settings.text_titre }}
 </h2>
                 </div>
-                <div li-for:inside="product in collection.products limit: section.settings.limit" class="product_list">
-        {% for product in collection.products limit: section.settings.limit %}                            
+                <div li-for:inside="product in section.settings.collection.products limit: section.settings.limit" class="product_list">
+        {% for product in section.settings.collection.products limit: section.settings.limit %}                            
                   
                             {% render 'product_item', product: product %}
                             
@@ -22,7 +22,7 @@
   </div>
   </div> {% schema %} {
     "tag": "section",
-    "name": "Produits - 4",
+    "name": "Produit - 4",
     "class": "section_products",
     "settings": [
         {
@@ -62,7 +62,7 @@
     ],
     "presets": [
         {
-            "name": "Produits - 4",
+            "name": "Produit - 4",
             "category": "Liquify",
             "blocks": []
         }
