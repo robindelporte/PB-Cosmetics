@@ -1,59 +1,39 @@
-{%- comment -%}
-  Accepte: product (requis), variant (optionnel)
-  Si variant n'est pas passé, fallback sur selected_or_first_available_variant
-{%- endcomment -%}
-{%- assign v = variant | default: product.selected_or_first_available_variant -%}
-{%- assign pvc = product.metafields.custom.pvc.value -%}
-
-<div x-data="{ min: {{ v.quantity_rule.min | default: 1 }}, max: {{ v.quantity_rule.max | default: 9999 }}, step: {{ v.quantity_rule.increment | default: 1 }}, quantity: {{ v.quantity_rule.min | default: 1 }} }" class="product-pro_item">
-  <div class="product-pro_content">
-
-    <div class="product-pro_image-wrapper">
-      <img class="product-pro_image"
-           src="{{ product.featured_image | image_url: width: 400 }}"
-           alt="{{ product.featured_image.alt | default: product.title }}"
-           srcset="{{ product.featured_image | image_url: width: 500 }} 500w, {{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1468 }} 1468w"
-           sizes="100vw"
-           loading="lazy">
-    </div>
-
-    <div class="product-pro_infos">
-      <div class="product-pro_heading">
-        <div class="text-style-allcaps">{{ product.title }}</div>
-        <div class="text-size-tiny text-style-allcaps text-color-grey">{{ v.sku }}</div>
-        {% unless product.has_only_default_variant %}
-          <div class="text-size-tiny text-style-allcaps">{{ v.title }}</div>
-        {% endunless %}
-      </div>
-
-      <div class="product-pro_quantity">
-        <div class="mini-cart_item-quantity">
-          <button type="button" x-on:click="quantity = quantity > min ? quantity - step : min" class="mini-cart_item-quantity-adjust">−</button>
-          <input type="text" name="updates[]" x-model="quantity" class="mini-cart_item-quantity-adjust is-input">
-          <button type="button" x-on:click="quantity = quantity + step" class="mini-cart_item-quantity-adjust">+</button>
-        </div>
-        <div class="text-size-small text-color-grey" x-text="'produit vendu par ' + step"></div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="product-pro_buy">
-    <div class="product-pro_buy-price">
-      <p class="text-size-medium">{{ v.price | divided_by: 1.20 | money_without_currency }} € HT</p>
-      {% if pvc %}
-        <div class="text-size-small text-color-grey">Prix de vente conseillé : {{ pvc | money }} TTC</div>
-      {% endif %}
-    </div>
-
-    {% form 'product', product, class: 'product-pro_buy-form' %}
-      <input type="hidden" name="id" value="{{ v.id }}">
-      <input type="hidden" name="quantity" x-bind:value="quantity">
-      <input type="hidden" name="properties[_sous_titre]" value="{{ product.metafields.custom.texte_sous_titre }}">
-      <input type="hidden" name="properties[_multiple]" value="{{ v.quantity_rule.increment | default: 1 }}">
-      <input type="hidden" name="properties[_couleur_code]" value="{{ v.metafields.custom.couleur_code }}">
-      <button type="submit" class="button is-search">AJOUTER AU PANIER</button>
-    {% endform %}
-
-  </div>
-</div>
+<div x-data="variant.quantity_rule.X" class="product-pro_item">
+                                            <div class="product-pro_content">
+                                              <div class="product-pro_image-wrapper"><img class="product-pro_image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | default: product.title }}" sizes="100vw" li-object:src="product.featured_image | image_url: width: 400" loading="lazy" li-object:alt="product.featured_image.alt | default: product.title" srcset="{{ 'parfum-3-p-500.avif' | asset_url }} 500w, {{ 'parfum-3-p-800.avif' | asset_url }} 800w, {{ 'parfum-3.avif' | asset_url }} 1468w"></div>
+                                              <div class="product-pro_infos">
+                                                <div class="product-pro_heading">
+                                                  <div li-object="product.title" class="text-style-allcaps">{{ product.title }}</div>
+                                                  <div li-object="variant.sku" class="text-size-tiny text-style-allcaps text-color-grey">{{ variant.sku }}</div>
+                                                  {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true">
+    
+                                                    <div li-object="variant.title" class="text-size-tiny text-style-allcaps">{{ variant.title }}</div>
+                                                      </div>
+{% endif %}
+                                                </div>
+                                                <div class="product-pro_quantity">
+                                                  <div class="mini-cart_item-quantity"><button type="button" x-on:click="quantity = quantity > min ? quantity - step : min" class="mini-cart_item-quantity-adjust">
+                                                      <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewbox="0 0 10 11" fill="none">
+                                                          <path d="M0.0654297 5.49414H9.5752" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                        </svg></div>
+                                                    </button><input type="text" name="updates[]" x-model="quantity" li-element="add-to-cart-quantity" class="mini-cart_item-quantity-adjust is-input" value="1"><button aria-label="{{ aria_label_increase_product_quantity }}" x-on:click="quantity = quantity + step" class="mini-cart_item-quantity-adjust">
+                                                      <div aria-hidden="true" class="icon-1x1-xxxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewbox="0 0 11 11" fill="none">
+                                                          <path d="M0.555664 5.49414H10.0654" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                          <path d="M5.31055 10.249L5.31055 0.739258" stroke="#1C1F31" stroke-width="0.780288"></path>
+                                                        </svg></div>
+                                                    </button></div>
+                                                  <div x-text="'produit vendu par ' + step" class="text-size-small text-color-grey">produit vendu par 6</div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="product-pro_buy">
+                                              <div class="product-pro_buy-price">
+                                                <p li-js-price="variant.price" x-text="LiquifyHelper.moneyFormat(variant.price, true, '{{ shop.money_with_currency_format }}')" class="text-size-medium">17HT€</p>
+                                                <div x-text="'Prix de vente conseillé : ' + LiquifyHelper.moneyFormat({{ product.metafields.custom.pvc.value }}) + ' TTC'" class="text-size-small text-color-grey">Prix de ventre conseillé : 12€ TTC</div>
+                                              </div>
+                                              {% form 'product', product, class: 'product-pro_buy-form' %}
+<input type="hidden" name="properties[_sous_titre]" value="product.metafields.custom.texte_sous_titre"><input type="hidden" name="properties[_multiple]" value="variant.quantity_rule.increment | default: 1"><input type="hidden" name="properties[_couleur_code]" value="variant.metafields.custom.couleur_code"><button type="button" li-element="add-to-cart" class="button is-search" @click="addToCart($event, true)" :disabled="!addToCartButton">
+                                                  <div class="text-size-small">AJOUTER AU PANIER</div>
+                                                </button>{% endform %}
+                                            </div>
+                                          </div>
