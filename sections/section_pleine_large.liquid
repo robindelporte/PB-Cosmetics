@@ -1,9 +1,9 @@
 <div class="padding-section-medium">
       <div class="container-1710">
         <div class="full_component-wrapper">{% if section.settings.image_image %}
-{{ section.settings.image_image | image_url: width: 1000 | image_tag: class: 'full_component-image', width: '864', sizes: '(max-width: 767px) 100vw, 864px', loading: 'lazy' }}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: class: 'full_component-image', width: '864', sizes: '(max-width: 991px) 100vw, 864px', loading: 'lazy' }}
 {% else %}
-<img class="full_component-image" src="{{ 'bundle-image.avif' | asset_url }}" width="864" alt="" sizes="(max-width: 767px) 100vw, 864px" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
+<img class="full_component-image" src="{{ 'bundle-image.avif' | asset_url }}" width="864" alt="" sizes="(max-width: 991px) 100vw, 864px" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
 {% endif %}
           <div id="w-node-_8bad777a-ae69-4484-89ec-710ca99cd475-a99cd470" class="full_component-content-wrapper">
             <div class="full_component-content">

@@ -8030,6 +8030,19 @@ figcaption {
   display: flex;
 }
 
+.display-flex {
+  grid-column-gap: .25rem;
+  grid-row-gap: .25rem;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.display-flex.align-right {
+  justify-content: flex-end;
+  align-items: center;
+}
+
 @media screen and (min-width: 1440px) {
   .container-large {
     max-width: 106.875rem;
