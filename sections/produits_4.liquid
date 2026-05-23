@@ -8,7 +8,7 @@
 </h2>
                 </div>
                 <div li-for:inside="product in collection.products limit: section.settings.limit" class="product_list">
-        {% for product in collection.products limit: section.settings.limit %}                            
+        {% for product in section.settings.collection.products limit: section.settings.limit %}                            
                   
                             {% render 'product_item', product: product %}
                             
