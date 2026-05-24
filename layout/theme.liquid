@@ -37,6 +37,7 @@
   <script defer="" src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
   <!--  Alpine Focus Plugin  -->
   <script defer="" src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+  <script defer="" src="{{ 'li_custom.js' | asset_url }}"></script>
   <!--  Alpine JS  -->
   <script defer="" src="{{ 'alpinejs3.js' | asset_url }}"></script>
   <!--  [Attributes by Finsweet] Modal  -->
@@ -449,6 +450,9 @@ h1, h2, h3, h4 {
    display: none !important;
  }
 }
+.modal-anim-base { transition: opacity 250ms ease-out, transform 250ms ease-out; }
+  .modal-anim-hidden { opacity: 0; transform: translateY(20px); }
+  .modal-anim-visible { opacity: 1; transform: translateY(0); }
 </style>
       </div>
       <div class="color-schemes w-embed">
