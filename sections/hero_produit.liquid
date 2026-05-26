@@ -127,17 +127,18 @@
                             
                           
                             <div x-data="{ colorGuideOpen: false }" class="product-hero_color-guide">
+                            <style>{% for variant in product.variants %}#swatch-{{variant.id}}{background-color:{{variant.metafields.custom.couleur_code}};}{% endfor %}</style>
                             <div x-on:click="colorGuideOpen = true" class="product-hero_color-guide-button">
                               <div>Guide couleurs</div>
                               <div class="icon-1x1-14 w-embed"><svg width="6" height="6" viewbox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M2.12891 0H3.69141V2.12891H5.83008V3.69141H3.69141V5.82031H2.12891V3.69141H0V2.12891H2.12891V0Z" fill="#1C1C1C"></path>
                                 </svg></div>
                             </div>
-                            <div x-bind:class="{ 'is-active': colorGuideOpen }" x-cloaks="" class="color-guide_wrapper is-active">
+                            <div x-bind:class="{ 'is-active': colorGuideOpen }" x-cloak="" class="color-guide_wrapper is-active">
                               <div x-on:click="colorGuideOpen = false" x-show="colorGuideOpen" class="color-guide_overlay"></div>
                               <div x-show="colorGuideOpen" class="color-guide_popup">
                                 <div class="color-guide_heading">
-                                  <div>Guide des couleurs</div><button x-on:click="colorGuideOpen = false" class="color-guide_closer">
+                                  <div>Guide des couleurs</div><button x-on:click="colorGuideOpen = false" type="button" class="color-guide_closer">
                                     <div class="icon-1x1-34 w-embed"><svg width="34" height="34" viewbox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect y="15.5469" width="33.9203" height="2.82669" fill="#3E3E3E"></rect>
                                         <rect x="18.374" width="33.9203" height="2.82669" transform="rotate(90 18.374 0)" fill="#3E3E3E"></rect>
@@ -151,7 +152,7 @@
                                     
                                         
                             <div class="color-guide_item-name">
-                                          <div class="color-guide_item-swatch" style="'background-color:' | append: variant.metafields.custom.couleur_code"></div>
+                                          <div class="color-guide_item-swatch" id="swatch-{{ variant.id }}"></div>
                                           <div li-object="variant.metafields.custom.couleur_nom" class="color-guide_item-heading">{{ variant.metafields.custom.couleur_nom }}</div>
                                         </div>
                             
