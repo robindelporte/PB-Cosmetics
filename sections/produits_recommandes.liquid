@@ -1,14 +1,14 @@
 <div ata-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related" class="padding-global product-recommendations">
-            <div class="padding-section-small">
-              <div class="container-large">
-                <div class="products_component-wrapper">
-                  <div class="products_heading">
-                    <h2 class="heading-style-h1 text-style-allcaps">
+          <div class="padding-section-small">
+            <div class="container-large">
+              <div class="products_component-wrapper">
+                <div class="products_heading">
+                  <h2 class="heading-style-h1 text-style-allcaps">
 {{ section.settings.text_titre }}
 </h2>
-                  </div>
-                  <div i-for="product in recommendations.products" class="product_list">
-                    {% render 'product_item', product: product %}
+                </div>
+                <div i-for="product in recommendations.products" class="product_list">
+                  {% render 'product_item', product: product %}
   </div>
   <div class="products_link-wrapper">
     <a href="{{ section.settings.url_lien }}" class="button is-link w-inline-block"> <div class="button_text">{{ section.settings.text_texte }}</div> <div class="icon-1x1-18 w-embed"><svg width="20" height="15" viewbox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M11.25 0.530273L18 7.28027M18 7.28027L11.25 14.0303M18 7.28027L0 7.28027" stroke="#151515" stroke-width="1.5"></path> </svg></div> </a>
