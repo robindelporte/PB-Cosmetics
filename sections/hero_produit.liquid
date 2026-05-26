@@ -134,9 +134,9 @@
                                   <path d="M2.12891 0H3.69141V2.12891H5.83008V3.69141H3.69141V5.82031H2.12891V3.69141H0V2.12891H2.12891V0Z" fill="#1C1C1C"></path>
                                 </svg></div>
                             </div>
-                            <div x-bind:class="{ 'is-active': colorGuideOpen }" x-cloak="" class="color-guide_wrapper is-active">
-                              <div x-on:click="colorGuideOpen = false" x-show="colorGuideOpen" class="color-guide_overlay"></div>
-                              <div x-show="colorGuideOpen" class="color-guide_popup">
+                            <div x-bind:class="{ 'is-active': colorGuideOpen }" x-cloak="" class="color-guide_wrapper">
+                              <div x-on:click="colorGuideOpen = false" class="color-guide_overlay"></div>
+                              <div class="color-guide_popup">
                                 <div class="color-guide_heading">
                                   <div>Guide des couleurs</div><button x-on:click="colorGuideOpen = false" type="button" class="color-guide_closer">
                                     <div class="icon-1x1-34 w-embed"><svg width="34" height="34" viewbox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
