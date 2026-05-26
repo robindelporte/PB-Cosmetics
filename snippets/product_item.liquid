@@ -20,7 +20,7 @@
     <a href="#" class="button is-secondary pointer-events-off max-width-full is-out-of-stock w-button">Rupture de stock</a>    </div>
 {% endif %}</div>{% if has_color_variants %}    <div li-if="has_color_variants" class="quick-buy_wrap">
     <template x-teleport="body" x-cloak=""><div class="quick-buy_modal" x-transition:leave="modal-anim-base" x-transition:enter="modal-anim-base" aria-modal="true" x-on:keydown.escape.window="quickbuy = false" x-on:toggleminicart.window="quickbuy =  false" x-show="quickbuy" x-transition:leave-end="modal-anim-hidden" role="dialog" x-transition:enter-end="modal-anim-visible" x-trap.noscroll="quickbuy" x-transition:leave-start="modal-anim-visible" x-transition:enter-start="modal-anim-hidden"><div x-on:click="quickbuy = false" class="modal_bg-close"></div><div x-bind:class="{'is-active' : quickbuy}" class="quick-buy_content"><script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
-<div li-element="product-variant-container" class="quick-buy_wrap" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">{% form 'product', product, class: 'quick-buy_form' %}
+<div li-element="product-variant-container" class="quick-buy_wrap" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)"><div class="quick-buy_form-wrapper w-form">{% form 'product', product, class: 'quick-buy_form' %}
 <div class="quick-buy_product"><img x-bind:alt="selected_or_first_available_variant.featured_media.alt || product.title" class="quick-buy_product-image" src="{{ product.featured_image | image_url: width: 250 }}" alt="{{ product.featured_image.alt | default: product.title }}" li-object:src="product.featured_image | image_url: width: 250" loading="lazy" x-bind:src="selected_or_first_available_variant.featured_image" li-object:alt="product.featured_image.alt | default: product.title"><div class="quick-buy_product-infos"><div class="hide w-embed"><style>
 {% for variant in product.variants %} 
   {% for option in variant.options %}
@@ -41,8 +41,8 @@
                       <template x-for="(option, optionKey) in product.options" :key="optionKey">
     <div li-element="product-options-loop" class="product_option-loop" data-ProductVariantsLoop="true">
                         <div class="product-item_option-list is-quickbuy"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
-    <label li-element="product-option-loop" class="product-hero_radio"><input type="radio" li-element="product-option-input" class="product-hero_radio" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'">
-                            <div class="product_variant-inner-circle"></div>
+    <label li-element="product-option-loop" class="product-hero_radio w-radio"><input type="radio" li-element="product-option-input" class="w-form-formradioinput product-hero_radio w-radio-input" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'">
+                            <div class="product_variant-inner-circle"></div><span li-element="product-option-name" class="hide w-form-label" for="radio-3" x-text="variantName" :for="variantName">Radio 3</span>
                           </label></template></div>
                       </div></template>
                         </div>
@@ -51,16 +51,19 @@
                 </div><button x-on:click="addToCart($event, true)" x-bind:disabled="!addToCartButton" type="button" class="quick-buy_add-to-cart">
                   <div class="button_text">AJOUTER AU PANIER</div>
                   <div class="button_overlay"></div>
-                </button>{% endform %}<button aria-label="Fermer la sélection" x-on:click="quickbuy = false" aria-controls="quickby-modal-{{product.handle}}-{{section.index}}" x-bind:aria-expanded="quickbuy" type="button" aria-haspopup="dialog" class="quick-buy_close">
-                  <div class="icon-1x1-20 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
-                      <rect y="18.4615" width="26.1085" height="2.17571" transform="rotate(-45 0 18.4615)" fill="#3E3E3E"></rect>
-                      <rect x="1.53857" y="2.67029e-05" width="26.1085" height="2.17571" transform="rotate(45 1.53857 2.67029e-05)" fill="#3E3E3E"></rect>
-                    </svg></div>
-                </button>
-              </div>
+                </button>{% endform %}
+                <div class="hide w-form-done"></div>
+                <div class="hide w-form-fail"></div>
+              </div><button aria-label="Fermer la sélection" x-on:click="quickbuy = false" aria-controls="quickby-modal-{{product.handle}}-{{section.index}}" x-bind:aria-expanded="quickbuy" type="button" aria-haspopup="dialog" class="quick-buy_close">
+                <div class="icon-1x1-20 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
+                    <rect y="18.4615" width="26.1085" height="2.17571" transform="rotate(-45 0 18.4615)" fill="#3E3E3E"></rect>
+                    <rect x="1.53857" y="2.67029e-05" width="26.1085" height="2.17571" transform="rotate(45 1.53857 2.67029e-05)" fill="#3E3E3E"></rect>
+                  </svg></div>
+              </button>
             </div>
-          </div></template>
-            </div>
+          </div>
+        </div></template>
+      </div>
 {% endif %}
   </div>
   </div>
