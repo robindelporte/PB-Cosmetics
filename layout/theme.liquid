@@ -453,25 +453,23 @@ h1, h2, h3, h4 {
 .modal-anim-base { transition: opacity 250ms ease-out, transform 250ms ease-out; }
 .modal-anim-hidden { opacity: 0; transform: translateY(20px); }
 .modal-anim-visible { opacity: 1; transform: translateY(0); }
-.color-guide_wrapper { pointer-events: none; }
-.color-guide_wrapper.is-active { pointer-events: auto; }
+.color-guide_content::-webkit-scrollbar { width: 3px; background: transparent; }
+.color-guide_content::-webkit-scrollbar-track { background: #B1B1B1; margin-bottom: 32px; }
+.color-guide_content::-webkit-scrollbar-thumb { background: #1C1C1C; border-radius: 0; }
 .color-guide_overlay {
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity .5s cubic-bezier(.645, .045, .355, 1);
 }
 .color-guide_wrapper.is-active .color-guide_overlay { opacity: 1; }
 .color-guide_popup {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translate(0, 100%);
+  transition: opacity .5s cubic-bezier(.645, .045, .355, 1), transform .5s cubic-bezier(.645, .045, .355, 1);
 }
 .color-guide_wrapper.is-active .color-guide_popup {
   opacity: 1;
   transform: translateY(0);
 }
-.color-guide_content::-webkit-scrollbar { width: 3px; background: transparent; }
-.color-guide_content::-webkit-scrollbar-track { background: #B1B1B1; margin-bottom: 32px; }
-.color-guide_content::-webkit-scrollbar-thumb { background: #1C1C1C; border-radius: 0; }
 </style>
       </div>
       <div class="color-schemes w-embed">
