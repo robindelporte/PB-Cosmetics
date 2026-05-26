@@ -38,7 +38,7 @@
                     </div>
                     {% unless product.has_only_default_variant %}    <div li-unless="product.has_only_default_variant">
     
-                      <div>{% if product.options[0] == 'Couleur' %}<div class="product_option-loop"> <fieldset> <div class="product-hero_radio-list is-quickbuy">{% for variant in product.variants %}<label class="product-hero_radio" x-on:click="setVariant({target:{value:{{variant.title | json}}, getAttribute: () => 'radio'}})"> <input type="radio" name="Couleur" value="{{variant.title}}" x-bind:checked="selected_or_first_available_variant?.title ==={{variant.title | json}}" class="hide"> <div class="product_variant-inner-circle" style="background-color:{{variant.metafields.custom.couleur_code}};"></div> <div x-bind:class="selected_or_first_available_variant?.title ==={{variant.title | json}}? 'is-active' : ''"></div> </label>{% endfor %}</div> </fieldset> </div>{% endif %}</div>
+                      <div>{% if product.options[0] == 'Couleur' %}<div class="product_option-loop" data-productvariantsloop="true"> <fieldset> <div class="product-hero_radio-list is-quickbuy">{% for variant in product.variants %}<label class="product-hero_radio" x-on:click="setVariant($event)"> <input type="radio" name="Couleur" value="{{variant.title}}" x-bind:checked="selected_or_first_available_variant?.title === '{{variant.title}}'" class="hide"> <div class="product_variant-inner-circle" style="background-color:{{variant.metafields.custom.couleur_code}};"></div> <div x-bind:class="selected_or_first_available_variant?.title === '{{variant.title}}' ? 'is-active' : ''"></div> </label>{% endfor %}</div> </fieldset> </div>{% endif %}</div>
                         </div>
 {% endunless %}
                   </div>
