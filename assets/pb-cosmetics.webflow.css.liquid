@@ -8084,8 +8084,23 @@ figcaption {
 }
 
 .product-hero_radio-input {
+  border: 0px solid var(--_primitives---opacity--transparent);
+  background-color: var(--_primitives---brand--rose);
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  margin-left: 0;
   position: absolute;
   inset: 0%;
+}
+
+.product-hero_radio-input.w--redirected-checked {
+  background-color: var(--_primitives---brand--violet);
+  border-width: 0;
+}
+
+.product-hero_radio-input.w--redirected-focus {
+  box-shadow: 0 2px 5px #0000;
 }
 
 @media screen and (min-width: 1440px) {
