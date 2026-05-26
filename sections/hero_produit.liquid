@@ -1,7 +1,7 @@
 <div class="container-1710">
             <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
-<div li-render-custom-reinit="true" li-element="product-variant-container" li-render-custom="wrapper" class="hero-product_component" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
-              <div li-render-custom="target" class="hero-product_image-wrapper">
+<div li-element="product-variant-container" class="hero-product_component" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
+              <div class="hero-product_image-wrapper">
                 <div class="swiper is-product-gallery">
                   <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
         {% for media in product.media %}                            
@@ -108,25 +108,15 @@
                   </div>
                   <div class="product-hero_form-block w-form">
                     {% form 'product', product, class: 'product-hero_form' %}
-<div class="product-hero_option-list">
-                        <div li-for:inside="option in product.options_with_values" class="product-hero_option">
-        {% for option in product.options_with_values %}                            
-                          
-                            <div class="product-hero_radio-list">{% for value in option.values %}    <label li-for="value in option.values" class="product-hero_radio">
-                                    <input type="radio" li-render-custom-trigger="input" li-render-custom-value="{{ product.url }}?section_id={{ section.id }}&variant={{ value.variant.id }}" class="product-hero_radio-input" {% if value.selected %}checked{% endif %} name="{{ option.name }}">
-                            
-                              
-                            <div class="product_variant-inner-circle" id="{{ value | handleize }}"></div>
-                            
-                              
-                            <div class="{% if value.selected %}is-active{% endif %}"></div>
-                            
-                            
-                        </label>
-{% endfor %}</div>
-                            
-                          
-                            <div x-data="{ colorGuideOpen: false }" class="product-hero_color-guide">
+<template x-for="(option, optionKey) in product.options" :key="optionKey">
+    <div li-element="product-options-loop" class="product-hero_option-list" data-ProductVariantsLoop="true">
+                        <div class="product-hero_option">
+                          <div class="product-hero_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
+    <label li-element="product-option-loop" x-init="optionValue = selected_or_first_available_variant.options.includes(variantName) ? variantName : optionValue" class="product-hero_radio"><input type="radio" li-element="product-option-input" x-model="optionValue" class="product-hero_radio-input" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'">
+                              <div x-bind:id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" class="product_variant-inner-circle"></div>
+                              <div x-bind:class="selected_or_first_available_variant?.options.includes(variantName) ? 'is-active' : ''" class="product-hero_radio-button is-color"></div>
+                            </label></template></div>
+                          <div x-data="{ colorGuideOpen: false }" class="product-hero_color-guide">
                             <style>{% for variant in product.variants %}#swatch-{{variant.id}}{background-color:{{variant.metafields.custom.couleur_code}};}{% endfor %}</style>
                             <div x-on:click="colorGuideOpen = true" class="product-hero_color-guide-button">
                               <div>Guide couleurs</div>
@@ -170,10 +160,8 @@
                               </div>
                             </div>
                           </div>
-                            
-                        
-                    {% endfor %}    </div>
-                      </div>
+                        </div>
+                      </div></template>
                       <div class="product-hero_atc-wrapper">
                         <div class="product-hero_atc">
                           <div class="product-hero_tag-wrapper hide-tablet">
@@ -304,7 +292,7 @@
 {% endfor %}
             </div>
           </div> {% schema %} {
-    "tag": "div",
+    "tag": "section",
     "name": "Hero Produit",
     "class": "section_hero-product",
     "settings": [

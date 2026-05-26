@@ -10808,7 +10808,16 @@ figcaption {
     grid-template-columns: 1fr;
   }
 
-  .hero-product_avantage, .hero-product_avantage-wrapper {
+  .hero-product_avantage {
+    flex-flow: wrap;
+    display: inline-flex;
+  }
+
+  .swiper-pagination {
+    z-index: 2;
+  }
+
+  .hero-product_avantage-wrapper {
     flex-flow: wrap;
     display: inline-flex;
   }
