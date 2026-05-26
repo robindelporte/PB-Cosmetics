@@ -20,7 +20,60 @@
                   </div>
                   <div class="swiper_controls is-product-gallery"><button id="" class="swiper-button-prev is-product-gallery"><img src="{{ 'swiper-arrow.svg' | asset_url }}" loading="lazy" alt="" class="swiper-button-icon"></button><button id="" class="swiper-button-next is-product-gallery"><img src="{{ 'swiper-arrow-2.svg' | asset_url }}" loading="lazy" alt="" class="swiper-button-icon"></button></div>
                 </div>
-                <script> document.addEventListener('DOMContentLoaded', function(){const swiperEl = document.querySelector('.swiper.is-product-gallery'); const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length; const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery'); if (slidesCount > 4){paginationEl.style.gridColumnGap = '0.5rem';}const productGallerySwiper = new Swiper('.swiper.is-product-gallery',{slidesPerView: 1, spaceBetween: 0, loop: true, navigation:{nextEl: '.swiper-button-next.is-product-gallery', prevEl: '.swiper-button-prev.is-product-gallery', disabledClass: 'is-disabled',}, pagination:{el: '.swiper_pagination.is-product-gallery', clickable: true, bulletClass: 'swiper_bullet is-product-gallery', bulletActiveClass: 'is-active', type: slidesCount > 4 ? 'fraction' : 'bullets', renderBullet: function (index, className){return '<div class="' + className + '">' + String(index + 1).padStart(2, '0') + '<\/div>';}, renderFraction: function (currentClass, totalClass){return '<span class="' + currentClass + '"><\/span> / <span class="' + totalClass + '"><\/span>';},},});}); </script>
+                <script> let swiperInstance = null; document.addEventListener('DOMContentLoaded', function(){const swiperEl = document.querySelector('.swiper.is-product-gallery'); if (!swiperEl) return; const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length; const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery'); if (slidesCount > 4 && paginationEl) paginationEl.style.gridColumnGap = '0.5rem'; swiperInstance = new Swiper(swiperEl,{slidesPerView: 1, spaceBetween: 0, loop: true, navigation:{nextEl: '.swiper-button-next.is-product-gallery', prevEl: '.swiper-button-prev.is-product-gallery', disabledClass: 'is-disabled',}, pagination:{el: '.swiper_pagination.is-product-gallery', clickable: true, bulletClass: 'swiper_bullet is-product-gallery', bulletActiveClass: 'is-active', type: slidesCount > 4 ? 'fraction' : 'bullets', renderBullet: (i, c) => '<div class="' + c + '">' + String(i + 1).padStart(2, '0') + '</script>',
+      renderFraction: (cc, tc) => '<span class="' + cc + '"></span> / <span class="' + tc + '"></span>',
+    },
+  });
+  // Listener variantes
+  const variantInputs = document.querySelectorAll('input[li-element="product-option-input"]');
+  variantInputs.forEach(input => {
+    input.addEventListener('change', () => {
+      setTimeout(() => {
+        const productContainer = document.querySelector('[x-data*="handleVariant"]');
+        if (productContainer && productContainer._x_dataStack) {
+          const variant = productContainer._x_dataStack[0].selected_or_first_available_variant;
+          if (variant) syncSwiperWithVariant(variant);
+        }
+      }, 100);
+    });
+  });
+});
+function syncSwiperWithVariant(selectedVariant) {
+  if (!swiperInstance) return;
+  const slides = document.querySelectorAll('.swiper-slide.is-product-gallery img');
+  let targetIndex = 0;
+  let found = false;
+  let variantImageSrc = null;
+  if (selectedVariant.featured_image && typeof selectedVariant.featured_image === 'object') {
+    variantImageSrc = selectedVariant.featured_image.src;
+    if (selectedVariant.featured_image.id) {
+      const imageId = selectedVariant.featured_image.id.toString();
+      slides.forEach((img, i) => {
+        if ((img.getAttribute('src') || '').includes(imageId)) { targetIndex = i; found = true; }
+      });
+    }
+  } else if (typeof selectedVariant.featured_image === 'string') {
+    variantImageSrc = selectedVariant.featured_image;
+  } else if (selectedVariant.featured_media?.preview_image) {
+    variantImageSrc = selectedVariant.featured_media.preview_image.src;
+  }
+  if (!found && variantImageSrc) {
+    const fileName = variantImageSrc.split('/').pop().split('?')[0];
+    slides.forEach((img, i) => {
+      const slideFile = (img.getAttribute('src') || '').split('/').pop().split('?')[0];
+      if (slideFile === fileName) { targetIndex = i; found = true; }
+    });
+  }
+  if (!found && variantImageSrc) {
+    const baseName = variantImageSrc.split('/').pop().split('?')[0].replace('.webp', '');
+    slides.forEach((img, i) => {
+      if ((img.getAttribute('src') || '').includes(baseName)) { targetIndex = i; found = true; }
+    });
+  }
+  swiperInstance.slideTo(targetIndex, 300);
+}
+
+                </div>
               </div>
               <div class="hero-product_details">
                 <div class="product-hero_tag-wrapper hide-desktop">
@@ -72,8 +125,13 @@
                   </div>
                 </div>
                 <div class="hero-product_price-wrapper">
-                  <p li-object="product.compare_at_price | money" class="hero-product_price is-compare">{{ product.compare_at_price | money }}</p>
-                  <p li-object="product.price | money" class="hero-product_price">{{ product.price | money }}</p>
+                  <template x-if="selected_or_first_available_variant.compare_at_price">
+            <div li-js-if="selected_or_first_available_variant.compare_at_price">
+        
+                    <p li-js-price="selected_or_first_available_variant.compare_at_price" class="hero-product_price is-compare" x-text="LiquifyHelper.moneyFormat(selected_or_first_available_variant.compare_at_price, true, '{{ shop.money_with_currency_format }}')">10.90 €</p>
+                          </div>
+    </template>
+                  <p x-text="LiquifyHelper.moneyFormat(selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')" li-object="product.price | money" class="hero-product_price">{{ product.price | money }}</p>
                   <div class="hero-product_capacity hide-tablet">
                     <p li-object="product.selected_or_first_available_variant.unit_price_measurement.quantity_value">{{ product.selected_or_first_available_variant.unit_price_measurement.quantity_value }}</p>
                     <p li-object="product.selected_or_first_available_variant.unit_price_measurement.quantity_unit">{{ product.selected_or_first_available_variant.unit_price_measurement.quantity_unit }}</p>
@@ -185,7 +243,7 @@
                           <div class="button-group is-full-width"><button li-element="add-to-cart" class="button is-add-to-cart" @click="addToCart($event, true)" :disabled="!addToCartButton">
                               <div class="add-to-cart-text">Ajouter au panier</div>
                               <div class="add-to-cart-text is-mobile">- </div>
-                              <div li-object="product.price | money" class="add-to-cart-text is-mobile">{{ product.price | money }}</div>
+                              <div x-text="LiquifyHelper.moneyFormat(selected_or_first_available_variant.price, true, '{{ shop.money_format }}')" li-object="product.price | money" class="add-to-cart-text is-mobile">{{ product.price | money }}</div>
                               <div class="button_overlay"></div>
                             </button>
                             <template x-if="!selected_or_first_available_variant.available">
@@ -290,8 +348,7 @@
               
                         </div>
 {% endfor %}
-            </div>
-          </div> {% schema %} {
+            </div> {% schema %} {
     "tag": "section",
     "name": "Hero Produit",
     "class": "section_hero-product",
