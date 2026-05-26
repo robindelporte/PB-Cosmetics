@@ -113,9 +113,7 @@
         {% for option in product.options_with_values %}                            
                           
                             <div class="product-hero_radio-list">{% for value in option.values %}    <label li-for="value in option.values" class="product-hero_radio">
-                                    
-                              
-                            <div type="radio" li-render-custom-trigger="input" li-render-custom-value="{{ product.url }}?section_id={{ section.id }}&variant={{ value.variant.id }}" class="hide" {% if value.selected %}checked{% endif %} name="{{ option.name }}"></div>
+                                    <input type="radio" li-render-custom-trigger="input" li-render-custom-value="{{ product.url }}?section_id={{ section.id }}&variant={{ value.variant.id }}" class="product-hero_radio-input" {% if value.selected %}checked{% endif %} name="{{ option.name }}">
                             
                               
                             <div class="product_variant-inner-circle" id="{{ value | handleize }}"></div>
