@@ -20,56 +20,7 @@
                 </div>
                 <div class="swiper_controls is-product-gallery"><button id="" class="swiper-button-prev is-product-gallery"><img src="{{ 'swiper-arrow.svg' | asset_url }}" loading="lazy" alt="" class="swiper-button-icon"></button><button id="" class="swiper-button-next is-product-gallery"><img src="{{ 'swiper-arrow-2.svg' | asset_url }}" loading="lazy" alt="" class="swiper-button-icon"></button></div>
               </div>
-              <script> let swiperInstance = null; document.addEventListener('DOMContentLoaded', function(){const swiperEl = document.querySelector('.swiper.is-product-gallery'); if (!swiperEl) return; const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length; const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery'); if (slidesCount > 4 && paginationEl) paginationEl.style.gridColumnGap = '0.5rem'; swiperInstance = new Swiper(swiperEl,{slidesPerView: 1, spaceBetween: 0, loop: true, navigation:{nextEl: '.swiper-button-next.is-product-gallery', prevEl: '.swiper-button-prev.is-product-gallery', disabledClass: 'is-disabled',}, pagination:{el: '.swiper_pagination.is-product-gallery', clickable: true, bulletClass: 'swiper_bullet is-product-gallery', bulletActiveClass: 'is-active', type: slidesCount > 4 ? 'fraction' : 'bullets', renderBullet: function(i, c){return '<div class="' + c + '">' + String(i + 1).padStart(2, '0') + '</script>'; },
-      renderFraction: function(cc, tc) { return '<span class="' + cc + '"></span> / <span class="' + tc + '"></span>'; },
-    },
-  });
-  document.querySelectorAll('input[li-element="product-option-input"]').forEach(function(input) {
-    input.addEventListener('change', function() {
-      setTimeout(function() {
-        const c = document.querySelector('[x-data*="handleVariant"]');
-        if (c && c._x_dataStack) {
-          const v = c._x_dataStack[0].selected_or_first_available_variant;
-          if (v) syncSwiperWithVariant(v);
-        }
-      }, 100);
-    });
-  });
-});
-function syncSwiperWithVariant(selectedVariant) {
-  if (!swiperInstance) return;
-  const slides = document.querySelectorAll('.swiper-slide.is-product-gallery img');
-  let targetIndex = 0, found = false, variantImageSrc = null;
-  if (selectedVariant.featured_image && typeof selectedVariant.featured_image === 'object') {
-    variantImageSrc = selectedVariant.featured_image.src;
-    if (selectedVariant.featured_image.id) {
-      const id = selectedVariant.featured_image.id.toString();
-      slides.forEach(function(img, i) {
-        if ((img.getAttribute('src') || '').includes(id)) { targetIndex = i; found = true; }
-      });
-    }
-  } else if (typeof selectedVariant.featured_image === 'string') {
-    variantImageSrc = selectedVariant.featured_image;
-  } else if (selectedVariant.featured_media && selectedVariant.featured_media.preview_image) {
-    variantImageSrc = selectedVariant.featured_media.preview_image.src;
-  }
-  if (!found && variantImageSrc) {
-    const fn = variantImageSrc.split('/').pop().split('?')[0];
-    slides.forEach(function(img, i) {
-      const sf = (img.getAttribute('src') || '').split('/').pop().split('?')[0];
-      if (sf === fn) { targetIndex = i; found = true; }
-    });
-  }
-  if (!found && variantImageSrc) {
-    const bn = variantImageSrc.split('/').pop().split('?')[0].replace('.webp', '');
-    slides.forEach(function(img, i) {
-      if ((img.getAttribute('src') || '').includes(bn)) { targetIndex = i; found = true; }
-    });
-  }
-  swiperInstance.slideTo(targetIndex, 300);
-}
-
-              </div>
+              <script> let swiperInstance = null; document.addEventListener('DOMContentLoaded', function(){const swiperEl = document.querySelector('.swiper.is-product-gallery'); if (!swiperEl) return; const slidesCount = swiperEl.querySelectorAll('.swiper-slide.is-product-gallery').length; const paginationEl = document.querySelector('.swiper_pagination.is-product-gallery'); if (slidesCount > 4 && paginationEl) paginationEl.style.gridColumnGap = '0.5rem'; swiperInstance = new Swiper(swiperEl,{slidesPerView: 1, spaceBetween: 0, loop: true, navigation:{nextEl: '.swiper-button-next.is-product-gallery', prevEl: '.swiper-button-prev.is-product-gallery', disabledClass: 'is-disabled',}, pagination:{el: '.swiper_pagination.is-product-gallery', clickable: true, bulletClass: 'swiper_bullet is-product-gallery', bulletActiveClass: 'is-active', type: slidesCount > 4 ? 'fraction' : 'bullets', renderBullet: function(i, c){return '<div class="' + c + '">' + String(i + 1).padStart(2, '0') + '<\/div>';}, renderFraction: function(cc, tc){return '<span class="' + cc + '"><\/span> / <span class="' + tc + '"><\/span>';},},}); document.querySelectorAll('input[li-element="product-option-input"]').forEach(function(input){input.addEventListener('change', function(){setTimeout(function(){const c = document.querySelector('[x-data*="handleVariant"]'); if (c && c._x_dataStack){const v = c._x_dataStack[0].selected_or_first_available_variant; if (v) syncSwiperWithVariant(v);}}, 100);});});}); function syncSwiperWithVariant(selectedVariant){if (!swiperInstance) return; const slides = document.querySelectorAll('.swiper-slide.is-product-gallery img'); let targetIndex = 0, found = false, variantImageSrc = null; if (selectedVariant.featured_image && typeof selectedVariant.featured_image === 'object'){variantImageSrc = selectedVariant.featured_image.src; if (selectedVariant.featured_image.id){const id = selectedVariant.featured_image.id.toString(); slides.forEach(function(img, i){if ((img.getAttribute('src') || '').includes(id)){targetIndex = i; found = true;}});}}else if (typeof selectedVariant.featured_image === 'string'){variantImageSrc = selectedVariant.featured_image;}else if (selectedVariant.featured_media && selectedVariant.featured_media.preview_image){variantImageSrc = selectedVariant.featured_media.preview_image.src;}if (!found && variantImageSrc){const fn = variantImageSrc.split('/').pop().split('?')[0]; slides.forEach(function(img, i){const sf = (img.getAttribute('src') || '').split('/').pop().split('?')[0]; if (sf === fn){targetIndex = i; found = true;}});}if (!found && variantImageSrc){const bn = variantImageSrc.split('/').pop().split('?')[0].replace('.webp', ''); slides.forEach(function(img, i){if ((img.getAttribute('src') || '').includes(bn)){targetIndex = i; found = true;}});}swiperInstance.slideTo(targetIndex, 300);}</script>
             </div>
             <div class="hero-product_details">
               <div class="product-hero_tag-wrapper hide-desktop">
@@ -344,7 +295,8 @@ function syncSwiperWithVariant(selectedVariant) {
             
                         </div>
 {% endfor %}
-          </div> {% schema %} {
+          </div>
+        </div> {% schema %} {
     "tag": "section",
     "name": "Hero Produit",
     "class": "section_hero-product",
