@@ -3,10 +3,7 @@
     <div li-object="product.compare_at_price | money" class="text-style-strikethrough text-style-muted">{{ product.compare_at_price | money }}</div>    </div>
 {% endif %}</div></a></div><div class="product-item_variant-wrapper"><div li-object="product.metafields.custom.texte_sous_titre" class="product_item-tagline">{{ product.metafields.custom.texte_sous_titre }}</div>{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true">
     <div li-for:inside="variant in product.variants" class="product-item_option-list">
-        {% for variant in product.variants %}                            {% for variant in product.variants %}    <div li-for="variant in product.variants" class="product-item_radio">
-                                    
-                        </div>
-{% endfor %}
+        {% for variant in product.variants %}                            <div class="product-item_radio" style="background-color: {{ variant.metafields.custom.couleur_code }};"></div>
                             {% if product.options_with_values[0].values.size > 4 %}    <div li-if="product.options_with_values[0].values.size > 4">
     <button x-on:click="quickbuy = true" type="button" class="product-item_radio is-plus"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 25 25" fill="none" class="product-item_radio-plus"><rect x="0.67094" y="0.67094" width="23.6581" height="23.6581" rx="11.8291" stroke="currentColor" stroke-width="1.34188"></rect><path d="M16.6527 13.0933H13.0934V16.6525H11.9069V13.0933H8.34766V11.9068H11.9069V8.34753H13.0934V11.9068H16.6527V13.0933Z" fill="currentColor"></path></svg></button>    </div>
 {% endif %}
