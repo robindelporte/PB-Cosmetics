@@ -4587,11 +4587,16 @@ figcaption {
 
 .color-guide_wrapper {
   z-index: 10;
+  pointer-events: none;
   justify-content: center;
   align-items: center;
   display: flex;
   position: fixed;
   inset: 0%;
+}
+
+.color-guide_wrapper.is-active {
+  pointer-events: auto;
 }
 
 .color-guide_popup {
