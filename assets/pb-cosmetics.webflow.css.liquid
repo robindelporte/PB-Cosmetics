@@ -4560,11 +4560,9 @@ figcaption {
   align-items: center;
   width: 1.625rem;
   height: 1.625rem;
-  margin-top: -.4px;
+  margin-top: 0;
   transition: all .25s;
-  position: absolute;
-  inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
 }
 
 .product-hero_color-guide-button {
@@ -8101,6 +8099,26 @@ figcaption {
 
 .product-hero_radio-input.w--redirected-focus {
   box-shadow: 0 2px 5px #0000;
+}
+
+.product-header_radio {
+  border: 1px solid var(--_primitives---opacity--transparent);
+  border-radius: var(--_ui-styles---radius--full);
+  margin-bottom: 0;
+  transition: opacity .2s;
+  position: relative;
+}
+
+.product-header_radio.is-active {
+  border-color: var(--_primitives---colors--noir-profond);
+  padding: .25rem;
+}
+
+.product-header_radio-button {
+  width: auto;
+  height: auto;
+  position: absolute;
+  inset: 0%;
 }
 
 @media screen and (min-width: 1440px) {
