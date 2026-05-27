@@ -468,7 +468,6 @@ h1, h2, h3, h4 {
   border-color: #1C1C1C;
   padding: 4px;
 }
-.product-header_radio:has(input:disabled) { cursor: default; }
 </style>
       </div>
       <div class="color-schemes w-embed">
@@ -567,10 +566,16 @@ h1, h2, h3, h4 {
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
 <script>
-document.addEventListener('alpine:initialized', function() {
+document.addEventListener('DOMContentLoaded', function() {
   tippy.createSingleton(
-    tippy('[data-tippy-content]', { theme: 'light-border' }), 
-    { moveTransition: 'transform 0.2s ease-out', placement: 'top', theme: 'light-border' }
+    tippy('[data-tippy-content]', {
+      theme: 'light-border',
+    }), 
+    {
+      moveTransition: 'transform 0.2s ease-out',
+      placement: 'top',
+      theme: 'light-border',
+    }
   );
 });
 </script></body></html>

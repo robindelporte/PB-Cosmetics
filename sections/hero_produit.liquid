@@ -109,11 +109,20 @@
 {% endfor %}
 {% endfor %}
 {% for variant in product.variants %}
+{% for option in variant.options %}
+  .product-header_radio:has(input[value="{{ option }}"]) .product_variant-inner-circle {
+    background-color: {{ variant.metafields.custom.couleur_code }};
+  }
+{% endfor %}
+{% endfor %}
+{% for variant in product.variants %}
 {% unless variant.available %}
   .product-header_radio:has(input[value="{{ variant.option1 }}"]) {
+    cursor: default;
     opacity: 0.4;
+  }
+  .product-header_radio:has(input[value="{{ variant.option1 }}"]) input {
     pointer-events: none;
-    text-decoration: line-through;
   }
 {% endunless %}
 {% endfor %}
@@ -125,7 +134,7 @@
                       <template x-for="(option, optionKey) in product.options" :key="optionKey">
     <div li-element="product-options-loop" class="product-hero_option" data-ProductVariantsLoop="true">
                         <div class="product-hero_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
-    <label x-init="optionValue = selected_or_first_available_variant.options.includes(variantName) ? variantName : optionValue" x-bind:data-tippy-content="firstOptionHasAvailableChildren[variantName] ? variantName : variantName + ' (épuisé)'" li-element="product-option-loop" class="product-header_radio">
+    <label x-init="optionValue = selected_or_first_available_variant.options.includes(variantName) ? variantName : optionValue" li-element="product-option-loop" class="product-header_radio">
                             <div class="product_variant-inner-circle"></div><input type="radio" li-element="product-option-input" x-model="optionValue" x-bind:disabled="!firstOptionHasAvailableChildren[variantName]" class="hide" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'">
                             <div x-bind:class="selected_or_first_available_variant?.options.includes(variantName) ? 'is-active' : ''" class="product-header_radio-button"></div>
                           </label></template></div>
@@ -268,7 +277,7 @@
 {{ section.settings.text_upsell_titre }}
 </div>
                 <div class="hero-product_upsell">
-                  <div class="hero-product_upsell-image-wrapper"><img class="hero-product_upsell-image" src="{{ product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500 }}" alt="" sizes="(max-width: 1728px) 100vw, 1728px" li-object:src="product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w"></div>
+                  <div class="hero-product_upsell-image-wrapper"><img class="hero-product_upsell-image" src="{{ product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w"></div>
                   {% if product.metafields.custom.produit_complementaire %}    <div li-if="product.metafields.custom.produit_complementaire" class="hero-product_upsell-content-wrapper">
     
                     <div class="hero-product_upsell-heading">
