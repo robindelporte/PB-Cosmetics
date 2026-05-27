@@ -99,6 +99,7 @@
                 <div li-object="product.description" class="hero-product_description w-richtext">{{ product.description }}</div>
               </div>
               <div class="hero-product_buy-component">
+                <script> const availabilityMap ={{% for v in product.variants %}"{{v.option1}}":{{v.available}},{% endfor %}}; document.addEventListener('alpine:initialized', function(){document.querySelectorAll('.product-header_radio').forEach(label =>{const input = label.querySelector('input[type="radio"]'); if (!input) return; const v = input.value; label.setAttribute('data-tippy-content', availabilityMap[v] ? v : v + ' (\u00e9puis\u00e9)');}); tippy.createSingleton( tippy('[data-tippy-content]',{theme: 'light-border'}),{placement: 'top', theme: 'light-border', moveTransition: 'transform 0.2s ease-out'});}); </script>
                 <div class="hide w-embed">
                   <style>
 {% for variant in product.variants %}
@@ -128,7 +129,6 @@
 {% endfor %}
 </style>
                 </div>
-                <script> document.addEventListener('alpine:initialized', function(){document.querySelectorAll('.product-header_radio').forEach(label =>{const input = label.querySelector('input[type="radio"]'); if (!input) return; const v = input.value; label.setAttribute('data-tippy-content', input.disabled ? v + ' (\u00e9puis\u00e9)' : v);}); tippy.createSingleton( tippy('[data-tippy-content]',{theme: 'light-border'}),{placement: 'top', theme: 'light-border', moveTransition: 'transform 0.2s ease-out'});}); </script>
                 <div class="product-hero_form-block w-form">
                   {% form 'product', product, class: 'product-hero_form' %}
 <div class="product-hero_option-list">
