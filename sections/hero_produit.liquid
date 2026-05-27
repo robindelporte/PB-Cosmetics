@@ -128,13 +128,14 @@
 {% endfor %}
 </style>
                 </div>
+                <script> document.addEventListener('alpine:initialized', function(){document.querySelectorAll('.product-header_radio').forEach(label =>{const input = label.querySelector('input[type="radio"]'); if (!input) return; const v = input.value; const disabled = input.disabled; label.setAttribute('data-tippy-content', disabled ? v + ' (&eacute;puis&eacute;)' : v);}); tippy.createSingleton( tippy('[data-tippy-content]',{theme: 'light-border'}),{placement: 'top', theme: 'light-border', moveTransition: 'transform 0.2s ease-out'});}); </script>
                 <div class="product-hero_form-block w-form">
                   {% form 'product', product, class: 'product-hero_form' %}
 <div class="product-hero_option-list">
                       <template x-for="(option, optionKey) in product.options" :key="optionKey">
     <div li-element="product-options-loop" class="product-hero_option" data-ProductVariantsLoop="true">
                         <div class="product-hero_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
-    <label x-init="selected_or_first_available_variant.options.includes(variantName) ? variantName : optionValue; $el.setAttribute('data-tippy-content', firstOptionHasAvailableChildren[variantName] ? variantName : variantName + ' (épuisé)')" data-tippy-content="{% if value.available %}{{ value }}{% else %}{{ value }} (épuisé){% endif %}" li-element="product-option-loop" class="product-header_radio">
+    <label x-init="optionValue = selected_or_first_available_variant.options.includes(variantName) ? variantName : optionValue" li-element="product-option-loop" class="product-header_radio">
                             <div class="product_variant-inner-circle"></div><input type="radio" li-element="product-option-input" x-model="optionValue" x-bind:disabled="!firstOptionHasAvailableChildren[variantName]" class="hide" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'">
                             <div x-bind:class="selected_or_first_available_variant?.options.includes(variantName) ? 'is-active' : ''" class="product-header_radio-button"></div>
                           </label></template></div>
