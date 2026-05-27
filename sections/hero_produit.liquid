@@ -108,6 +108,15 @@
   }
 {% endfor %}
 {% endfor %}
+{% for variant in product.variants %}
+{% unless variant.available %}
+  .product-header_radio:has(input[value="{{ variant.option1 }}"]) {
+    opacity: 0.4;
+    pointer-events: none;
+    text-decoration: line-through;
+  }
+{% endunless %}
+{% endfor %}
 </style>
                 </div>
                 <div class="product-hero_form-block w-form">
@@ -170,21 +179,17 @@
                       <div class="product-hero_atc">
                         <div class="product-hero_tag-wrapper hide-tablet">
                           <div class="product-hero_tag">Plus de 100 commandes ce mois-ci</div>
-                          {% if product.selected_or_first_available_variant.inventory_quantity <= 10 and product.selected_or_first_available_variant.inventory_quantity > 0 %}    <div li-if="product.selected_or_first_available_variant.inventory_quantity <= 10 and product.selected_or_first_available_variant.inventory_quantity > 0">
-    
+                          <div x-show="selected_or_first_available_variant.inventory_quantity > 1 && selected_or_first_available_variant.inventory_quantity <= 10">
                             <div class="product-hero_tag">
                               <div>Plus que</div>
-                              <div li-object="product.selected_or_first_available_variant.inventory_quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</div>
+                              <div x-text="selected_or_first_available_variant.inventory_quantity">X</div>
                               <div>exemplaires en stock</div>
                             </div>
-                              </div>
-{% endif %}
-                          {% if product.selected_or_first_available_variant.inventory_quantity == 1 %}    <div li-if="product.selected_or_first_available_variant.inventory_quantity == 1">
-    
+                          </div>
+                          <div x-show="selected_or_first_available_variant.inventory_quantity === 1">
                             <div class="product-hero_tag">Plus que 1 exemplaire en stock</div>
-                              </div>
-{% endif %}
-                          <div class="product-hero_tag">Victime de son succès</div>
+                          </div>
+                          <div x-show="!selected_or_first_available_variant.available" class="product-hero_tag">Victime de son succès</div>
                         </div>
                         <div class="button-group is-full-width"><button li-element="add-to-cart" class="button is-add-to-cart" @click="addToCart($event, true)" :disabled="!addToCartButton">
                             <div class="add-to-cart-text">Ajouter au panier</div>
@@ -251,7 +256,7 @@
 {{ section.settings.text_upsell_titre }}
 </div>
                 <div class="hero-product_upsell">
-                  <div class="hero-product_upsell-image-wrapper"><img class="hero-product_upsell-image" src="{{ product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w"></div>
+                  <div class="hero-product_upsell-image-wrapper"><img class="hero-product_upsell-image" src="{{ product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500 }}" alt="" sizes="(max-width: 1728px) 100vw, 1728px" li-object:src="product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w"></div>
                   {% if product.metafields.custom.produit_complementaire %}    <div li-if="product.metafields.custom.produit_complementaire" class="hero-product_upsell-content-wrapper">
     
                     <div class="hero-product_upsell-heading">
