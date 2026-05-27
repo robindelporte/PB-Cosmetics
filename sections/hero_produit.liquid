@@ -179,16 +179,31 @@
                       <div class="product-hero_atc">
                         <div class="product-hero_tag-wrapper hide-tablet">
                           <div class="product-hero_tag">Plus de 100 commandes ce mois-ci</div>
-                          <div x-show="selected_or_first_available_variant.inventory_quantity > 1 && selected_or_first_available_variant.inventory_quantity <= 10">
-                            <div class="product-hero_tag">
-                              <div>Plus que</div>
-                              <div x-text="selected_or_first_available_variant.inventory_quantity">X</div>
-                              <div>exemplaires en stock</div>
-                            </div>
-                          </div>
-                          <div x-show="selected_or_first_available_variant.inventory_quantity === 1">
-                            <div class="product-hero_tag">Plus que 1 exemplaire en stock</div>
-                          </div>
+                          <div li-for:inside="variant in product.variants">
+        {% for variant in product.variants %}                            
+                            
+                            <template x-if="selected_or_first_available_variant.id === {{ variant.id }} && {{ variant.inventory_quantity }} > 1 && {{ variant.inventory_quantity }} <= 10">
+            <div li-js-if="selected_or_first_available_variant.id === {{ variant.id }} && {{ variant.inventory_quantity }} > 1 && {{ variant.inventory_quantity }} <= 10">
+        
+                              <div class="product-hero_tag">
+                                <div>Plus que {{ variant.inventory_quantity }} exemplaires en stock</div>
+                              </div>
+                                    </div>
+    </template>
+                            
+                            
+                            <template x-if="selected_or_first_available_variant.inventory_quantity === 1">
+            <div li-js-if="selected_or_first_available_variant.inventory_quantity === 1">
+        
+                              <template x-if="">
+            <div li-js-if="" class="product-hero_tag">
+        Plus que 1 exemplaire en stock        </div>
+    </template>
+                                    </div>
+    </template>
+                            
+                          
+                    {% endfor %}    </div>
                           <div x-show="!selected_or_first_available_variant.available" class="product-hero_tag">Victime de son succès</div>
                         </div>
                         <div class="button-group is-full-width"><button li-element="add-to-cart" class="button is-add-to-cart" @click="addToCart($event, true)" :disabled="!addToCartButton">
