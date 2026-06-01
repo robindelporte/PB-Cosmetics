@@ -15,8 +15,8 @@
 {% when '@app' %}
 {% render block %}
 
-                    {% when 'tab-composition' %}
-            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloaks="" li-block="Tab - Composition" class="tabs_panel">
+                    {% when 'composition' %}
+            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloak="" li-block="Composition" class="tabs_panel">
                     
                       
                     <div class="tabs_panel-content">
@@ -40,8 +40,8 @@
                     
                     
                 </div>
-                    {% when 'tab-conseils' %}
-            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloaks="" li-block="Tab - Conseils" class="tabs_panel">
+                    {% when 'conseils' %}
+            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloak="" li-block="Conseils" class="tabs_panel">
                     
                       
                     <div class="tabs_panel-content is-conseils">
@@ -95,8 +95,8 @@
                     
                     
                 </div>
-                    {% when 'tab-description' %}
-            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloaks="" li-block="Tab - Description" class="tabs_panel">
+                    {% when 'description' %}
+            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloak="" li-block="Description" class="tabs_panel">
                     
                       
                     <div class="tabs_panel-content">
@@ -120,8 +120,8 @@
                     
                     
                 </div>
-                    {% when 'tab-pyramide' %}
-            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloaks="" li-block="Tab - Pyramide" class="tabs_panel">
+                    {% when 'pyramide' %}
+            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloak="" li-block="Pyramide" class="tabs_panel">
                     
                       
                     <div class="tabs_panel-content is-pyramide"><img src="{{ product.metafields.custom.pyramide_olfactive | image_url: width: 1000 }}" loading="lazy" li-object:src="product.metafields.custom.pyramide_olfactive | image_url: width: 1000" alt="" class="tabs_panel-pyramide-image"></div>
@@ -139,155 +139,103 @@
     </div>
                 </div>
               </div>
-              <ul li-cf-blocks="" x-data="{open: 1}" role="list" class="product_faq-list">
-{% for block in section.blocks %}
+              <ul li-for:inside="block in section.blocks" x-data="{open: 1}" role="list" class="product_faq-list">
+        {% for block in section.blocks %}                            
+                
+                            <li x-on:click="open = (open === {{forloop.index}} ? 0 : {{forloop.index}}); $el.setAttribute('aria-expanded', open === {{forloop.index}} ? 'true' : 'false')" role="button" tabindex="0" aria-controls="faq-body-{{forloop.index}}" id="w-node-f00265f8-06a1-2301-4bb8-64fdc40d6855-46197a43" class="product_faq-item">
+                  <div class="product_faq-item-heading">
+                    <h2 id="faq-heading-{{forloop.index}}" li-object="block.settings.titre" class="text-size-medium text-font-body">{{ block.settings.titre }}</h2>
+                    <div x-bind:style="open === {{ forloop.index }} ? 'transform: rotate(45deg)' : 'transform: rotate(0deg)'" class="faq_icon w-embed"><svg width="21" height="21" viewbox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.3153 9.88046e-06V9.57357H20.8889L20.8882 11.3144H11.3146L11.3153 20.8873H9.57519L9.57449 11.3144H0.000932157L0.00162269 9.57357L9.5738 9.57357L9.57449 0.000700414L11.3153 9.88046e-06Z" fill="#B1B1B1"></path>
+                      </svg></div>
+                  </div>
+                  <div li-case="block.type">
 {% case block.type %}
-{% when '@app' %}
-{% render block %}
 
-                {% when 'faq-description' %}
-            <li li-block="FAQ - Description" role="button" tabindex="0" aria-controls="faq-body-{{forloop.index}}" x-on:click="open = (open === {{forloop.index}} ? 0 : {{forloop.index}}); $el.setAttribute('aria-expanded', open === {{forloop.index}} ? 'true' : 'false')" id="w-node-f00265f8-06a1-2301-4bb8-64fdc40d6855-46197a43" class="product_faq-item">
-                    
-                  
-                    <div class="product_faq-item-heading">
-                    <h2 id="faq-heading-{{forloop.index}}" li-object="block.settings.titre" class="text-size-medium text-font-body">{{ block.settings.titre }}</h2>
-                    <div x-bind:style="open === {{ forloop.index }} ? 'transform: rotate(45deg)' : 'transform: rotate(0deg)'" class="faq_icon w-embed"><svg width="21" height="21" viewbox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.3153 9.88046e-06V9.57357H20.8889L20.8882 11.3144H11.3146L11.3153 20.8873H9.57519L9.57449 11.3144H0.000932157L0.00162269 9.57357L9.5738 9.57357L9.57449 0.000700414L11.3153 9.88046e-06Z" fill="#B1B1B1"></path>
-                      </svg></div>
-                  </div>
-                    
-                  
-                    <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_content-image" src="{{ product.metafields.custom.description_image | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.description_image | image_url: width: 1000" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
-                    <div class="product_faq-item-body-content">
-                      <div id="" class="tabs_content-heading">
-                        <div li-object="product.title">{{ product.title }}</div>
-                        <div>-</div>
-                        <div>PB Cosmetics</div>
-                      </div>
-                      <div li-object="product.metafields.custom.description_texte" class="text-rich-text w-richtext">{{ product.metafields.custom.description_texte }}</div>
-                    </div>
-                  </div>
-                    
-                  
-                    <div class="hide">
-{{ block.settings.text_titre }}
-</div>
-                    
-                
-                </li>
-                {% when 'faq-composition' %}
-            <li li-block="FAQ - Composition" role="button" tabindex="0" aria-controls="faq-body-{{forloop.index}}" x-on:click="open = (open === {{forloop.index}} ? 0 : {{forloop.index}}); $el.setAttribute('aria-expanded', open === {{forloop.index}} ? 'true' : 'false')" class="product_faq-item">
-                    
-                  
-                    <div class="product_faq-item-heading">
-                    <h2 id="faq-heading-{{forloop.index}}" li-object="block.settings.titre" class="text-size-medium text-font-body">{{ block.settings.titre }}</h2>
-                    <div x-bind:style="open === {{ forloop.index }} ? 'transform: rotate(45deg)' : 'transform: rotate(0deg)'" class="faq_icon w-embed"><svg width="21" height="21" viewbox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.3153 9.88046e-06V9.57357H20.8889L20.8882 11.3144H11.3146L11.3153 20.8873H9.57519L9.57449 11.3144H0.000932157L0.00162269 9.57357L9.5738 9.57357L9.57449 0.000700414L11.3153 9.88046e-06Z" fill="#B1B1B1"></path>
-                      </svg></div>
-                  </div>
-                    
-                  
-                    <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_content-image" src="{{ product.metafields.custom.ingredients_image | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.ingredients_image | image_url: width: 1000" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
-                    <div class="product_faq-item-body-content">
-                      <div id="" class="tabs_content-heading">
-                        <div li-object="product.title">{{ product.title }}</div>
-                        <div>-</div>
-                        <div>Composition</div>
-                      </div>
-                      <div li-object="product.metafields.custom.ingredients_texte" class="text-rich-text w-richtext">{{ product.metafields.custom.ingredients_texte }}</div>
-                    </div>
-                  </div>
-                    
-                  
-                    <div class="hide">
-{{ block.settings.text_titre }}
-</div>
-                    
-                
-                </li>
-                {% when 'faq-conseils' %}
-            <li li-block="FAQ - Conseils" role="button" tabindex="0" aria-controls="faq-body-{{forloop.index}}" x-on:click="open = (open === {{forloop.index}} ? 0 : {{forloop.index}}); $el.setAttribute('aria-expanded', open === {{forloop.index}} ? 'true' : 'false')" class="product_faq-item">
-                    
-                  
-                    <div class="product_faq-item-heading">
-                    <h2 id="faq-heading-{{forloop.index}}" li-object="block.settings.titre" class="text-size-medium text-font-body">{{ block.settings.titre }}</h2>
-                    <div x-bind:style="open === {{ forloop.index }} ? 'transform: rotate(45deg)' : 'transform: rotate(0deg)'" class="faq_icon w-embed"><svg width="21" height="21" viewbox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.3153 9.88046e-06V9.57357H20.8889L20.8882 11.3144H11.3146L11.3153 20.8873H9.57519L9.57449 11.3144H0.000932157L0.00162269 9.57357L9.5738 9.57357L9.57449 0.000700414L11.3153 9.88046e-06Z" fill="#B1B1B1"></path>
-                      </svg></div>
-                  </div>
-                    
-                  
-                    <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_conseil-image is-first" src="{{ product.metafields.custom.conseil_utilisation_images.value[0] | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.conseil_utilisation_images.value[0] | image_url: width: 1000" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
-                    {% if product.metafields.custom.conseil_utilisation_titre_1 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-conseils_block">
-    
-                      <h3 li-object="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_1 }}</h3>
-                      <div li-object="product.metafields.custom.conseil_utilisation_texte_1" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_1 }}</div>
+                    {% when description %} 
+<div li-when="description">
+
+                      <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_content-image" src="{{ product.metafields.custom.description_image | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.description_image | image_url: width: 1000" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
+                        <div class="product_faq-item-body-content">
+                          <div id="" class="tabs_content-heading">
+                            <div li-object="product.title">{{ product.title }}</div>
+                            <div>-</div>
+                            <div>PB Cosmetics</div>
+                          </div>
+                          <div li-object="product.metafields.custom.description_texte" class="text-rich-text w-richtext">{{ product.metafields.custom.description_texte }}</div>
                         </div>
+                      </div>
+                    </div>
+                    {% when composition %} 
+<div li-when="composition">
+
+                      <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_content-image" src="{{ product.metafields.custom.ingredients_image | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.ingredients_image | image_url: width: 1000" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
+                        <div class="product_faq-item-body-content">
+                          <div id="" class="tabs_content-heading">
+                            <div li-object="product.title">{{ product.title }}</div>
+                            <div>-</div>
+                            <div>Composition</div>
+                          </div>
+                          <div li-object="product.metafields.custom.ingredients_texte" class="text-rich-text w-richtext">{{ product.metafields.custom.ingredients_texte }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    {% when conseils %} 
+<div li-when="conseils">
+
+                      <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_conseil-image is-first" src="{{ product.metafields.custom.conseil_utilisation_images.value[0] | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.conseil_utilisation_images.value[0] | image_url: width: 1000" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
+                        {% if product.metafields.custom.conseil_utilisation_titre_1 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-conseils_block">
+    
+                          <h3 li-object="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_1 }}</h3>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_1" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_1 }}</div>
+                            </div>
 {% endif %}
-                    {% if product.metafields.custom.conseil_utilisation_titre_2 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_2" class="rich-text-conseils_block">
+                        {% if product.metafields.custom.conseil_utilisation_titre_2 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_2" class="rich-text-conseils_block">
     
-                      <h3 li-object="product.metafields.custom.conseil_utilisation_titre_2" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_2 }}</h3>
-                      <div li-object="product.metafields.custom.conseil_utilisation_texte_2" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_2 }}</div>
-                        </div>
+                          <h3 li-object="product.metafields.custom.conseil_utilisation_titre_2" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_2 }}</h3>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_2" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_2 }}</div>
+                            </div>
 {% endif %}<img class="tabs_conseil-image" src="{{ product.metafields.custom.conseil_utilisation_images.value[1] | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.conseil_utilisation_images.value[1] | image_url: width: 1000" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
-                    {% if product.metafields.custom.conseil_utilisation_titre_3 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_3" class="rich-text-conseils_block">
+                        {% if product.metafields.custom.conseil_utilisation_titre_3 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_3" class="rich-text-conseils_block">
     
-                      <h3 li-object="product.metafields.custom.conseil_utilisation_titre_3" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_3 }}</h3>
-                      <div li-object="product.metafields.custom.conseil_utilisation_texte_3" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_3 }}</div>
-                        </div>
+                          <h3 li-object="product.metafields.custom.conseil_utilisation_titre_3" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_3 }}</h3>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_3" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_3 }}</div>
+                            </div>
 {% endif %}
-                    {% if product.metafields.custom.conseil_utilisation_titre_4 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_4" class="rich-text-conseils_block">
+                        {% if product.metafields.custom.conseil_utilisation_titre_4 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_4" class="rich-text-conseils_block">
     
-                      <h3 li-object="product.metafields.custom.conseil_utilisation_titre_4" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_4 }}</h3>
-                      <div li-object="product.metafields.custom.conseil_utilisation_texte_4" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_4 }}</div>
-                        </div>
+                          <h3 li-object="product.metafields.custom.conseil_utilisation_titre_4" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_4 }}</h3>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_4" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_4 }}</div>
+                            </div>
 {% endif %}<img class="tabs_conseil-image" src="{{ product.metafields.custom.conseil_utilisation_images.value[2] | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.conseil_utilisation_images.value[2] | image_url: width: 1000" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
-                    {% if product.metafields.custom.conseil_utilisation_titre_5 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_5" class="rich-text-conseils_block">
+                        {% if product.metafields.custom.conseil_utilisation_titre_5 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_5" class="rich-text-conseils_block">
     
-                      <h3 li-object="product.metafields.custom.conseil_utilisation_titre_5" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_5 }}</h3>
-                      <div li-object="product.metafields.custom.conseil_utilisation_texte_5" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_5 }}</div>
-                        </div>
+                          <h3 li-object="product.metafields.custom.conseil_utilisation_titre_5" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_5 }}</h3>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_5" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_5 }}</div>
+                            </div>
 {% endif %}
-                    {% if product.metafields.custom.conseil_utilisation_titre_6 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_6" class="rich-text-conseils_block">
+                        {% if product.metafields.custom.conseil_utilisation_titre_6 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_6" class="rich-text-conseils_block">
     
-                      <h3 li-object="product.metafields.custom.conseil_utilisation_titre_6" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_6 }}</h3>
-                      <div li-object="product.metafields.custom.conseil_utilisation_texte_6" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_6 }}</div>
-                        </div>
+                          <h3 li-object="product.metafields.custom.conseil_utilisation_titre_6" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_6 }}</h3>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_6" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_6 }}</div>
+                            </div>
 {% endif %}
-                  </div>
-                    
-                  
-                    <div class="hide">
-{{ block.settings.text_titre }}
-</div>
-                    
-                
-                </li>
-                {% when 'faq-pyramide' %}
-            <li li-block="FAQ - Pyramide" role="button" tabindex="0" aria-controls="faq-body-{{forloop.index}}" x-on:click="open = (open === {{forloop.index}} ? 0 : {{forloop.index}}); $el.setAttribute('aria-expanded', open === {{forloop.index}} ? 'true' : 'false')" class="product_faq-item">
-                    
-                  
-                    <div class="product_faq-item-heading">
-                    <h2 id="faq-heading-{{forloop.index}}" li-object="block.settings.titre" class="text-size-medium text-font-body">{{ block.settings.titre }}</h2>
-                    <div x-bind:style="open === {{ forloop.index }} ? 'transform: rotate(45deg)' : 'transform: rotate(0deg)'" class="faq_icon w-embed"><svg width="21" height="21" viewbox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.3153 9.88046e-06V9.57357H20.8889L20.8882 11.3144H11.3146L11.3153 20.8873H9.57519L9.57449 11.3144H0.000932157L0.00162269 9.57357L9.5738 9.57357L9.57449 0.000700414L11.3153 9.88046e-06Z" fill="#B1B1B1"></path>
-                      </svg></div>
-                  </div>
-                    
-                  
-                    <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img src="{{ product.metafields.custom.pyramide_olfactive | image_url: width: 1000 }}" loading="lazy" li-object:src="product.metafields.custom.pyramide_olfactive | image_url: width: 1000" alt="" class="product_faq-pyramide-image"></div>
-                    
-                  
-                    <div class="hide">
-{{ block.settings.text_titre }}
-</div>
-                    
-                
-                </li>
-              {% endcase %}
-{% endfor %}
+                      </div>
+                    </div>
+                    {% when pyramide %} 
+<div li-when="pyramide">
 
-    </ul>
+                      <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img src="{{ product.metafields.custom.pyramide_olfactive | image_url: width: 1000 }}" loading="lazy" li-object:src="product.metafields.custom.pyramide_olfactive | image_url: width: 1000" alt="" class="product_faq-pyramide-image"></div>
+                    </div>
+                  {% endcase %}
+</div>
+                  <div class="hide">
+{{ section.settings.text_titre }}
+</div>
+                </li>
+                            
+              
+                    {% endfor %}    </ul>
             </div>
           </div>
         </div> {% schema %} {
@@ -296,8 +244,8 @@
     "class": "section_infos-product",
     "blocks": [
         {
-            "name": "Tab - Composition",
-            "type": "tab-composition",
+            "name": "Composition",
+            "type": "composition",
             "settings": [
                 {
                     "id": "text_titre",
@@ -308,8 +256,8 @@
             ]
         },
         {
-            "name": "Tab - Conseils",
-            "type": "tab-conseils",
+            "name": "Conseils",
+            "type": "conseils",
             "settings": [
                 {
                     "id": "text_titre",
@@ -320,8 +268,8 @@
             ]
         },
         {
-            "name": "Tab - Description",
-            "type": "tab-description",
+            "name": "Description",
+            "type": "description",
             "settings": [
                 {
                     "id": "text_titre",
@@ -332,56 +280,8 @@
             ]
         },
         {
-            "name": "Tab - Pyramide",
-            "type": "tab-pyramide",
-            "settings": [
-                {
-                    "id": "text_titre",
-                    "type": "text",
-                    "label": "Titre",
-                    "default": "Pyramide olfactive"
-                }
-            ]
-        },
-        {
-            "name": "FAQ - Description",
-            "type": "faq-description",
-            "settings": [
-                {
-                    "id": "text_titre",
-                    "type": "text",
-                    "label": "Titre",
-                    "default": "Description"
-                }
-            ]
-        },
-        {
-            "name": "FAQ - Composition",
-            "type": "faq-composition",
-            "settings": [
-                {
-                    "id": "text_titre",
-                    "type": "text",
-                    "label": "Titre",
-                    "default": "Composition"
-                }
-            ]
-        },
-        {
-            "name": "FAQ - Conseils",
-            "type": "faq-conseils",
-            "settings": [
-                {
-                    "id": "text_titre",
-                    "type": "text",
-                    "label": "Titre",
-                    "default": "Conseils d'utilisation"
-                }
-            ]
-        },
-        {
-            "name": "FAQ - Pyramide",
-            "type": "faq-pyramide",
+            "name": "Pyramide",
+            "type": "pyramide",
             "settings": [
                 {
                     "id": "text_titre",
@@ -395,34 +295,30 @@
             "type": "@app"
         }
     ],
+    "settings": [
+        {
+            "id": "text_titre",
+            "type": "text",
+            "label": "Titre",
+            "default": "Description"
+        }
+    ],
     "presets": [
         {
             "name": "Tabs",
             "category": "Liquify",
             "blocks": [
                 {
-                    "type": "tab-composition"
+                    "type": "composition"
                 },
                 {
-                    "type": "tab-conseils"
+                    "type": "conseils"
                 },
                 {
-                    "type": "tab-description"
+                    "type": "description"
                 },
                 {
-                    "type": "tab-pyramide"
-                },
-                {
-                    "type": "faq-description"
-                },
-                {
-                    "type": "faq-composition"
-                },
-                {
-                    "type": "faq-conseils"
-                },
-                {
-                    "type": "faq-pyramide"
+                    "type": "pyramide"
                 }
             ]
         }
