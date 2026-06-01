@@ -24,7 +24,41 @@
     },
     "tabs": {
       "type": "tabs",
-      "settings": {}
+      "blocks": {
+        "conseils_ymQUg9": {
+          "type": "conseils",
+          "settings": {
+            "text_titre": "Conseils d'utilisation"
+          }
+        },
+        "description_nfaex8": {
+          "type": "description",
+          "settings": {
+            "text_titre": "Description"
+          }
+        },
+        "composition_dDtGKW": {
+          "type": "composition",
+          "settings": {
+            "text_titre": "Composition"
+          }
+        },
+        "pyramide_4bDVH4": {
+          "type": "pyramide",
+          "settings": {
+            "text_titre": "Pyramide olfactive"
+          }
+        }
+      },
+      "block_order": [
+        "conseils_ymQUg9",
+        "description_nfaex8",
+        "composition_dDtGKW",
+        "pyramide_4bDVH4"
+      ],
+      "settings": {
+        "text_titre": "Description"
+      }
     },
     "section_pleine_large": {
       "type": "section_pleine_large",
