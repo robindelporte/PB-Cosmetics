@@ -41,7 +41,7 @@
                     
                 </div>
                     {% when 'conseils' %}
-            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloak="" li-block="Conseils" class="tabs_panel">
+            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloaks="" li-block="Conseils" class="tabs_panel">
                     
                       
                     <div class="tabs_panel-content is-conseils">
@@ -51,7 +51,7 @@
                             {% if product.metafields.custom.conseil_utilisation_titre_1 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-conseils_block">
     
                               <h3 li-object="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_1 }}</h3>
-                              <div li-object="product.metafields.custom.conseil_utilisation_texte_1 | metafield_tag" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_1 | metafield_tag }}</div>
+                              <div li-object="product.metafields.custom.conseil_utilisation_texte | metafield_tag" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte | metafield_tag }}</div>
                                 </div>
 {% endif %}
                             {% if product.metafields.custom.conseil_utilisation_titre_2 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_2" class="rich-text-conseils_block">
@@ -96,7 +96,7 @@
                     
                 </div>
                     {% when 'description' %}
-            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloaks="" li-block="Description" class="tabs_panel">
+            <div id="panel-{{section.index}}-{{forloop.index}}" x-show="tab === {{forloop.index}}" aria-labelledby="tab-{{section.index}}-{{forloop.index}}" role="tabpanel" x-bind:aria-hidden="tab === {{forloop.index}} ? 'false' : 'true'" x-cloak="" li-block="Description" class="tabs_panel">
                     
                       
                     <div class="tabs_panel-content">
@@ -162,7 +162,7 @@
                             <div>-</div>
                             <div>PB Cosmetics</div>
                           </div>
-                          <div li-object="product.metafields.custom.description_texte" class="text-rich-text w-richtext">{{ product.metafields.custom.description_texte }}</div>
+                          <div li-object="product.metafields.custom.description_texte | metafield_tag" class="text-rich-text w-richtext">{{ product.metafields.custom.description_texte | metafield_tag }}</div>
                         </div>
                       </div>
                     </div>
@@ -176,7 +176,7 @@
                             <div>-</div>
                             <div>Composition</div>
                           </div>
-                          <div li-object="product.metafields.custom.ingredients_texte" class="text-rich-text w-richtext">{{ product.metafields.custom.ingredients_texte }}</div>
+                          <div li-object="product.metafields.custom.ingredients_texte | metafield_tag" class="text-rich-text w-richtext">{{ product.metafields.custom.ingredients_texte | metafield_tag }}</div>
                         </div>
                       </div>
                     </div>
@@ -187,37 +187,37 @@
                         {% if product.metafields.custom.conseil_utilisation_titre_1 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-conseils_block">
     
                           <h3 li-object="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_1 }}</h3>
-                          <div li-object="product.metafields.custom.conseil_utilisation_texte_1" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_1 }}</div>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte | metafield_tag" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte | metafield_tag }}</div>
                             </div>
 {% endif %}
                         {% if product.metafields.custom.conseil_utilisation_titre_2 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_2" class="rich-text-conseils_block">
     
                           <h3 li-object="product.metafields.custom.conseil_utilisation_titre_2" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_2 }}</h3>
-                          <div li-object="product.metafields.custom.conseil_utilisation_texte_2" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_2 }}</div>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_2 | metafield_tag" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_2 | metafield_tag }}</div>
                             </div>
 {% endif %}<img class="tabs_conseil-image" src="{{ product.metafields.custom.conseil_utilisation_images.value[1] | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.conseil_utilisation_images.value[1] | image_url: width: 1000" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
                         {% if product.metafields.custom.conseil_utilisation_titre_3 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_3" class="rich-text-conseils_block">
     
                           <h3 li-object="product.metafields.custom.conseil_utilisation_titre_3" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_3 }}</h3>
-                          <div li-object="product.metafields.custom.conseil_utilisation_texte_3" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_3 }}</div>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_3 | metafield_tag" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_3 | metafield_tag }}</div>
                             </div>
 {% endif %}
                         {% if product.metafields.custom.conseil_utilisation_titre_4 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_4" class="rich-text-conseils_block">
     
                           <h3 li-object="product.metafields.custom.conseil_utilisation_titre_4" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_4 }}</h3>
-                          <div li-object="product.metafields.custom.conseil_utilisation_texte_4" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_4 }}</div>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_4 | metafield_tag" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_4 | metafield_tag }}</div>
                             </div>
 {% endif %}<img class="tabs_conseil-image" src="{{ product.metafields.custom.conseil_utilisation_images.value[2] | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.conseil_utilisation_images.value[2] | image_url: width: 1000" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
                         {% if product.metafields.custom.conseil_utilisation_titre_5 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_5" class="rich-text-conseils_block">
     
                           <h3 li-object="product.metafields.custom.conseil_utilisation_titre_5" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_5 }}</h3>
-                          <div li-object="product.metafields.custom.conseil_utilisation_texte_5" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_5 }}</div>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_5 | metafield_tag" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_5 | metafield_tag }}</div>
                             </div>
 {% endif %}
                         {% if product.metafields.custom.conseil_utilisation_titre_6 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_6" class="rich-text-conseils_block">
     
                           <h3 li-object="product.metafields.custom.conseil_utilisation_titre_6" class="rich-text-heading">{{ product.metafields.custom.conseil_utilisation_titre_6 }}</h3>
-                          <div li-object="product.metafields.custom.conseil_utilisation_texte_6" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_6 }}</div>
+                          <div li-object="product.metafields.custom.conseil_utilisation_texte_6 | metafield_tag" class="rich-text-conseils w-richtext">{{ product.metafields.custom.conseil_utilisation_texte_6 | metafield_tag }}</div>
                             </div>
 {% endif %}
                       </div>
