@@ -5,7 +5,7 @@
                 <div x-data="{tab: 1}" class="tabs_element hide-mobile-landscape">
                   <div li-for:inside="block in section.blocks" class="tabs_menu">
         {% for block in section.blocks %}                            <button x-bind:class="tab === {{forloop.index}} ? 'is-active' : ''" x-on:click="tab = {{forloop.index}}" role="tab" aria-controls="panel-{{section.index}}-{{forloop.index}}" tabindex="0" id="tab-{{section.index}}-{{forloop.index}}" x-bind:aria-selected="tab === {{forloop.index}} ? 'true' : 'false'" class="button is-tab-button is-active">
-                      <h2 li-object="block.settings.titre" class="tab_button-text">{{ block.settings.titre }}</h2>
+                      <h2 li-object="block.settings.text_titre" class="tab_button-text">{{ block.settings.text_titre }}</h2>
                       <div class="tab-button_stroke"></div>
                     </button>
                     {% endfor %}    </div>
