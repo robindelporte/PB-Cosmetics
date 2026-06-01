@@ -5,7 +5,7 @@
                 <div x-data="{tab: 1}" class="tabs_element hide-mobile-landscape">
                   <div li-for:inside="block in section.blocks" class="tabs_menu">
         {% for block in section.blocks %}                            <button x-bind:class="tab === {{forloop.index}} ? 'is-active' : ''" x-on:click="tab = {{forloop.index}}" role="tab" aria-controls="panel-{{section.index}}-{{forloop.index}}" tabindex="0" id="tab-{{section.index}}-{{forloop.index}}" x-bind:aria-selected="tab === {{forloop.index}} ? 'true' : 'false'" class="button is-tab-button is-active">
-                      <h2 li-object="block.settings.titre" class="tab_button-text">{{ block.settings.titre }}</h2>
+                      <h2 li-object="block.settings.text_titre" class="tab_button-text">{{ block.settings.text_titre }}</h2>
                       <div class="tab-button_stroke"></div>
                     </button>
                     {% endfor %}    </div>
@@ -144,7 +144,7 @@
                 
                             <li x-on:click="open = (open === {{forloop.index}} ? 0 : {{forloop.index}}); $el.setAttribute('aria-expanded', open === {{forloop.index}} ? 'true' : 'false')" role="button" tabindex="0" aria-controls="faq-body-{{forloop.index}}" id="w-node-f00265f8-06a1-2301-4bb8-64fdc40d6855-46197a43" class="product_faq-item">
                   <div class="product_faq-item-heading">
-                    <h2 id="faq-heading-{{forloop.index}}" li-object="block.settings.titre" class="text-size-medium text-font-body">{{ block.settings.titre }}</h2>
+                    <h2 id="faq-heading-{{forloop.index}}" li-object="block.settings.text_titre" class="text-size-medium text-font-body">{{ block.settings.text_titre }}</h2>
                     <div x-bind:style="open === {{ forloop.index }} ? 'transform: rotate(45deg)' : 'transform: rotate(0deg)'" class="faq_icon w-embed"><svg width="21" height="21" viewbox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.3153 9.88046e-06V9.57357H20.8889L20.8882 11.3144H11.3146L11.3153 20.8873H9.57519L9.57449 11.3144H0.000932157L0.00162269 9.57357L9.5738 9.57357L9.57449 0.000700414L11.3153 9.88046e-06Z" fill="#B1B1B1"></path>
                       </svg></div>
@@ -152,8 +152,8 @@
                   <div li-case="block.type">
 {% case block.type %}
 
-                    {% when description %} 
-<div li-when="description">
+                    {% when 'description' %} 
+<div li-when="'description'">
 
                       <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_content-image" src="{{ product.metafields.custom.description_image | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.description_image | image_url: width: 1000" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
                         <div class="product_faq-item-body-content">
@@ -166,8 +166,8 @@
                         </div>
                       </div>
                     </div>
-                    {% when composition %} 
-<div li-when="composition">
+                    {% when 'composition' %} 
+<div li-when="'composition'">
 
                       <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_content-image" src="{{ product.metafields.custom.ingredients_image | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.ingredients_image | image_url: width: 1000" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w">
                         <div class="product_faq-item-body-content">
@@ -180,8 +180,8 @@
                         </div>
                       </div>
                     </div>
-                    {% when conseils %} 
-<div li-when="conseils">
+                    {% when 'conseils' %} 
+<div li-when="'conseils'">
 
                       <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img class="tabs_conseil-image is-first" src="{{ product.metafields.custom.conseil_utilisation_images.value[0] | image_url: width: 1000 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.conseil_utilisation_images.value[0] | image_url: width: 1000" loading="lazy" srcset="{{ 'hero-1-p-500.avif' | asset_url }} 500w, {{ 'hero-1-p-800.avif' | asset_url }} 800w, {{ 'hero-1-p-1080.avif' | asset_url }} 1080w, {{ 'hero-1.avif' | asset_url }} 2880w">
                         {% if product.metafields.custom.conseil_utilisation_titre_1 %}    <div li-if="product.metafields.custom.conseil_utilisation_titre_1" class="rich-text-conseils_block">
@@ -222,15 +222,12 @@
 {% endif %}
                       </div>
                     </div>
-                    {% when pyramide %} 
-<div li-when="pyramide">
+                    {% when 'pyramide' %} 
+<div li-when="'pyramide'">
 
                       <div id="faq-body-{{forloop.index}}" x-show="open === {{ forloop.index }}" x-collapse="" x-cloaks="" aria-labelledby="faq-heading-{{forloop.index}}" class="product_faq-item-body"><img src="{{ product.metafields.custom.pyramide_olfactive | image_url: width: 1000 }}" loading="lazy" li-object:src="product.metafields.custom.pyramide_olfactive | image_url: width: 1000" alt="" class="product_faq-pyramide-image"></div>
                     </div>
                   {% endcase %}
-</div>
-                  <div class="hide">
-{{ section.settings.text_titre }}
 </div>
                 </li>
                             
@@ -293,14 +290,6 @@
         },
         {
             "type": "@app"
-        }
-    ],
-    "settings": [
-        {
-            "id": "text_titre",
-            "type": "text",
-            "label": "Titre",
-            "default": "Description"
         }
     ],
     "presets": [
