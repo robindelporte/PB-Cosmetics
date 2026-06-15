@@ -278,7 +278,7 @@
 {{ section.settings.text_upsell_titre }}
 </div>
                 <div class="hero-product_upsell">
-                  <div class="hero-product_upsell-image-wrapper"><img class="hero-product_upsell-image" src="{{ product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500 }}" alt="" sizes="(max-width: 1728px) 100vw, 1728px" li-object:src="product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w"></div>
+                  <div class="hero-product_upsell-image-wrapper"><img class="hero-product_upsell-image" src="{{ product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500 }}" alt="" sizes="100vw" li-object:src="product.metafields.custom.produit_complementaire.value.featured_image | image_url: width: 500" loading="lazy" srcset="{{ 'bundle-image-p-500.avif' | asset_url }} 500w, {{ 'bundle-image-p-800.avif' | asset_url }} 800w, {{ 'bundle-image.avif' | asset_url }} 1728w"></div>
                   {% if product.metafields.custom.produit_complementaire %}    <div li-if="product.metafields.custom.produit_complementaire" class="hero-product_upsell-content-wrapper">
     
                     <div class="hero-product_upsell-heading">
@@ -298,7 +298,7 @@
 {% endif %}
                         <div li-object="product.metafields.custom.produit_complementaire.value.price | money" class="text-size-medium">{{ product.metafields.custom.produit_complementaire.value.price | money }}</div>
                       </div>
-                      <a href="product.metafields.custom.produit_complementaire.value.url" class="hero-product_upsell-link" href="#">
+                      <a li-object:href="product.metafields.custom.produit_complementaire.value.url" href="{{ section.settings.href_productmetafieldscustomproduit_complementairevalueurl }}" class="hero-product_upsell-link" href="#">
 {{ section.settings.text_upsell_bouton }}
 </a>
                     </div>
@@ -375,6 +375,11 @@
             "type": "text",
             "label": "Upsell - Bouton",
             "default": "D\u00e9couvrir"
+        },
+        {
+            "id": "href_productmetafieldscustomproduit_complementairevalueurl",
+            "type": "text",
+            "label": "product.metafields.custom.produit_complementaire.value.url"
         }
     ],
     "presets": [
