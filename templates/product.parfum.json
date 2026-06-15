@@ -19,11 +19,44 @@
         "text_reassurance_3_titre": "EXPÉDITION RAPIDE",
         "text_reassurance_3_sous_titre": "sous 1 à 3 jours ouvré",
         "text_upsell_titre": "Et si vous aviez besoin d’un pack ?",
-        "text_upsell_bouton": "Découvrir"
+        "text_upsell_bouton": "Découvrir",
+        "href_productmetafieldscustomproduit_complementairevalueurl": ""
       }
     },
     "tabs": {
       "type": "tabs",
+      "blocks": {
+        "description_RTzxWU": {
+          "type": "description",
+          "settings": {
+            "text_titre": "Description"
+          }
+        },
+        "composition_H9whqt": {
+          "type": "composition",
+          "settings": {
+            "text_titre": "Composition"
+          }
+        },
+        "conseils_QJAMxi": {
+          "type": "conseils",
+          "settings": {
+            "text_titre": "Conseils d'utilisation"
+          }
+        },
+        "pyramide_KmxANh": {
+          "type": "pyramide",
+          "settings": {
+            "text_titre": "Pyramide olfactive"
+          }
+        }
+      },
+      "block_order": [
+        "description_RTzxWU",
+        "composition_H9whqt",
+        "conseils_QJAMxi",
+        "pyramide_KmxANh"
+      ],
       "settings": {}
     },
     "recharge": {
@@ -33,25 +66,15 @@
         "text_texte": "DÉCOUVRIR NOS PARFUMS"
       }
     },
-    "produits_3": {
-      "type": "produits_3",
+    "produits_4_XDEXa4": {
+      "type": "produits_4",
+      "name": "Produits - 4",
       "settings": {
         "text_titre": "MEILLEURES VENTES",
         "url_lien": "",
         "text_texte": "TOUS NOS BESTSELLER",
-        "collection": "",
+        "collection": "base-fonds-de-teint",
         "limit": 4
-      }
-    },
-    "hero_produit_b2b": {
-      "type": "hero_produit_b2b",
-      "settings": {
-        "text_reassurance_1_titre": "LIVRAISON OFFERTE",
-        "text_reassurance_1_sous_titre": "dès 25€ (En relay)",
-        "text_reassurance_2_titre": "PAIEMENT SÉCURISÉ",
-        "text_reassurance_2_sous_titre": "paiement vérifié",
-        "text_reassurance_3_titre": "EXPÉDITION RAPIDE",
-        "text_reassurance_3_sous_titre": "sous 1 à 3 jours ouvré"
       }
     },
     "tabs_b2b": {
@@ -133,8 +156,7 @@
     "hero_parfum",
     "tabs",
     "recharge",
-    "produits_3",
-    "hero_produit_b2b",
+    "produits_4_XDEXa4",
     "tabs_b2b"
   ]
 }
