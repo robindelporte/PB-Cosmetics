@@ -9,91 +9,50 @@
  */
 {
   "sections": {
-    "navbar": {
-      "type": "navbar",
-      "blocks": {
-        "annonce": {
-          "type": "annonce",
-          "name": "Annonce",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "annonce"
-      ],
-      "settings": {}
-    },
     "hero_parfum": {
       "type": "hero_parfum",
-      "settings": {}
+      "settings": {
+        "text_reassurance_1_titre": "LIVRAISON OFFERTE",
+        "text_reassurance_1_sous_titre": "dès 25€ (En relay)",
+        "text_reassurance_2_titre": "PAIEMENT SÉCURISÉ",
+        "text_reassurance_2_sous_titre": "paiement vérifié",
+        "text_reassurance_3_titre": "EXPÉDITION RAPIDE",
+        "text_reassurance_3_sous_titre": "sous 1 à 3 jours ouvré",
+        "text_upsell_titre": "Et si vous aviez besoin d’un pack ?",
+        "text_upsell_bouton": "Découvrir"
+      }
     },
     "tabs": {
       "type": "tabs",
-      "blocks": {
-        "tab-composition": {
-          "type": "tab-composition",
-          "name": "Tab - Composition",
-          "settings": {}
-        },
-        "tab-conseils": {
-          "type": "tab-conseils",
-          "name": "Tab - Conseils",
-          "settings": {}
-        },
-        "tab-description": {
-          "type": "tab-description",
-          "name": "Tab - Description",
-          "settings": {}
-        },
-        "tab-pyramide": {
-          "type": "tab-pyramide",
-          "name": "Tab - Pyramide",
-          "settings": {}
-        },
-        "faq-description": {
-          "type": "faq-description",
-          "name": "FAQ - Description",
-          "settings": {}
-        },
-        "faq-composition": {
-          "type": "faq-composition",
-          "name": "FAQ - Composition",
-          "settings": {}
-        },
-        "faq-conseils": {
-          "type": "faq-conseils",
-          "name": "FAQ - Conseils",
-          "settings": {}
-        },
-        "faq-pyramide": {
-          "type": "faq-pyramide",
-          "name": "FAQ - Pyramide",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "tab-composition",
-        "tab-conseils",
-        "tab-description",
-        "tab-pyramide",
-        "faq-description",
-        "faq-composition",
-        "faq-conseils",
-        "faq-pyramide"
-      ],
       "settings": {}
     },
     "recharge": {
       "type": "recharge",
-      "settings": {}
+      "settings": {
+        "url_lien": "",
+        "text_texte": "DÉCOUVRIR NOS PARFUMS"
+      }
     },
     "produits_3": {
       "type": "produits_3",
-      "settings": {}
+      "settings": {
+        "text_titre": "MEILLEURES VENTES",
+        "url_lien": "",
+        "text_texte": "TOUS NOS BESTSELLER",
+        "collection": "",
+        "limit": 4
+      }
     },
     "hero_produit_b2b": {
       "type": "hero_produit_b2b",
-      "settings": {}
+      "settings": {
+        "text_reassurance_1_titre": "LIVRAISON OFFERTE",
+        "text_reassurance_1_sous_titre": "dès 25€ (En relay)",
+        "text_reassurance_2_titre": "PAIEMENT SÉCURISÉ",
+        "text_reassurance_2_sous_titre": "paiement vérifié",
+        "text_reassurance_3_titre": "EXPÉDITION RAPIDE",
+        "text_reassurance_3_sous_titre": "sous 1 à 3 jours ouvré"
+      }
     },
     "tabs_b2b": {
       "type": "tabs_b2b",
@@ -101,42 +60,58 @@
         "tab-composition": {
           "type": "tab-composition",
           "name": "Tab - Composition",
-          "settings": {}
+          "settings": {
+            "text_titre": "Composition"
+          }
         },
         "tab-conseils": {
           "type": "tab-conseils",
           "name": "Tab - Conseils",
-          "settings": {}
+          "settings": {
+            "text_titre": "Conseils d'utilisation"
+          }
         },
         "tab-description": {
           "type": "tab-description",
           "name": "Tab - Description",
-          "settings": {}
+          "settings": {
+            "text_titre": "Description"
+          }
         },
         "tab-pyramide": {
           "type": "tab-pyramide",
           "name": "Tab - Pyramide",
-          "settings": {}
+          "settings": {
+            "text_titre": "Pyramide olfactive"
+          }
         },
         "faq-description": {
           "type": "faq-description",
           "name": "FAQ - Description",
-          "settings": {}
+          "settings": {
+            "text_titre": "Description"
+          }
         },
         "faq-composition": {
           "type": "faq-composition",
           "name": "FAQ - Composition",
-          "settings": {}
+          "settings": {
+            "text_titre": "Composition"
+          }
         },
         "faq-conseils": {
           "type": "faq-conseils",
           "name": "FAQ - Conseils",
-          "settings": {}
+          "settings": {
+            "text_titre": "Conseils d'utilisation"
+          }
         },
         "faq-pyramide": {
           "type": "faq-pyramide",
           "name": "FAQ - Pyramide",
-          "settings": {}
+          "settings": {
+            "text_titre": "Pyramide olfactive"
+          }
         }
       },
       "block_order": [
@@ -155,7 +130,6 @@
   "layout": "theme",
   "wrapper": "div.main-wrapper",
   "order": [
-    "navbar",
     "hero_parfum",
     "tabs",
     "recharge",
